@@ -27,10 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTH_USER_MODEL = 'goals.User'
 # Application definition
 
 INSTALLED_APPS = [
+    # Made Apps
+    'goals',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
