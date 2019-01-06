@@ -31,8 +31,11 @@ AUTH_USER_MODEL = 'goals.User'
 # Application definition
 
 INSTALLED_APPS = [
-    # Made Apps
+    # MADE APPS
     'goals',
+
+    # INSTALLED APPS
+    'django_extensions',
 
     'django.contrib.admin',
     'django.contrib.auth',
