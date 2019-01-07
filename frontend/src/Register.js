@@ -13,6 +13,7 @@ class Field extends Component {
     }
 
 
+
     render() {
         return (
             <div>
@@ -23,6 +24,7 @@ class Field extends Component {
         )
     }
 }
+
 
 class Register extends Component {
     constructor(props) {
@@ -61,6 +63,7 @@ class Register extends Component {
         
     }
 
+
     transformForm(event) {
         event.preventDefault()
         this.setState({
@@ -78,16 +81,20 @@ class Register extends Component {
         
     }
     
+
+
     render() {
-        
         return (
             <div className="registration">
+
                 <form className="simform" onSubmit={this.transformForm}>
                     <div className="form-inner">
                         {this.state.fields[this.state.currentField]}
                             
                         <input type="submit" value="Submit" />
                     </div>
+
+                <form onSubmit={this.registerAccount}>
                 </form>
             </div>
         )
