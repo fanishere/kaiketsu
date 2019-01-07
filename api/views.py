@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from goals.models import User
 from rest_framework import generics
-from api.serializers import UserSerializer
+from api.serializers import UserCreateSerializer, UserSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
@@ -14,6 +14,11 @@ def api_root(request, format=None):
     })
 
 
-class UserList(generics.ListCreateAPIView):
+class UserList(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+class UserRegister(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserCreateSerializer

@@ -8,4 +8,5 @@ urlpatterns = [
         include('rest_framework.urls')
         ),
     path('users/', views.UserList.as_view(), name='user-list'),
+    path('users/register', views.UserRegister.as_view(), name='user-register'),
 ]
