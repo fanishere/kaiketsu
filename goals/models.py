@@ -36,6 +36,13 @@ class Goal(DateStamp):
     )
     duration = models.DurationField(choices=DURATION_CHOICES, null=True)
 
+    TYPE_CHOICES = (
+        ('HEALTH', 'HEALTH'),
+        ('PROFESSIONAL', 'PROFESSIONAL'),
+        ('PERSONAL', 'PERSONAL'),
+    )
+    category = models.CharField(choices=TYPE_CHOICES, null=True, max_length=20)
+
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
