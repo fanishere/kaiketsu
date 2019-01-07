@@ -7,7 +7,7 @@ from api.serializers import (
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 
 @api_view(['GET', ])
@@ -35,5 +35,18 @@ class UserRegisterView(generics.CreateAPIView):
 
 
 class GoalListView(generics.ListCreateAPIView):
-    queryset = Goal.objects.all()
     serializer_class = GoalSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        user = self.request.user
+        return Goal.objects.filter(user=user)
+
+
+class GoalDetailView(generics.RetrieveUpdateAPIView):
+    serializer_class = GoalSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        user = self.request.user
+        return Goal.objects.filter(user=user)

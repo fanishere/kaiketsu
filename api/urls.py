@@ -15,4 +15,5 @@ urlpatterns = [
         views.UserRegisterView.as_view(),
         name='user-register'),
     path('goals/', views.GoalListView.as_view(), name='goal-list'),
+    path('goals/<pk>/', views.GoalDetailView.as_view(), name='goal-detail'),
 ]

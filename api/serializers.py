@@ -3,6 +3,7 @@ from rest_framework.validators import UniqueValidator
 from goals.models import (
     User, Goal
 )
+from datetime import timedelta
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -42,6 +43,19 @@ class UserCreateSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class GoalSerializer(serializers.ModelSerializer):
+    goal_detail_link = serializers.HyperlinkedIdentityField(
+        view_name='goal-detail')
+    DURATION_CHOICES = (
+        (timedelta(days=30), 'ONE MONTH'),
+        (timedelta(days=90), 'THREE MONTHS'),
+    )
+    duration = serializers.ChoiceField(choices=DURATION_CHOICES)
+
     class Meta:
         model = Goal
-        fields = ('resolution', 'reason', 'duration', 'user', 'active')
+
+        fields = (
+            'resolution', 'reason', 'duration', 'category',
+            'user', 'active', 'goal_detail_link',
+            )
+        read_only_fields = ('user', 'active',)
