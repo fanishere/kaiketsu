@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Register.css';
 require('dotenv').config()
 const axios = require('axios');
 
@@ -45,20 +46,33 @@ class Register extends Component {
         
         return (
             <div className="registration">
-                <form onSubmit={this.registerAccount}>
-                    <label>Username:
-                    <input type="text" name="username"></input>
-                    </label>
-                    <label>First Name:
-                    <input type="text" name="first_name"></input>
-                    </label>
-                    <label>Email:
-                    <input type="email" name="email"></input>
-                    </label>
-                    <label>Password:
-                    <input type="text" name="password"></input>
-                    </label>
-                    <input type="submit" value="Submit" />
+                <form className="simform" onSubmit={this.registerAccount}>
+                    <div className="form-inner">
+                        <ol className="questions">
+                            <li>
+                                
+                                <label>Username:
+                                <input type="text" name="username"></input>
+                                </label>
+                            </li>
+                            <li>
+                                <label>First Name:
+                                <input type="text" name="first_name"></input>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Email:
+                                <input type="email" name="email"></input>
+                                </label>
+                            </li>
+                            <li>
+                                <label>Password:
+                                <input type="text" name="password"></input>
+                                </label>
+                            </li>
+                        </ol>
+                        <input type="submit" value="Submit" />
+                    </div>
                 </form>
             </div>
         )
