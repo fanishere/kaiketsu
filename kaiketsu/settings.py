@@ -21,6 +21,7 @@ AUTH_USER_MODEL = 'goals.User'
 INSTALLED_APPS = [
     # MADE APPS
     'goals',
+    'api',
 
     # INSTALLED APPS
     'django_extensions',
@@ -114,7 +115,7 @@ USE_TZ = True
 REST_FRAMEWORK = {
 
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ]
 }
 
