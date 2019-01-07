@@ -12,10 +12,15 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         validators=[UniqueValidator(queryset=User.objects.all())]
     )
     first_name = serializers.CharField(required=True)
+    user_detail_link = serializers.HyperlinkedIdentityField(
+        view_name='user-detail')
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'email',)
+        fields = (
+            'pk', 'username', 'first_name',
+            'email', 'user_detail_link'
+            )
 
 
 class UserCreateSerializer(serializers.HyperlinkedModelSerializer):
