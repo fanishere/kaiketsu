@@ -93,8 +93,6 @@ class Register extends Component {
                             
                         <input type="submit" value="Submit" />
                     </div>
-
-                <form onSubmit={this.registerAccount}>
                 </form>
             </div>
         )
