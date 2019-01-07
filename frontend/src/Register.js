@@ -38,53 +38,48 @@ class Register extends Component {
             responses: []
         }
         this.transformForm = this.transformForm.bind(this);
+        this.registerAccount = this.registerAccount.bind(this);
     }
 
     registerAccount() {
+        if (this.state.responses.length === 4) {
+            axios({
+                url: 'http://localhost:8000/api/register/',
+                method: 'POST',
+                data: {
+                    'username': this.state.responses[0],
+                    'first_name': this.state.responses[1],
+                    'email': this.state.responses[2],
+                    'password': this.state.responses[3]
+                }
+            }).then(response => {
+                console.log(response);
+            }).catch(error => {
+                console.log(error);
+            })
+        }
         
-
-        // let username = event.target[0].value;
-        // let first_name = event.target[1].value;
-        // let email = event.target[2].value
-        // console.log(username, first_name);
-        axios({
-            url: 'http://localhost:8000/api/register/',
-            method: 'POST',
-            data: {
-                'username': this.state.responses[0],
-                'first_name': this.state.responses[1],
-                'email': this.state.responses[2],
-                'password': this.state.responses[3]
-            }
-        }).then(response => {
-            console.log(response);
-        }).catch(error => {
-            console.log(error);
-        })
     }
 
     transformForm(event) {
         event.preventDefault()
         this.setState({
             responses: this.state.responses.concat(event.target[0].value)
-        })
-        console.log(event.target[0].name);
+        }, this.registerAccount);
+        
         if (this.state.currentField < 3) {
             this.setState((state) => {
                 return {
                     currentField: state.currentField + 1,
                 }
-                
             });
-        }
-        if (this.state.responses.length === 4) {
-            console.log(this.state.responses);
-            this.registerAccount();
+            
         }
         
     }
     
     render() {
+        
         return (
             <div className="registration">
                 <form className="simform" onSubmit={this.transformForm}>
