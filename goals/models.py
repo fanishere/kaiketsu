@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from datetime import timedelta
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 
 class User(AbstractUser):
@@ -16,7 +18,8 @@ class Timestamp(models.Model):
 
 
 class DateStamp(models.Model):
-    created_at = models.DateField(auto_now_add=True, null=True)
+    # add back auto_now_add after testing unique constraints
+    created_at = models.DateField(auto_now_add=False, null=True)
     created_time = models.DateTimeField(auto_now_add=True, null=True)
 
     class Meta:
@@ -33,15 +36,19 @@ class Goal(DateStamp):
     )
     duration = models.DurationField(choices=DURATION_CHOICES, null=True)
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        null=True,
+        related_name='goals'
+        )
     active = models.BooleanField(default=True, editable=True)
 
-    # def get_days(self):
-        # return days ordered by date
+    def get_days(self):
+        return self.days.all().order_by('created_at')
 
 
 class GoalDay(DateStamp):
-    date = models.DateField(auto_now_add=True, null=True)
     goal_met = models.BooleanField(default=False)
     goal = models.ForeignKey(
         Goal,
@@ -51,3 +58,40 @@ class GoalDay(DateStamp):
 
     class Meta:
         unique_together = ('created_at', 'goal')
+
+
+class TimePie(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def get_free_hours_per_week(self):
+        sum_of_sections = sum(
+            [timepie.hours for timepie in self.sections.all()]
+            )
+        return (24 - sum_of_sections) * 7
+
+
+class TimeSection(models.Model):
+    title = models.CharField(max_length=255)
+    timepie = models.ForeignKey(
+        TimePie,
+        on_delete=models.CASCADE,
+        null=True,
+        related_name='sections'
+        )
+    hours = models.DecimalField(decimal_places=1, max_digits=3)
+
+    def __str__(self):
+        return self.title
+
+    def clean(self):
+        sum_of_sections = sum(
+            [timepie.hours for timepie in self.timepie.sections.all()]
+            )
+        if self.pk is None:
+            if self.hours + sum_of_sections > 24:
+                raise ValidationError(
+                    _('Time sections can not add up over 24.'))
+        else:
+            if sum_of_sections > 24:
+                raise ValidationError(
+                    _('Time sections can not add up over 24.'))
