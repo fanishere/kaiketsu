@@ -3,13 +3,6 @@ require('dotenv').config()
 
 
 
-class Loading extends Component {
-  render() {
-    return (
-      <div>Hello World</div>
-    );
-  }
-}
 
 class Register extends Component {
 
@@ -18,15 +11,15 @@ class Register extends Component {
     //         url: 
     //     })
     // }
-    
+
     render() {
-        
+
         return (
             <div className="registration">
-                <form onSubmit = {this.registerAccount}>
-                    <label>Username</label>
-                    <input type="text" name="username"></input>
-                    
+                <form onSubmit={this.registerAccount}>
+                    {/* <label>Username</label>
+                    <input type="text" name="username"></input> */}
+
                 </form>
             </div>
         )
