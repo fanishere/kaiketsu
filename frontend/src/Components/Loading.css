@@ -1,30 +1,18 @@
 .loading {
-    /* background-image: url('./media/a.jpg'); */
     background-image: url('./media/a.jpg');
-    height: 110vh;
-    width: 520px
-}
-
-.logo {
-    /* background-image: url('./media/logo.png'); */
-    background-repeat: no-repeat;
     height: 100vh;
+    width: 100%;
 }
 
-.centered {
-    position: absolute;
-    top: 37%;
-    left: 76%;
-    width: 500px;
-    height: 500px;
-    margin-top: -250px; /* Half the height */
-    margin-left: -250px; /* Half the width */
+img.logo {
+    display: block;
+    margin: 0 auto;
+    padding-top: 40%;
 }
-      
+
 .heading {
-font-family: 'Nunito Sans', sans-serif;
-position: absolute;
-font-weight: extra-bold;
-top: 48%;
-left: 10%;
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+    font-weight: 700;
+    margin-top: -40px;
 }
