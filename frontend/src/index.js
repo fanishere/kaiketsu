@@ -1,10 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Register from './Register';
-import Login from './Login';
 import * as serviceWorker from './serviceWorker';
-import Loading from './Loading';
 import Main from './Main';
 import * as serviceWorker from './serviceWorker';
 

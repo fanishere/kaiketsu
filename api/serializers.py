@@ -47,6 +47,10 @@ class LoginUserSerializer(serializers.HyperlinkedModelSerializer):
     username = serializers.CharField()
     password = serializers.CharField()
 
+    class Meta:
+        model = User
+        fields = ('username', 'password',)
+
     def validate(self, data):
         user = authenticate(**data)
         if user and user.is_active:
