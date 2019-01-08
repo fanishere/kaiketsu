@@ -2,12 +2,13 @@ import React, {Component} from "react";
 import {Redirect} from 'react-router-dom';
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import {auth} from '../actions';
 import "./Login.css";
 import Field from './Field';
 const axios = require('axios');
 
 
-class Login2 extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,7 +20,7 @@ class Login2 extends Component {
             responses: [],
             toGoalPrompt: false,
             username: '',
-            password: ''
+            password: '',
         }
         this.transformForm = this.transformForm.bind(this);
         this.loginUser = this.loginUser.bind(this);
@@ -27,21 +28,7 @@ class Login2 extends Component {
 
     loginUser() {
         if (this.state.responses.length === 2) {
-            axios({
-                url: 'http://localhost:8000/api/login/',
-                method: 'POST',
-                data: {
-                    'username': this.state.responses[0],
-                    'password': this.state.responses[1]
-                }
-            }).then(response => {
-                this.setState(() => ({
-                    toGoalPrompt: true
-                }))
-                console.log(response);
-            }).catch(error => {
-                console.log(error);
-            })
+            this.props.login(this.state.responses[0], this.state.responses[1])
         }
         
     }
@@ -82,31 +69,26 @@ class Login2 extends Component {
     }
 }
 
-
-
-class Login extends Component {
-
-
-    render() {
-
-        return (
-            <div className="Login">
-                <form onSubmit={this.loginUser}>
-                    <label> Login </label>
-                    <input type="text" name="login"></input>
-
-                </form>
-            </div>
-        )
-    }
-}
-
 const mapStateToProps = state => {
-    return {};
+    let errors = [];
+    if (state.auth.errors) {
+        errors = Object.keys(state.auth.errors).map(field => {
+            return {field, message:state.auth.errors[field]};
+        });
+    }
+    return {
+        errors,
+        isAuthenticated: state.auth.isAuthenticated
+    };
+    
 }
 
-const mapDispatchToProps = state => {
-    return {};
+const mapDispatchToProps = dispatch => {
+    return {
+        login: (username, password) => {
+            return dispatch(auth.login(username, password));
+        }
+    };
 }
 
-export default Login;
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
