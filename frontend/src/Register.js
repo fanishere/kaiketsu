@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {
+    Redirect
+} from 'react-router-dom'
 import './Register.css';
 require('dotenv').config()
 const axios = require('axios');
@@ -11,8 +14,6 @@ class Field extends Component {
             fields: ['username', 'first_name', 'email', 'password']
         }
     }
-
-
 
     render() {
         return (
@@ -37,7 +38,8 @@ class Register extends Component {
                 <Field field='password' type='text'></Field>
             ],
             currentField: 0,
-            responses: []
+            responses: [],
+            toGoalPrompt: false
         }
         this.transformForm = this.transformForm.bind(this);
         this.registerAccount = this.registerAccount.bind(this);
@@ -55,6 +57,9 @@ class Register extends Component {
                     'password': this.state.responses[3]
                 }
             }).then(response => {
+                this.setState(() => ({
+                    toGoalPrompt: true
+                }))
                 console.log(response);
             }).catch(error => {
                 console.log(error);
@@ -62,7 +67,6 @@ class Register extends Component {
         }
         
     }
-
 
     transformForm(event) {
         event.preventDefault()
@@ -81,9 +85,10 @@ class Register extends Component {
         
     }
     
-
-
     render() {
+        if (this.state.toGoalPrompt === true) {
+            return <Redirect to='/loading' />
+        }
         return (
             <div className="registration">
 
