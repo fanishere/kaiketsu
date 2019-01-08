@@ -1,4 +1,21 @@
 .loading {
-    background-image: url('./background-image/a.jpg');
+    background-image: url('./media/a.jpg');
     height: 100vh;
 }
+
+.logo {
+    background-image: url('./media/logo.png');
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    margin-top: -250px; /* Half the height */
+    margin-left: -250px; /* Half the width */
+     }
+     
