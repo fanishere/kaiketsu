@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import {
-  Route,
-  NavLink,
-  HashRouter,
-  Redirect
+    BrowserRouter,
+    Route
 } from "react-router-dom";
 import Register from './Register';
 import Loading from './Loading';
@@ -11,7 +9,7 @@ import Loading from './Loading';
 class Main extends Component {
     render() {
         return (
-            <HashRouter>
+            <BrowserRouter>
                 <div>
                     <div className="content">
                         <Route exact path="/" component={Loading}/>
@@ -21,7 +19,7 @@ class Main extends Component {
 
                     </div>
                 </div>
-            </HashRouter>
+            </BrowserRouter>
         );
     }
 }
