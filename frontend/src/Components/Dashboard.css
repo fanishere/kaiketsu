@@ -1,0 +1,33 @@
+.header {
+    background-color: #5db3cc;
+}
+.header .tabs {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.tabs div {
+    width: 100%;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    position: relative;
+}
+.tabs div:first-child:after {
+    content: '';
+    width: .5px;
+    height: 25px;
+    background: white;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.tabs div:last-child:after {
+    content: '';
+    width: .5px;
+    height: 25px;
+    background: white;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}

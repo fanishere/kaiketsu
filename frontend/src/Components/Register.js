@@ -6,7 +6,7 @@ import Field from './Field';
 import './Register.css';
 import {connect} from "react-redux";
 import {auth} from '../actions';
-require('dotenv').config()
+require('dotenv').config();
 const axios = require('axios');
 
 
