@@ -4,6 +4,8 @@ import {
 } from 'react-router-dom';
 import Field from './Field';
 import './Register.css';
+import {connect} from "react-redux";
+import {auth} from '../actions';
 require('dotenv').config()
 const axios = require('axios');
 
@@ -28,23 +30,8 @@ class Register extends Component {
 
     registerAccount() {
         if (this.state.responses.length === 4) {
-            axios({
-                url: 'http://localhost:8000/api/register/',
-                method: 'POST',
-                data: {
-                    'username': this.state.responses[0],
-                    'first_name': this.state.responses[1],
-                    'email': this.state.responses[2],
-                    'password': this.state.responses[3]
-                }
-            }).then(response => {
-                this.setState(() => ({
-                    toGoalPrompt: true
-                }))
-                console.log(response);
-            }).catch(error => {
-                console.log(error);
-            })
+            this.props.register(...this.state.responses);
+            
         }
         
     }
@@ -72,7 +59,7 @@ class Register extends Component {
         }
         return (
             <div className="registration">
-
+                <h1>Register</h1>
                 <form className="simform" onSubmit={this.transformForm}>
                     <div className="form-inner">
                         {this.state.fields[this.state.currentField]}
@@ -86,5 +73,26 @@ class Register extends Component {
 }
 
 
-export default Register;
+const mapStateToProps = state => {
+    let errors = [];
+    if (state.auth.errors) {
+        errors = Object.keys(state.auth.errors).map(field => {
+            return {field, message:state.auth.errors[field]};
+        });
+    }
+    return {
+        errors,
+        isAuthenticated: state.auth.isAuthenticated
+    };
+    
+}
 
+const mapDispatchToProps = dispatch => {
+    return {
+        register: (username, first_name, email, password) => {
+            return dispatch(auth.register(username, first_name, email, password));
+        }
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

@@ -3,27 +3,33 @@ import {
     BrowserRouter,
     Route
 } from "react-router-dom";
-import Register from './Register';
-import Loading from './Loading';
-import Login from "./Login";
+import { createStore, applyMiddleware } from "redux";
+import Register from './Components/Register';
+import Loading from './Components/Loading';
+import Login from "./Components/Login";
 import {Provider, connect} from 'react-redux';
+import thunk from "redux-thunk";
+import kaiApp from "./reducers";
+
+let store = createStore(kaiApp, applyMiddleware(thunk));
  
 class Main extends Component {
     render() {
         return (
-           
-            <BrowserRouter>
-                <div>
-                    <div className="content">
-                        <Route exact path="/" component={Loading}/>
-                        <Route path="/login" component={Login}/>
-                        <Route path="/register" component={Register}/>
-                        
-                        <Route exact path="/loading" component={Loading}/>
+            <Provider store={store}>
+                <BrowserRouter>
+                    <div>
+                        <div className="content">
+                            <Route exact path="/" component={Loading}/>
+                            <Route path="/login" component={Login}/>
+                            <Route path="/register" component={Register}/>
 
+                            <Route exact path="/loading" component={Loading}/>
+
+                        </div>
                     </div>
-                </div>
-            </BrowserRouter>
+                </BrowserRouter>
+            </Provider>
         );
     }
 }

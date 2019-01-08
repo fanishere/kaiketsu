@@ -1,10 +1,10 @@
 .loading {
-    background-image: url('./media/a.jpg');
+    /* background-image: url('./media/a.jpg'); */
     height: 100vh;
 }
 
 .logo {
-    background-image: url('./media/logo.png');
+    /* background-image: url('./media/logo.png'); */
     background-repeat: no-repeat;
     height: 100vh;
 }
