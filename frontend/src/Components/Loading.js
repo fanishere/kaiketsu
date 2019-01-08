@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import './Loading.css';
+import logo from './media/logo.png';
 
 class Loading extends Component {
     render() {
         return (
-            <div className="loading"><div className="logo centered"></div></div>
+            <div className="loading">
+                <div className="content">
+                    <img className="logo" src={logo} alt="logo"></img>
+                    <h1 className="heading">
+                        KAIKETSU
+                    </h1>
+
+                </div>
+            </div>
         )
     }
 }
