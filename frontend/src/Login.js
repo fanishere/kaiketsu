@@ -2,11 +2,12 @@ import React, {Component} from "react";
 import {Redirect} from 'react-router-dom';
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import "./Login.css";
 import Field from './Field';
 const axios = require('axios');
 
 
-class Login extends Component {
+class Login2 extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -75,6 +76,25 @@ class Login extends Component {
                             
                         <input type="submit" value="Submit" />
                     </div>
+                </form>
+            </div>
+        )
+    }
+}
+
+
+
+class Login extends Component {
+
+
+    render() {
+
+        return (
+            <div className="Login">
+                <form onSubmit={this.loginUser}>
+                    <label> Login </label>
+                    <input type="text" name="login"></input>
+
                 </form>
             </div>
         )
