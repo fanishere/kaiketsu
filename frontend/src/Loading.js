@@ -4,7 +4,7 @@ import './Loading.css';
 class Loading extends Component {
     render() {
         return (
-            <div className="loading"><div className="logo"></div></div>
+            <div className="loading"><div className="logo centered"></div></div>
         )
     }
 }
