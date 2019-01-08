@@ -2,12 +2,13 @@ from goals.models import User, Goal
 from rest_framework import generics
 from api.serializers import (
     UserCreateSerializer, UserSerializer,
-    GoalSerializer
+    GoalSerializer, LoginUserSerializer
 )
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.authtoken.models import Token
 
 
 @api_view(['GET', ])
@@ -50,3 +51,31 @@ class GoalDetailView(generics.RetrieveUpdateAPIView):
     def get_queryset(self):
         user = self.request.user
         return Goal.objects.filter(user=user)
+
+
+class RegistrationAPIView(generics.GenericAPIView):
+    serializer_class = UserCreateSerializer
+    permission_classes = (AllowAny,)
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return Response({
+            "user": UserSerializer(user, context=self.get_serializer_context()).data,
+            "token": Token.objects.get_or_create(user=user)[0].key
+        })
+
+
+class LoginAPIView(generics.GenericAPIView):
+    serializer_class = LoginUserSerializer
+    permission_classes = (AllowAny,)
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data
+        return Response({
+            "user": UserSerializer(user, context=self.get_serializer_context()).data,
+            "token": Token.objects.get_or_create(user=user)[0].key
+        })

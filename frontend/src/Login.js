@@ -1,41 +1,38 @@
-import React, { Component } from 'react';
-import {
-    Redirect
-} from 'react-router-dom';
+import React, {Component} from "react";
+import {Redirect} from 'react-router-dom';
+import {connect} from "react-redux";
+import {Link} from "react-router-dom";
+import "./Login.css";
 import Field from './Field';
-import './Register.css';
-require('dotenv').config()
 const axios = require('axios');
 
 
-class Register extends Component {
+class Login2 extends Component {
     constructor(props) {
         super(props);
         this.state = {
             fields: [
                 <Field field='username' type='text'></Field>,
-                <Field field='first_name' type='text'></Field>,
-                <Field field='email' type='email'></Field>,
                 <Field field='password' type='text'></Field>
             ],
             currentField: 0,
             responses: [],
-            toGoalPrompt: false
+            toGoalPrompt: false,
+            username: '',
+            password: ''
         }
         this.transformForm = this.transformForm.bind(this);
-        this.registerAccount = this.registerAccount.bind(this);
+        this.loginUser = this.loginUser.bind(this);
     }
 
-    registerAccount() {
-        if (this.state.responses.length === 4) {
+    loginUser() {
+        if (this.state.responses.length === 2) {
             axios({
-                url: 'http://localhost:8000/api/register/',
+                url: 'http://localhost:8000/api/login/',
                 method: 'POST',
                 data: {
                     'username': this.state.responses[0],
-                    'first_name': this.state.responses[1],
-                    'email': this.state.responses[2],
-                    'password': this.state.responses[3]
+                    'password': this.state.responses[1]
                 }
             }).then(response => {
                 this.setState(() => ({
@@ -53,7 +50,7 @@ class Register extends Component {
         event.preventDefault()
         this.setState({
             responses: this.state.responses.concat(event.target[0].value)
-        }, this.registerAccount);
+        }, this.loginUser);
         
         if (this.state.currentField < 3) {
             this.setState((state) => {
@@ -67,12 +64,12 @@ class Register extends Component {
     }
     
     render() {
-        if (this.state.toGoalPrompt === true) {
-            return <Redirect to='/loading' />
-        }
+        // if (this.state.toGoalPrompt === true) {
+        //     return <Redirect to='/loading' />
+        // }
         return (
-            <div className="registration">
-
+            <div className="login">
+                <h1>Login</h1>
                 <form className="simform" onSubmit={this.transformForm}>
                     <div className="form-inner">
                         {this.state.fields[this.state.currentField]}
@@ -86,5 +83,30 @@ class Register extends Component {
 }
 
 
-export default Register;
 
+class Login extends Component {
+
+
+    render() {
+
+        return (
+            <div className="Login">
+                <form onSubmit={this.loginUser}>
+                    <label> Login </label>
+                    <input type="text" name="login"></input>
+
+                </form>
+            </div>
+        )
+    }
+}
+
+const mapStateToProps = state => {
+    return {};
+}
+
+const mapDispatchToProps = state => {
+    return {};
+}
+
+export default Login;
