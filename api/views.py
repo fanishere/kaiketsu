@@ -43,6 +43,9 @@ class GoalListView(generics.ListCreateAPIView):
         user = self.request.user
         return Goal.objects.filter(user=user)
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class GoalDetailView(generics.RetrieveUpdateAPIView):
     serializer_class = GoalSerializer
