@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './Dashboard.css';
+import {connect} from "react-redux";
+const axios = require('axios');
 
 class GoalBlock extends Component {
     render() {
@@ -12,13 +14,61 @@ class GoalBlock extends Component {
 }
 
 class DashboardDisplay extends Component {
-    // componentwillmount of api calls to goals
+    constructor(props) {
+        super(props);
+        this.state = {
+            goals: [],
+        }
+    }
+
+    componentDidMount() {
+        let headers = {
+            "Content-Type": "application/json",
+            "Authorization": `Token ${this.props.token}`
+        };
+        return axios({
+            url: 'http://localhost:8000/api/goals/',
+                method: 'GET',
+                headers: headers
+            }).then(res => {
+            if (res.status === 200) {
+                console.log(res);
+                this.setState({
+                    goals: res.data
+                })
+                return res.data;
+    
+            } else if (res.status >= 400 && res.status < 500) {
+                throw res.data;
+            }
+    
+            });
+    }
+
+
     render() {
+        let goalBlocks = [];
+        if (this.state.goals) {
+            let goals = this.state.goals;
+            for (let i = 0; i < goals.length; i ++) {
+                goalBlocks.push(
+                    <GoalBlock
+                        resolution={ goals[i].resolution }
+                        reason={ goals[i].reason}
+                        duration={ goals[i].duration }
+                        category={ goals[i].duration }
+                        key={i}
+                        >
+                    </GoalBlock>
+                );
+            }
+            console.log(goalBlocks);
+
+        }
+
         return (
             <div>
-                <GoalBlock></GoalBlock>
-                <GoalBlock></GoalBlock>
-                <GoalBlock></GoalBlock>
+                {goalBlocks}
             </div>
         )
     }
@@ -42,11 +92,27 @@ class Dashboard extends Component {
         return (
             <div className="Dashboard">
                 <DashboardHeader></DashboardHeader>
-                <DashboardDisplay></DashboardDisplay>
+                <DashboardDisplay token={this.props.token}></DashboardDisplay>
             </div>
             
         )
     }
 }
 
-export default Dashboard;
+const mapStateToProps = state => {
+    let errors = [];
+    if (state.auth.errors) {
+        errors = Object.keys(state.auth.errors).map(field => {
+            return {field, message:state.auth.errors[field]};
+        });
+    }
+    return {
+        errors,
+        isAuthenticated: state.auth.isAuthenticated,
+        token: localStorage.getItem("token"),
+    };
+    
+}
+
+
+export default connect(mapStateToProps)(Dashboard);

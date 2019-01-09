@@ -30,8 +30,14 @@ class Register extends Component {
 
     registerAccount() {
         if (this.state.responses.length === 4) {
-            this.props.register(...this.state.responses);
-            
+            this.props.register(...this.state.responses)
+            .then(() => {
+                this.setState((state) => {
+                    return {
+                        toGoalPrompt: true,
+                    }
+                });
+            })
         }
         
     }

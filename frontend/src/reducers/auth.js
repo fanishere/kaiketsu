@@ -7,7 +7,6 @@ const initialState = {
 };
 
 function auth(state=initialState, action) {
-    console.log(action);
     switch(action.type) {
         case 'USER_LOADING':
             return {...state, isLoading: true};

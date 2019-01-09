@@ -18,7 +18,7 @@ class Login extends Component {
             ],
             currentField: 0,
             responses: [],
-            toGoalPrompt: false,
+            toDashboard: false,
             username: '',
             password: '',
         }
@@ -29,6 +29,13 @@ class Login extends Component {
     loginUser() {
         if (this.state.responses.length === 2) {
             this.props.login(this.state.responses[0], this.state.responses[1])
+            .then(() => {
+                this.setState((state) => {
+                    return {
+                        toDashboard: true,
+                    }
+                });
+            })
         }
         
     }
@@ -51,9 +58,9 @@ class Login extends Component {
     }
     
     render() {
-        // if (this.state.toGoalPrompt === true) {
-        //     return <Redirect to='/loading' />
-        // }
+        if (this.state.toDashboard === true) {
+            return <Redirect to='/dashboard' />
+        }
         return (
             <div className="login">
                 <h1>Login</h1>
