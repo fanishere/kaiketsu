@@ -1,10 +1,25 @@
 import React, {Component} from 'react';
 import './Dashboard.css';
 
-class DashboardDisplay extends Component {
+class GoalBlock extends Component {
     render() {
         return (
-            <div>Dashboard</div>
+            <div className="GoalBlock">
+                
+            </div>
+        )
+    }
+}
+
+class DashboardDisplay extends Component {
+    // componentwillmount of api calls to goals
+    render() {
+        return (
+            <div>
+                <GoalBlock></GoalBlock>
+                <GoalBlock></GoalBlock>
+                <GoalBlock></GoalBlock>
+            </div>
         )
     }
 }

@@ -14,7 +14,7 @@ class Login extends Component {
         this.state = {
             fields: [
                 <Field field='username' type='text'></Field>,
-                <Field field='password' type='text'></Field>
+                <Field field='password' type='password'></Field>
             ],
             currentField: 0,
             responses: [],

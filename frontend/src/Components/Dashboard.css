@@ -31,3 +31,9 @@
     left: 0;
     bottom: 0;
 }
+
+.GoalBlock {
+    margin: 20px;
+    height: 175px;
+    border: 1px solid black;
+}
