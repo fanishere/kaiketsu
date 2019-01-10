@@ -1,4 +1,4 @@
-from settings import *
+from kaiketsu.settings import *
 import django_heroku
 
 DEBUG = False
