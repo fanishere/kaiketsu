@@ -1,7 +1,6 @@
 const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
-    isLoading: true,
     user: null,
     errors: {},
 };
@@ -12,10 +11,13 @@ function auth(state=initialState, action) {
             return {...state, isLoading: true};
         case 'REGISTRATION_SUCCESSFUL':
             localStorage.setItem("token", action.user.token);
-            return {...state, ...action.user, isAuthenticated:true, isLoading: false, errors:null};
+            return {...state, ...action.user, isAuthenticated:true, errors:null};
         case 'LOGIN_SUCCESSFUL':
             localStorage.setItem("token", action.user.token);
-            return {...state, ...action.user, isAuthenticated:true, isLoading: false, errors:null};
+            return {...state, ...action.user, isAuthenticated:true, errors:null};
+        case 'AUTHENTICATION_ERROR':
+            let errors = action.data.response.data.non_field_errors;
+            return {...state, ...action.user, isAuthenticated:false, errors:errors};
 
         default:
             return state;

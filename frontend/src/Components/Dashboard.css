@@ -26,7 +26,13 @@
     width: 70%;
     margin: 0 auto;
 }
-
+.goal-block-links {
+    text-decoration: none;
+    color: #2d2d2d;
+}
+.goal-block-links:active {
+    text-decoration: none;
+}
 .Dashboard {
     background-image: url('./media/orange-background.jpg');
     overflow: hidden;
