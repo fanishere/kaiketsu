@@ -16,7 +16,7 @@ function auth(state=initialState, action) {
             localStorage.setItem("token", action.user.token);
             return {...state, ...action.user, isAuthenticated:true, errors:null};
         case 'AUTHENTICATION_ERROR':
-            let errors = action.data.response.data.non_field_errors;
+            let errors = action.data.response.data;
             return {...state, ...action.user, isAuthenticated:false, errors:errors};
 
         default:

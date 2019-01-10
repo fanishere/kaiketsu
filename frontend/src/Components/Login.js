@@ -46,11 +46,10 @@ class Login extends Component {
                         toDashboard: true,
                     }
                 });
-            })
-            .catch(() => {
+            }).catch(() => {
                 console.log(this.props.errors);
                 this.resetForm();
-            })
+            });
         }
         
     }
@@ -63,7 +62,7 @@ class Login extends Component {
         }, this.loginUser);
         this.setState({
             inputField: ""
-        })
+        });
         if (this.state.currentField < 1) {
             this.setState((state) => {
                 return {

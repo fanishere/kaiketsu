@@ -48,12 +48,12 @@ export const register = (username, first_name, email, password) => {
             dispatch({type: 'REGISTRATION_SUCCESSFUL', user: res.data});
             return res.data;
 
-        } else if (res.status >= 400 && res.status < 500) {
-            dispatch({type: 'AUTHENTICATION_ERROR', data: res.data});
-            throw res.data;
         }
 
-        })
+        }).catch(error => {
+            dispatch({type: 'AUTHENTICATION_ERROR', data: error});
+            throw error
+        });
 
     }
 }
