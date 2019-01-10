@@ -6,7 +6,7 @@ export const login = (username, password) => {
       let headers = {"Content-Type": "application/json"};
         
       return axios({
-        url: 'http://localhost:8000/api/login/',
+        url: `${process.env.REACT_APP_API_URL}/api/login/`,
             method: 'POST',
             data: {
                 username: username,
@@ -33,7 +33,7 @@ export const register = (username, first_name, email, password) => {
       let headers = {"Content-Type": "application/json"};
         
       return axios({
-        url: 'http://localhost:8000/api/register/',
+        url: `${process.env.REACT_APP_API_URL}/api/register/`,
             method: 'POST',
             data: {
                 username: username,

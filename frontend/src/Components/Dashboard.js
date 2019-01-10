@@ -57,7 +57,7 @@ class DashboardGoalDisplay extends Component {
             "Authorization": `Token ${this.props.token}`
         };
         return axios({
-            url: 'http://localhost:8000/api/goals/',
+            url: `${process.env.REACT_APP_API_URL}/api/goals/`,
                 method: 'GET',
                 headers: headers
             }).then(res => {
