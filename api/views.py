@@ -1,8 +1,9 @@
-from goals.models import User, Goal
+from goals.models import User, Goal, GoalDay
 from rest_framework import generics
 from api.serializers import (
     UserCreateSerializer, UserSerializer,
-    GoalSerializer, LoginUserSerializer
+    GoalSerializer, LoginUserSerializer,
+    GoalDaySerializer
 )
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -82,3 +83,16 @@ class LoginAPIView(generics.GenericAPIView):
             "user": UserSerializer(user, context=self.get_serializer_context()).data,
             "token": Token.objects.get_or_create(user=user)[0].key
         })
+
+
+class GoalDayList(generics.ListCreateAPIView):
+    serializer_class = GoalDaySerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        goal = Goal.objects.get(pk=self.kwargs['pk'])
+        return GoalDay.objects.filter(goal=goal).order_by('created_at')
+
+    def perform_create(self, serializer):
+        goal = Goal.objects.get(pk=self.kwargs['pk'])
+        serializer.save(goal=goal)
