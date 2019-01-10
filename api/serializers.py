@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from goals.models import (
-    User, Goal
+    User, Goal, GoalDay
 )
 from datetime import timedelta
 from django.contrib.auth import authenticate
@@ -59,6 +59,13 @@ class LoginUserSerializer(serializers.HyperlinkedModelSerializer):
             "Unable to log in with provided credentials")
 
 
+class GoalDaySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = GoalDay
+        fields = ('goal_met', 'created_at',)
+
+
 class GoalSerializer(serializers.ModelSerializer):
     goal_detail_link = serializers.HyperlinkedIdentityField(
         view_name='goal-detail')
@@ -67,12 +74,17 @@ class GoalSerializer(serializers.ModelSerializer):
         (timedelta(days=90), 'THREE MONTHS'),
     )
     duration = serializers.ChoiceField(choices=DURATION_CHOICES)
+    days = serializers.SerializerMethodField()
 
     class Meta:
         model = Goal
 
         fields = (
             'pk', 'resolution', 'reason', 'duration', 'category',
-            'user', 'active', 'goal_detail_link',
+            'user', 'active', 'goal_detail_link', 'days',
             )
         read_only_fields = ('user', 'active',)
+
+    def get_days(self, instance):
+        days = instance.days.all().order_by('created_at')
+        return GoalDaySerializer(days, many=True).data

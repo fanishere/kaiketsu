@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import './Dashboard.css';
 import {connect} from "react-redux";
 import {
-    BrowserRouter,
     Route,
-    Link,
     NavLink
 } from "react-router-dom";
 import Loading from './Loading';
@@ -75,6 +73,10 @@ class DashboardGoalDisplay extends Component {
             });
     }
 
+    componentWillUnmount() {
+
+    }
+
 
     render() {
         let goalBlocks = [];
@@ -121,27 +123,11 @@ class Dashboard extends Component {
         return (
             <div className="Dashboard">
                 <DashboardHeader token={this.props.token}></DashboardHeader>
-
-
-            
-            
-            <Route
-                                path="/dashboard/goals"
-                                render={(props) => <DashboardGoalDisplay {...props} token={this.props.token}/>}
-                            />
-                            <Route exact path="/dashboard/progress" component={Loading}/>
-                {/* <BrowserRouter>
-                    <div>
-                        <div className="content">
-                            <Route
-                                path="/dashboard/goals"
-                                render={(props) => <DashboardGoalDisplay {...props} token={this.props.token}/>}
-                            />
-                            <Route exact path="/dashboard/progress" component={Loading}/>
-
-                        </div>
-                    </div>
-                </BrowserRouter> */}
+                    <Route
+                        path="/dashboard/goals"
+                        render={(props) => <DashboardGoalDisplay {...props} token={this.props.token}/>}
+                        />
+                    <Route exact path="/dashboard/progress" component={Loading}/>
             </div>
             
         )
