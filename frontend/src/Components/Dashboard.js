@@ -2,18 +2,21 @@ import React, {Component} from 'react';
 import './Dashboard.css';
 import {connect} from "react-redux";
 import {
-    BrowserRouter,
     Route,
-    Link,
-    NavLink
+    NavLink,
+    Redirect,
+    Link
 } from "react-router-dom";
 import Loading from './Loading';
+import GoalDetail from './GoalDetail';
 const axios = require('axios');
 
 class GoalBlock extends Component {
+
     render() {
         return (
             <div className="GoalBlock">
+                <span><Link to={`/dashboard/goals/${this.props.pk}`}>Link to goal detail page</Link></span>
                 <div className="resolution">
                     <div className="goalblock-title">
                         <h2>RESOLUTION</h2>
@@ -75,6 +78,10 @@ class DashboardGoalDisplay extends Component {
             });
     }
 
+    componentWillUnmount() {
+
+    }
+
 
     render() {
         let goalBlocks = [];
@@ -87,6 +94,7 @@ class DashboardGoalDisplay extends Component {
                         reason={ goals[i].reason}
                         duration={ goals[i].duration }
                         category={ goals[i].category }
+                        pk={ goals[i].pk }
                         key={i}
                         >
                     </GoalBlock>
@@ -121,27 +129,12 @@ class Dashboard extends Component {
         return (
             <div className="Dashboard">
                 <DashboardHeader token={this.props.token}></DashboardHeader>
-
-
-            
-            
-            <Route
-                                path="/dashboard/goals"
-                                render={(props) => <DashboardGoalDisplay {...props} token={this.props.token}/>}
-                            />
-                            <Route exact path="/dashboard/progress" component={Loading}/>
-                {/* <BrowserRouter>
-                    <div>
-                        <div className="content">
-                            <Route
-                                path="/dashboard/goals"
-                                render={(props) => <DashboardGoalDisplay {...props} token={this.props.token}/>}
-                            />
-                            <Route exact path="/dashboard/progress" component={Loading}/>
-
-                        </div>
-                    </div>
-                </BrowserRouter> */}
+                    <Route
+                        exact path="/dashboard/goals"
+                        render={(props) => <DashboardGoalDisplay {...props} token={this.props.token}/>}
+                        />
+                    <Route exact path="/dashboard/progress" component={Loading}/>
+                    <Route path="/dashboard/goals/:id" component={GoalDetail} />
             </div>
             
         )

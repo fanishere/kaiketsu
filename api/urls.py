@@ -17,4 +17,8 @@ urlpatterns = [
          name='user-login'),
     path('goals/', views.GoalListView.as_view(), name='goal-list'),
     path('goals/<pk>/', views.GoalDetailView.as_view(), name='goal-detail'),
+    path(
+        'goals/<pk>/days/',
+        views.GoalDayList.as_view(),
+        name='goal-day-list'),
 ]

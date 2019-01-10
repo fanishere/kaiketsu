@@ -42,10 +42,10 @@ class Login extends Component {
 
     transformForm(event) {
         event.preventDefault()
+        let value = event.target[0].value;
         this.setState({
-            responses: this.state.responses.concat(event.target[0].value)
+            responses: this.state.responses.concat(value)
         }, this.loginUser);
-        
         if (this.state.currentField < 3) {
             this.setState((state) => {
                 return {
