@@ -62,11 +62,9 @@ class Register extends Component {
         if (this.state.toGoalPrompt === true) {
             return <Redirect to='/loading' />
         }
-        console.log('api_url', process.env.REACT_APP_API_URL);
         return (
             <div className="registration">
                 <h1>Register</h1>
-                <h1>{process.env.API_URL}</h1>
                 <form className="simform" onSubmit={this.transformForm}>
                     <div className="form-inner">
                         {this.state.fields[this.state.currentField]}

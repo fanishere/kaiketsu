@@ -92,7 +92,6 @@ class DashboardGoalDisplay extends Component {
                     </GoalBlock>
                 );
             }
-            console.log(goalBlocks);
 
         }
 
@@ -150,7 +149,6 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
     let errors = [];
     if (state.auth.errors) {
         errors = Object.keys(state.auth.errors).map(field => {

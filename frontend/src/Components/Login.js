@@ -59,7 +59,7 @@ class Login extends Component {
     
     render() {
         if (this.state.toDashboard === true) {
-            return <Redirect to='/dashboard' />
+            return <Redirect to='/dashboard/goals' />
         }
         return (
             <div className="login">
