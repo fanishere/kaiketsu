@@ -55,7 +55,8 @@ class LoginUserSerializer(serializers.HyperlinkedModelSerializer):
         user = authenticate(**data)
         if user and user.is_active:
             return user
-        raise serializers.ValidationError("Unable to log in with provided credentials")
+        raise serializers.ValidationError(
+            "Unable to log in with provided credentials")
 
 
 class GoalSerializer(serializers.ModelSerializer):
@@ -71,7 +72,7 @@ class GoalSerializer(serializers.ModelSerializer):
         model = Goal
 
         fields = (
-            'resolution', 'reason', 'duration', 'category',
+            'pk', 'resolution', 'reason', 'duration', 'category',
             'user', 'active', 'goal_detail_link',
             )
         read_only_fields = ('user', 'active',)

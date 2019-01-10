@@ -1,0 +1,61 @@
+.header {
+    background-color: #1ebbc7;
+}
+.header .tabs {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.tabs div {
+    width: 100%;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 0px;
+    position: relative;
+    margin-bottom: 5px;
+}
+.tabs div a {
+    text-decoration: none;
+}
+
+.tabs div a.selected:after {
+    content: '';
+    height: 2px;
+    background: white;
+    display: table;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.Dashboard {
+    background-image: url('./media/orange-background.jpg');
+    overflow: hidden;
+}
+
+.GoalBlock {
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 25px;
+}
+.GoalBlock div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.GoalBlock .goalblock-title {
+    border: 1px solid black;
+    margin: 5px 0;
+}
+.GoalBlock div h2 {
+    text-align: center;
+    font-size: 1.2em;
+    margin: 0;
+    background-color: #1ebbc7;
+    padding: 0 10px;
+}
+
+.GoalBlock div p {
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}

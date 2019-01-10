@@ -7,6 +7,7 @@ import { createStore, applyMiddleware } from "redux";
 import Register from './Components/Register';
 import Loading from './Components/Loading';
 import Login from "./Components/Login";
+import Dashboard from './Components/Dashboard';
 import {Provider, connect} from 'react-redux';
 import thunk from "redux-thunk";
 import kaiApp from "./reducers";
@@ -23,7 +24,7 @@ class Main extends Component {
                             <Route exact path="/" component={Loading}/>
                             <Route path="/login" component={Login}/>
                             <Route path="/register" component={Register}/>
-
+                            <Route path="/dashboard" component={Dashboard}/>
                             <Route exact path="/loading" component={Loading}/>
 
                         </div>

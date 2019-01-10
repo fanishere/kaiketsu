@@ -6,7 +6,7 @@ import Field from './Field';
 import './Register.css';
 import {connect} from "react-redux";
 import {auth} from '../actions';
-require('dotenv').config()
+require('dotenv').config();
 const axios = require('axios');
 
 
@@ -18,7 +18,7 @@ class Register extends Component {
                 <Field field='username' type='text'></Field>,
                 <Field field='first_name' type='text'></Field>,
                 <Field field='email' type='email'></Field>,
-                <Field field='password' type='text'></Field>
+                <Field field='password' type='password'></Field>
             ],
             currentField: 0,
             responses: [],
@@ -30,8 +30,14 @@ class Register extends Component {
 
     registerAccount() {
         if (this.state.responses.length === 4) {
-            this.props.register(...this.state.responses);
-            
+            this.props.register(...this.state.responses)
+            .then(() => {
+                this.setState((state) => {
+                    return {
+                        toGoalPrompt: true,
+                    }
+                });
+            })
         }
         
     }
