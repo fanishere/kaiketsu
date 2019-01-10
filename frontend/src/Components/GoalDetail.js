@@ -43,7 +43,9 @@ class GoalDetail extends Component {
         return (
             <div>
                 <h2>{this.props.match.params.id}</h2>
-                <VictoryBar />
+                <VictoryBar
+                    // data={this.state.data}
+                />
             </div>
         );
     }

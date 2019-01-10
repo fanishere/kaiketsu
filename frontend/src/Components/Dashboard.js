@@ -15,8 +15,9 @@ class GoalBlock extends Component {
 
     render() {
         return (
+            <Link to={`/dashboard/goals/${this.props.pk}`} className="goal-block-links">
             <div className="GoalBlock">
-                <span><Link to={`/dashboard/goals/${this.props.pk}`}>Link to goal detail page</Link></span>
+                
                 <div className="resolution">
                     <div className="goalblock-title">
                         <h2>RESOLUTION</h2>
@@ -42,6 +43,7 @@ class GoalBlock extends Component {
                 </div>
                 
             </div>
+            </Link>
         )
     }
 }
