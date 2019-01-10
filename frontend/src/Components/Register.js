@@ -99,11 +99,17 @@ class Register extends Component {
     capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
+
+
     
     render() {
         if (this.state.toGoalPrompt === true) {
             return <Redirect to='/loading' />
         }
+        if (this.props.errors) {
+
+        }
+
         return (
             <div className="registration">
                 <h1>Register</h1>
@@ -129,7 +135,23 @@ class Register extends Component {
         )
     }
 }
+function ErrorItem(props) {
+    return <li>{props.value}</li>
+}
 
+function ErrorList(props) {
+    let listItems = props.errors.map((error) =>
+        <ErrorItem 
+            key={error.toString()}
+            value={error} />
+
+    );
+    return (
+        <ul>
+            {listItems}
+        </ul>
+    )
+}
 
 const mapStateToProps = state => {
     let errors = [];

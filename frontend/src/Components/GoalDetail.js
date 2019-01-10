@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { VictoryBar } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryGroup } from 'victory';
 import {connect} from "react-redux";
 const axios = require('axios');
 
@@ -9,9 +9,30 @@ class GoalDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            goalCompletion: null,
             data: [],
         }
 
+    }
+
+    constructData() {
+        let newData = [
+        ]
+        
+        for (let day of this.state.data) {
+            console.log(this.state.data);
+            let dayLine = {
+                x: day.created_at,
+                y: 5,
+                a: day.goal_met
+            }
+            newData.push(dayLine);
+        }
+        
+        this.setState({
+            goalCompletion: newData
+        })
+        
     }
 
     componentDidMount() {
@@ -29,6 +50,7 @@ class GoalDetail extends Component {
                 this.setState({
                     data: res.data
                 })
+                this.constructData();
                 return res.data;
     
             } else if (res.status >= 400 && res.status < 500) {
@@ -40,12 +62,26 @@ class GoalDetail extends Component {
 
 
     render() {
+        
         return (
             <div>
-                <h2>{this.props.match.params.id}</h2>
-                <VictoryBar
-                    // data={this.state.data}
-                />
+                {this.state.goalCompletion
+                    ?   <VictoryGroup
+                            domain={[0, 30]}
+                            >
+                        <VictoryBar
+                        style={{
+                            data: {
+                                fill: (d) => d.a === true ? "#000000" : "#c43a31"
+                            }
+                        }}
+                        barRatio={1}
+                        barWidth={5}
+                        height = {50}
+                        data={this.state.goalCompletion}/>
+                        </VictoryGroup>
+                    : ""}
+
             </div>
         );
     }
