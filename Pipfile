@@ -9,6 +9,8 @@ django-extensions = "*"
 "psycopg2" = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [dev-packages]
 "flake8" = "*"
