@@ -1,7 +1,84 @@
 import React, {Component} from 'react';
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryGroup } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryGroup, VictoryLegend } from 'victory';
 import {connect} from "react-redux";
+import './GoalDetail.css';
 const axios = require('axios');
+
+
+class GoalAccomplishment extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+        }
+    }
+     render() {
+         return (
+            <div className="goalCompletion">
+                <div className="goalCompletionLegend">
+                    <VictoryLegend
+                        x={125} y={0}
+                        title="Goal Accomplishment"
+                        centerTitle
+                        orientation="horizontal"
+                        height={60}
+                        style={{ title: {fontSize: 20 } }}
+                        data={[
+                            { name: "Accomplished", symbol: { fill: "orange" }},
+                            { name: "Missed", symbol: { fill: "black" }}
+                        ]}
+                        />
+                </div>
+                
+                <div className="goalCompletionGraph">
+                    {this.props.goalCompletion
+                        ?   <VictoryGroup 
+                                minDomain={{x: 0, y: 0}}
+                                maxDomain={{x: 30, y: 5}}
+                                height={40}
+                                >
+                            <VictoryBar
+                                style={{
+                                    data: {
+                                        fill: (d) => d.a === true ? "black" : "orange"
+                                    }
+                                }}
+                                barRatio={1}
+                                barWidth={8}
+                                height = {10}
+                                data={this.props.goalCompletion}/>
+                            </VictoryGroup>
+                        : ""}
+                </div>
+            </div>
+         );
+     }
+}
+
+class GoalDays extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        }
+    }
+
+    render() {
+        return (
+            <div className="goalDays">
+                <div className="goalDaysGraph">
+                    <VictoryBar
+                        horizontal
+                        labels={(d) => `${d.y} Days Completed`}
+                        data= {[
+                            { x: 0, y: this.props.days, label: '5 Days Completed'},
+                        ]}
+                    />
+                </div>
+            </div>
+        );
+    }
+}
 
 class GoalDetail extends Component {
     // needs back arrow to dashboard
@@ -65,23 +142,12 @@ class GoalDetail extends Component {
         
         return (
             <div>
-                {this.state.goalCompletion
-                    ?   <VictoryGroup
-                            domain={[0, 30]}
-                            >
-                        <VictoryBar
-                        style={{
-                            data: {
-                                fill: (d) => d.a === true ? "#000000" : "#c43a31"
-                            }
-                        }}
-                        barRatio={1}
-                        barWidth={5}
-                        height = {50}
-                        data={this.state.goalCompletion}/>
-                        </VictoryGroup>
-                    : ""}
-
+                <GoalAccomplishment
+                    goalCompletion={this.state.goalCompletion}>
+                </GoalAccomplishment>
+                <GoalDays
+                    days={this.state.data.length}
+                    ></GoalDays>
             </div>
         );
     }
