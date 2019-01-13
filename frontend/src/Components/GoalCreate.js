@@ -34,7 +34,7 @@ class GoalCreate extends Component {
                 data: {
                     "resolution": formData.get('resolution'),
                     "reason": formData.get('reason'),
-                    "duration": 'ONEMONTH',
+                    "duration": 'ONE MONTH',
                     "category": this.props.match.params.id
                 },
                 headers: headers
