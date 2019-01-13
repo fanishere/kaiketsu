@@ -5,6 +5,8 @@ from api.serializers import (
     GoalSerializer, LoginUserSerializer,
     GoalDaySerializer
 )
+from datetime import timedelta
+from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
@@ -45,7 +47,21 @@ class GoalListView(generics.ListCreateAPIView):
         return Goal.objects.filter(user=user)
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        user = self.request.user
+        serializer.save(user=user)
+
+    def create(self, request, *args, **kwargs):
+        durations = {}
+        durations['ONE MONTH'] = timedelta(days=30)
+        durations['THREE MONTHS'] = timedelta(days=60)
+
+        serializer = self.get_serializer(data=request.data)
+        duration_response = serializer.initial_data['duration']
+        serializer.initial_data['duration'] = durations[duration_response]
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
 class GoalDetailView(generics.RetrieveUpdateAPIView):
@@ -96,3 +112,4 @@ class GoalDayList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         goal = Goal.objects.get(pk=self.kwargs['pk'])
         serializer.save(goal=goal)
+
