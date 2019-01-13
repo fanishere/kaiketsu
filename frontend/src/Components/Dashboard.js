@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import Loading from './Loading';
 import GoalDetail from './GoalDetail';
+import CheckIn from './CheckIn';
 const axios = require('axios');
 
 class GoalBlock extends Component {
@@ -136,7 +137,8 @@ class Dashboard extends Component {
                         render={(props) => <DashboardGoalDisplay {...props} token={this.props.token}/>}
                         />
                     <Route exact path="/dashboard/progress" component={Loading}/>
-                    <Route path="/dashboard/goals/:id" component={GoalDetail} />
+                    <Route exact path="/dashboard/goals/:id" component={GoalDetail} />
+                    <Route path="/dashboard/goals/:id/check-in" component={CheckIn} />
             </div>
             
         )

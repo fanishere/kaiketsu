@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryGroup, VictoryLegend } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryGroup, VictoryLegend, VictoryLabel, VictoryStack } from 'victory';
 import {connect} from "react-redux";
 import './GoalDetail.css';
+import {
+    Redirect,
+    Link
+} from "react-router-dom";
 const axios = require('axios');
 
 
@@ -17,12 +21,16 @@ class GoalAccomplishment extends Component {
             <div className="goalCompletion">
                 <div className="goalCompletionLegend">
                     <VictoryLegend
-                        x={125} y={0}
+                        x={75} y={0}
                         title="Goal Accomplishment"
                         centerTitle
+                        gutter={30}
                         orientation="horizontal"
-                        height={60}
-                        style={{ title: {fontSize: 20 } }}
+                        height={80}
+                        style={{ 
+                            title: {fontSize: 30 },
+                            labels: {fontSize: 20}
+                            }}
                         data={[
                             { name: "Accomplished", symbol: { fill: "orange" }},
                             { name: "Missed", symbol: { fill: "black" }}
@@ -38,13 +46,13 @@ class GoalAccomplishment extends Component {
                                 height={40}
                                 >
                             <VictoryBar
+                               
                                 style={{
                                     data: {
                                         fill: (d) => d.a === true ? "black" : "orange"
                                     }
                                 }}
-                                barRatio={1}
-                                barWidth={8}
+                                barWidth={10}
                                 height = {10}
                                 data={this.props.goalCompletion}/>
                             </VictoryGroup>
@@ -63,18 +71,70 @@ class GoalDays extends Component {
         }
     }
 
+
     render() {
+        
         return (
             <div className="goalDays">
+                <h2>Days Completed</h2>
                 <div className="goalDaysGraph">
-                    <VictoryBar
+                   
+                    <VictoryStack
                         horizontal
-                        labels={(d) => `${d.y} Days Completed`}
-                        data= {[
-                            { x: 0, y: this.props.days, label: '5 Days Completed'},
-                        ]}
-                    />
+                        height={70}
+                        colorScale={["orange", "gold"]}
+                        
+                    > 
+                        <VictoryBar
+                            minDomain={{x: 0, y: 0}}
+                            barWidth={40}
+                            style={{ labels: { fill: "white" } }}
+                            labelComponent={<VictoryLabel dx={-50}/>}
+                            maxDomain={45}
+                            // labels={`${this.props.days} Days`}
+                            data= {[
+                                { x: 0, y: this.props.days},
+                            ]}
+                        />
+
+                        <VictoryBar
+                            barWidth={40}
+                            labelComponent={<VictoryLabel dx={-60}/>}
+                            maxDomain={45}
+                            labels={(d) => `${d.y} Days`}
+                            data= {[
+                                { x: 0, y: secondsToDays(this.props.duration)},
+                            ]}
+                        />
+                            
+                    
+
+                    </VictoryStack>
+                    
                 </div>
+            </div>
+        );
+    }
+}
+function secondsToDays(num) {
+    return num / 86400;
+}
+
+
+class GoalButton extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        }
+    }
+
+    render() {
+        return (
+            <div className="GoalButton">
+                
+                <button onClick={this.props.toCheckIn}>Check In</button>
+                
             </div>
         );
     }
@@ -87,7 +147,9 @@ class GoalDetail extends Component {
         super(props);
         this.state = {
             goalCompletion: null,
-            data: [],
+            toCheckIn: false,
+            days: null,
+            data: null,
         }
 
     }
@@ -96,7 +158,7 @@ class GoalDetail extends Component {
         let newData = [
         ]
         
-        for (let day of this.state.data) {
+        for (let day of this.state.data.days) {
             console.log(this.state.data);
             let dayLine = {
                 x: day.created_at,
@@ -112,13 +174,19 @@ class GoalDetail extends Component {
         
     }
 
+    checkIn() {
+        this.setState({
+            toCheckIn: true
+        })
+    }
+
     componentDidMount() {
         let headers = {
             "Content-Type": "application/json",
             "Authorization": `Token ${this.props.token}`
         };
         return axios({
-            url: `${process.env.REACT_APP_API_URL}/api/goals/${this.props.match.params.id}/days/`,
+            url: `${process.env.REACT_APP_API_URL}/api/goals/${this.props.match.params.id}/`,
                 method: 'GET',
                 headers: headers
             }).then(res => {
@@ -139,15 +207,22 @@ class GoalDetail extends Component {
 
 
     render() {
+        if (this.state.toCheckIn === true) {
+            return <Redirect to={`/dashboard/goals/${this.props.match.params.id}/check-in`} />;
+        }
         
         return (
             <div>
                 <GoalAccomplishment
                     goalCompletion={this.state.goalCompletion}>
                 </GoalAccomplishment>
-                <GoalDays
-                    days={this.state.data.length}
-                    ></GoalDays>
+                {this.state.data
+                    ? <GoalDays
+                        days={this.state.data.days.length}
+                        duration={this.state.data.duration}
+                        ></GoalDays>
+                    : ""}
+                <GoalButton toCheckIn={this.checkIn.bind(this)}></GoalButton>
             </div>
         );
     }

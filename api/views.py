@@ -96,3 +96,4 @@ class GoalDayList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         goal = Goal.objects.get(pk=self.kwargs['pk'])
         serializer.save(goal=goal)
+

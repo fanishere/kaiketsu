@@ -4,3 +4,15 @@
 .goalCompletion .VictoryContainer{
     margin-bottom: 10px;
 }
+.goalCompletionGraph {
+
+    margin-left: -2px;
+}
+.goalDays h2{
+    text-align: center;
+    font-size: 5vw;
+}
+.GoalButton button {
+    margin: 0 auto;
+    display: block;
+}
