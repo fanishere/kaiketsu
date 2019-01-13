@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryGroup, VictoryLegend, VictoryLabel, VictoryStack } from 'victory';
+import { VictoryBar, VictoryGroup, VictoryLegend, VictoryLabel, VictoryStack } from 'victory';
 import {connect} from "react-redux";
 import './GoalDetail.css';
 import {
-    Redirect,
-    Link
+    Redirect
 } from "react-router-dom";
 const axios = require('axios');
 
@@ -159,7 +158,6 @@ class GoalDetail extends Component {
         ]
         
         for (let day of this.state.data.days) {
-            console.log(this.state.data);
             let dayLine = {
                 x: day.created_at,
                 y: 5,
