@@ -49,8 +49,10 @@
     flex-wrap: wrap;
 }
 .GoalBlock .goalblock-title {
-    border: 1px solid black;
     margin: 5px 0;
+}
+.GoalBlock img { 
+    width: 25%;
 }
 .GoalBlock div h2 {
     text-align: center;

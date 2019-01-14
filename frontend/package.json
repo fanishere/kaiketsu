@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@vx/heatmap": "0.0.183",
+    "@vx/mock-data": "0.0.182",
+    "@vx/scale": "0.0.182",
     "axios": "^0.18.0",
     "dotenv": "^6.2.0",
     "local-storage": "^1.4.2",

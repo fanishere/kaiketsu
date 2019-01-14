@@ -7,19 +7,35 @@ import {
     Redirect,
     Link
 } from "react-router-dom";
-import Loading from './Loading';
 import GoalDetail from './GoalDetail';
 import GoalType from './GoalType';
 import CheckIn from './CheckIn';
 import GoalCreate from './GoalCreate';
+import DashboardProgressDisplay from './Progress';
+import personal_logo from './media/personal_logo.png';
+import health_logo from './media/health_logo.png';
+import prof_logo from './media/prof_logo.png';
 const axios = require('axios');
 
 class GoalBlock extends Component {
 
     render() {
+        let categoryIcon;
+        if (this.props.category === "HEALTH") {
+            categoryIcon = health_logo;
+        } else if (this.props.category === "PERSONAL") {
+            categoryIcon = personal_logo;
+        } else {
+            categoryIcon = prof_logo;
+        }
         return (
             <Link to={`/dashboard/goals/${this.props.pk}`} className="goal-block-links">
             <div className="GoalBlock">
+                 <div className="category">
+                    <div className="goalblock-title">
+                        <img src={categoryIcon} alt="health_logo"></img>
+                    </div>
+                </div>
                 
                 <div className="resolution">
                     <div className="goalblock-title">
@@ -29,13 +45,7 @@ class GoalBlock extends Component {
                     <p>{ this.props.resolution }</p>
                 </div>
                 
-                <div className="category">
-                    <div className="goalblock-title">
-                        <h2>CATEGORY</h2>
-                    </div>
-                    
-                    <p>{ this.props.category }</p>
-                </div>
+                
                 <div className="reason">
                     <div className="goalblock-title">
                         <h2>REASON</h2>
@@ -152,7 +162,7 @@ class Dashboard extends Component {
                         exact path="/dashboard/goals"
                         render={(props) => <DashboardGoalDisplay {...props} token={this.props.token}/>}
                         />
-                    <Route exact path="/dashboard/progress/" component={Loading}/>
+                    <Route exact path="/dashboard/progress/" component={DashboardProgressDisplay}/>
                     <Route exact path="/dashboard/create-goal/" component={GoalType} />
                     <Route exact path="/dashboard/create-goal/:category/" component={GoalCreate} />
                     <Route exact path="/dashboard/goals/:id/" component={GoalDetail} />

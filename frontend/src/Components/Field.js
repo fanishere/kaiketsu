@@ -12,8 +12,11 @@ class Field extends Component {
     render() {
         return (
             <div>
-                <label>{this.props.field.toUpperCase()}</label>
-                <input type={this.props.type} name={this.props.field}></input>
+                <label>{this.props.label}</label>
+                <input
+                    type={this.props.type}
+                    name={this.props.field}
+                    htmlFor={this.props.field}></input>
             </div>
             
         )
