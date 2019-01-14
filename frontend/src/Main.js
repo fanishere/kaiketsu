@@ -22,10 +22,10 @@ class Main extends Component {
                     <div>
                         <div className="content">
                             <Route exact path="/" component={Loading}/>
-                            <Route path="/login" component={Login}/>
-                            <Route path="/register" component={Register}/>
+                            <Route path="/login/" component={Login}/>
+                            <Route path="/register/" component={Register}/>
                             <Route path="/dashboard/" component={Dashboard}/>
-                            <Route exact path="/loading" component={Loading}/>
+                            <Route exact path="/loading/" component={Loading}/>
 
                         </div>
                     </div>

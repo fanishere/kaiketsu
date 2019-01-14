@@ -3,7 +3,8 @@ import { VictoryBar, VictoryGroup, VictoryLegend, VictoryLabel, VictoryStack } f
 import {connect} from "react-redux";
 import './GoalDetail.css';
 import {
-    Redirect
+    Redirect,
+    Link
 } from "react-router-dom";
 const axios = require('axios');
 
@@ -131,8 +132,10 @@ class GoalButton extends Component {
     render() {
         return (
             <div className="GoalButton">
+                <Link to={`/dashboard/goals/${this.props.id}/check-in`}>
+                    <button>Check In</button>
+                </Link>
                 
-                <button onClick={this.props.toCheckIn}>Check In</button>
                 
             </div>
         );
@@ -146,7 +149,6 @@ class GoalDetail extends Component {
         super(props);
         this.state = {
             goalCompletion: null,
-            toCheckIn: false,
             days: null,
             data: null,
         }
@@ -170,12 +172,6 @@ class GoalDetail extends Component {
             goalCompletion: newData
         })
         
-    }
-
-    checkIn() {
-        this.setState({
-            toCheckIn: true
-        })
     }
 
     componentDidMount() {
@@ -205,10 +201,6 @@ class GoalDetail extends Component {
 
 
     render() {
-        if (this.state.toCheckIn === true) {
-            return <Redirect to={`/dashboard/goals/${this.props.match.params.id}/check-in`} />;
-        }
-        
         return (
             <div>
                 <GoalAccomplishment
@@ -220,7 +212,7 @@ class GoalDetail extends Component {
                         duration={this.state.data.duration}
                         ></GoalDays>
                     : ""}
-                <GoalButton toCheckIn={this.checkIn.bind(this)}></GoalButton>
+                <GoalButton id={this.props.match.params.id}></GoalButton>
             </div>
         );
     }

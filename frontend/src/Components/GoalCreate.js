@@ -35,7 +35,7 @@ class GoalCreate extends Component {
                     "resolution": formData.get('resolution'),
                     "reason": formData.get('reason'),
                     "duration": 'ONE MONTH',
-                    "category": this.props.match.params.id
+                    "category": this.props.match.params.category
                 },
                 headers: headers
             }).then(res => {
@@ -52,6 +52,9 @@ class GoalCreate extends Component {
 
     successMessage() {
         console.log("successful!");
+        this.setState({
+           toDashboard: true 
+        });
         
     }
 
@@ -62,8 +65,6 @@ class GoalCreate extends Component {
         }
         return (
             <div>
-                <h1>Create Goal</h1>
-                <h2>{this.props.match.params.category}</h2>
                 <form onSubmit={this.createGoal.bind(this)}>
                     <span>
                         I want to
