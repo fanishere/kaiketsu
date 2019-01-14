@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Reveal from 'react-reveal/Reveal';
 import './Welcome.css';
 import logo from './media/logo.png';
+import Fade from 'react-reveal/Fade';
+
 // import Button from 'muicss/lib/react/button';
 
 
@@ -14,22 +16,17 @@ class Welcome extends Component {
                     <h1 className="heading">
                         KAIKETSU
                     </h1>
-                    <h2 className="quote">
-                        What would you do if you knew you could not fail?
-                    </h2>
-                    {/* <div className="button">
-                        <Button>button</Button>
-                        <Button color="primary">button</Button>
-                    </div>  */}
-                </div>
+                    <div className="quote">
+                        <Fade top>
+                            <h2>What would you do if you knew you could not fail?</h2>
+                        </Fade>
+                    </div>
+                </div >
             </div>
         )
-        return (
-            React.createElement("button", null, "Go")
-        );
+
     }
 }
-// function Button() {
 
 
 

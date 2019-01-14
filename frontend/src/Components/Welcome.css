@@ -16,10 +16,13 @@ img.welcome-logo {
     text-align: center;
     font-weight: 500;
     margin-top: -80px;
+    color: rgb(67,49,145)
 }
 
 .quote {
+    font-family: 'Nunito Sans', sans-serif;
     padding-top: 20%;
     text-align: center;
+    color: rgb(67,49,145);
 
 }
