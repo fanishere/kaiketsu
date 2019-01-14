@@ -58,6 +58,7 @@ class GoalListView(generics.ListCreateAPIView):
         serializer = self.get_serializer(data=request.data)
         duration_response = serializer.initial_data['duration']
         serializer.initial_data['duration'] = durations[duration_response]
+        breakpoint()
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)

@@ -3,6 +3,7 @@ import {
     Redirect
 } from 'react-router-dom';
 import Field from './Field';
+import ErrorList from './Errors';
 import './Register.css';
 import {connect} from "react-redux";
 import {auth} from '../actions';
@@ -16,37 +17,30 @@ class Register extends Component {
             fields: [
                 {
                     field: 'username',
-                    type: 'text'
+                    type: 'text',
+                    errors: null
                 },
                 {
                     field: 'first_name',
-                    type: 'text'
+                    type: 'text',
+                    errors: null
                 },
                 {
                     field: 'email',
-                    type: 'email'
+                    type: 'email',
+                    errors: null
                 },
                 {
                     field: 'password',
-                    type: 'password'
+                    type: 'password',
+                    errors: null
                 }
             ],
 
-            fields2: [
-                <Field field='username' type='text'></Field>,
-                <Field field='first_name' type='text'></Field>,
-                <Field field='email' type='email'></Field>,
-                <Field field='password' type='password'></Field>
-            ],
-            inputField: "",
-            currentField: 0,
-            responses: [],
             toGoalPrompt: false
         }
-        this.transformForm = this.transformForm.bind(this);
         this.registerAccount = this.registerAccount.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.resetForm = this.resetForm.bind(this);
     }
 
     handleChange(event) {
@@ -60,51 +54,32 @@ class Register extends Component {
         })
     }
 
-    registerAccount() {
-        if (this.state.responses.length === 4) {
-            this.props.register(...this.state.responses)
-            .then(() => {
-                this.setState((state) => {
-                    return {
-                        toGoalPrompt: true,
-                    }
-                });
-            }).catch(() => {
-                this.resetForm();
-            });
-        }
-        
-    }
-
-    transformForm(event) {
+    registerAccount(event) {
         event.preventDefault();
-        let value = this.state.inputField;
-        this.setState({
-            responses: this.state.responses.concat(value)
-        }, this.registerAccount);
-        this.setState({
-            inputField: ""
-        });
-        if (this.state.currentField < 3) {
+        let data  = new FormData(event.target);
+
+        this.props.register(
+            data.get('username'),
+            data.get('first_name'),
+            data.get('email'),
+            data.get('password'))
+        .then(() => {
             this.setState((state) => {
                 return {
-                    currentField: state.currentField + 1,
+                    toGoalPrompt: true,
                 }
             });
-            
-        }
+        }).catch((error) => {
+            this.processErrors();
+            console.log(error);
+        });
+        
         
     }
-
-    capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-
-
     
     render() {
         if (this.state.toGoalPrompt === true) {
-            return <Redirect to='/loading' />
+            return <Redirect to="/dashboard/create-goal/" />
         }
         if (this.props.errors) {
 
@@ -113,52 +88,52 @@ class Register extends Component {
         return (
             <div className="registration">
                 <h1>Register</h1>
-                <form className="simform" onSubmit={this.transformForm}>
+                <form className="simform" onSubmit={this.registerAccount}>
                     <div className="form-inner">
-                        <label 
-                            htmlFor={this.state.fields[this.state.currentField].field}>
-                            {this.state.fields[this.state.currentField].field.toUpperCase()}</label>
-                        <input 
-                            field={this.state.fields[this.state.currentField].field}
-                            type={this.state.fields[this.state.currentField].type}
-                            onChange={this.handleChange}
-                            value={this.state.inputField} />
+                        <Field
+                            type="text"
+                            for="username"
+                            field="username"
+                            label="Username"
+                        ></Field>
+                        <Field
+                            type="text"
+                            for="first_name"
+                            field="first_name"
+                            label="First Name"
+                        ></Field>
+                        <Field
+                            type="email"
+                            for="email"
+                            field="email"
+                            label="Email"
+                        ></Field>
+                        <Field
+                            type="password"
+                            for="password"
+                            field="password"
+                            label="Password"
+                        ></Field>
+
                         <input type="submit" value="Submit" />
-                        <p>
+                    
                         {this.props.errors[0]
-                            ? this.capitalizeFirstLetter(this.props.errors[0].message.replace("This field", this.props.errors[0].field))
+                            ? <ErrorList errors={this.props.errors}></ErrorList>
                             : ""}
-                        </p>
+                     
                     </div>
                 </form>
             </div>
         )
     }
 }
-function ErrorItem(props) {
-    return <li>{props.value}</li>
-}
 
-function ErrorList(props) {
-    let listItems = props.errors.map((error) =>
-        <ErrorItem 
-            key={error.toString()}
-            value={error} />
-
-    );
-    return (
-        <ul>
-            {listItems}
-        </ul>
-    )
-}
 
 const mapStateToProps = state => {
     let errors = [];
     if (state.auth.errors) {
-        console.log(state.auth.errors);
         errors = Object.keys(state.auth.errors).map(field => {
-            return {field, message:state.auth.errors[field][0]};
+            return {field, message:state.auth.errors[field]};
         });
     }
     return {
