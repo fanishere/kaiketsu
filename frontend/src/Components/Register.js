@@ -14,29 +14,6 @@ class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            fields: [
-                {
-                    field: 'username',
-                    type: 'text',
-                    errors: null
-                },
-                {
-                    field: 'first_name',
-                    type: 'text',
-                    errors: null
-                },
-                {
-                    field: 'email',
-                    type: 'email',
-                    errors: null
-                },
-                {
-                    field: 'password',
-                    type: 'password',
-                    errors: null
-                }
-            ],
-
             toGoalPrompt: false
         }
         this.registerAccount = this.registerAccount.bind(this);
@@ -86,9 +63,9 @@ class Register extends Component {
         }
 
         return (
-            <div className="registration">
-                <h1>Register</h1>
-                <form className="simform" onSubmit={this.registerAccount}>
+            <div className="Register">
+                <h1>Sign Up</h1>
+                <form className="registrationForm" onSubmit={this.registerAccount}>
                     <div className="form-inner">
                         <Field
                             type="text"
@@ -114,8 +91,9 @@ class Register extends Component {
                             field="password"
                             label="Password"
                         ></Field>
+                        
+                        <button type="submit" value="submit">Sign Up ></button>
 
-                        <input type="submit" value="Submit" />
                     
                         {this.props.errors[0]
                             ? <ErrorList errors={this.props.errors}></ErrorList>

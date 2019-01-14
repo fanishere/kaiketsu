@@ -11,34 +11,42 @@ const cool2 = '#b4fbde';
 
 // const data = genBins(16, 16);
 let data = [
-    {bin: "2019-01-05",
-    bins: [
-        {
-            count: 2/3,
-            // bin: 23
-        }
+    {
+        bin: "2019-01-05",
+        count: 2/3,
+        bins: [
+            {
+                count: 2/3,
+                // bin: 23
+            }
     ]},
-    {bin: "2019-01-06",
+    {
+        bin: "2019-01-06",
+        count: 1/4,
         bins: [
             {
                 count: 1/4,
                 // bin: 0
             }
     ]},
-    {bin: "2019-01-07",
+    {
+        bin: "2019-01-07",
+        count: 1,
         bins: [
             {
                 count: 1,
                 // bin: 0
             }
     ]},
-    {bin: "2019-01-08",
-    bins: [
-        {
-            count: 1/3,
-            // bin: 0
-        }
-]}
+    {
+        bin: "2019-01-08",
+        count: 1/3,
+        bins: [
+            {
+                count: 1/3,
+                // bin: 0
+            }
+    ]}
 ]
 
 const width = window.innerWidth;
@@ -61,8 +69,8 @@ const bins = d => d.bins;
 const count = d => d.count;
 
 
-const colorMax = max(data, d => max(bins(d), count));
-const bucketSizeMax = max(data, d => bins(d).length);
+const colorMax = max(data, count);
+const bucketSizeMax = 1;
 
 
 // scales

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Loading.css';
+import './GoalCreate.css';
 import logo from './media/logo.png';
 import {connect} from "react-redux";
 import {
@@ -64,13 +64,14 @@ class GoalCreate extends Component {
             return <Redirect to={`/dashboard/goals/`} />;
         }
         return (
-            <div>
+            <div className="GoalCreate">
                 <form onSubmit={this.createGoal.bind(this)}>
                     <span>
                         I want to
                         <input htmlFor="resolution" type="text" name="resolution"></input>
                         everyday for
                         <select htmlFor="duration" name="duration">
+                            <input htmlFor="duration"></input>
                             <option value="ONE MONTH">ONE MONTH</option>
                             <option value="THREE MONTHS">THREE MONTHS</option>
                             <option value="ONE YEAR">ONE YEAR</option>

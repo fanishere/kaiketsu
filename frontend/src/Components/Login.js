@@ -47,9 +47,9 @@ class Login extends Component {
         }
 
         return (
-            <div className="login">
+            <div className="Login">
                 <h1>Login</h1>
-                <form className="simform" onSubmit={this.loginUser}>
+                <form className="loginForm" onSubmit={this.loginUser}>
                     <div className="form-inner">
                         <Field
                             type="text"
@@ -63,7 +63,7 @@ class Login extends Component {
                             field="password"
                             label="Password"
                         ></Field>
-                        <input type="submit" value="Submit" />
+                        <button type="submit" value="submit">Login ></button>
                         <p>
                         {this.props.errors[0]
                             ? this.props.errors[0].message

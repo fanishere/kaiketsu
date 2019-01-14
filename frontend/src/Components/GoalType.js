@@ -22,22 +22,22 @@ class GoalType extends Component {
     render() {
 
         return (
-            <div>
+            <div className="GoalType">
                 <Link to="/dashboard/create-goal/HEALTH">
-                    <div className="goal-type-selection">
-                        <img src={health} alt="health"></img>
+                    <div className="goal-type-selection health">
+                       
                     </div>
                 </Link>
 
                 <Link to="/dashboard/create-goal/PERSONAL">
-                    <div className="goal-type-selection">
-                        <img src={personal} alt="personal"></img>
+                    <div className="goal-type-selection personal">
+                        
                     </div>
                 </Link>
 
                 <Link to="/dashboard/create-goal/PROFESSIONAL">
-                    <div className="goal-type-selection">
-                        <img src={professional} alt="professional"></img>
+                    <div className="goal-type-selection professional">
+                        
                     </div>
                 </Link>
 

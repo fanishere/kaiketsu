@@ -32,14 +32,14 @@ class GoalBlock extends Component {
             <Link to={`/dashboard/goals/${this.props.pk}`} className="goal-block-links">
             <div className="GoalBlock">
                  <div className="category">
-                    <div className="goalblock-title">
-                        <img src={categoryIcon} alt="health_logo"></img>
-                    </div>
+                    
+                    <img src={categoryIcon} alt="health_logo"></img>
+
                 </div>
                 
                 <div className="resolution">
                     <div className="goalblock-title">
-                        <h2>RESOLUTION</h2>
+                        <h2>ASPIRATION</h2>
                     </div>
                     
                     <p>{ this.props.resolution }</p>
@@ -48,7 +48,7 @@ class GoalBlock extends Component {
                 
                 <div className="reason">
                     <div className="goalblock-title">
-                        <h2>REASON</h2>
+                        <h2>PURPOSE</h2>
                     </div>
                     
                     <p>{ this.props.reason }</p>
@@ -145,8 +145,8 @@ class DashboardHeader extends Component {
             );
         }
         return (
-            <div className="header">
-                <div onClick={this.props.goBack}>Back</div>
+            <div className="header back">
+                <div onClick={this.props.goBack}> Back </div>
             </div>
         );
     }
