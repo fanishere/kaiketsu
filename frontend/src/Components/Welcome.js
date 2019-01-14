@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// import Reveal from 'react-reveal/Reveal';
+import Reveal from 'react-reveal/Reveal';
 import './Welcome.css';
 import logo from './media/logo.png';
-import Button from 'muicss/lib/react/button';
+// import Button from 'muicss/lib/react/button';
 
 
 class Welcome extends Component {
@@ -20,17 +20,18 @@ class Welcome extends Component {
                     {/* <div className="button">
                         <Button>button</Button>
                         <Button color="primary">button</Button>
-                    </div> */}
+                    </div>  */}
                 </div>
             </div>
         )
+        return (
+            React.createElement("button", null, "Go")
+        );
     }
 }
-function Button() {
-    return (
-        React.createElement("button", null, "Go")
-    );
-}
+// function Button() {
+
+
 
 
 export default Welcome;

@@ -14,6 +14,12 @@ img.welcome-logo {
 .heading {
     font-family: 'Nunito Sans', sans-serif;
     text-align: center;
-    font-weight: 700;
-    margin-top: -40px;
+    font-weight: 500;
+    margin-top: -80px;
+}
+
+.quote {
+    padding-top: 20%;
+    text-align: center;
+
 }
