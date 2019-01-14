@@ -4,16 +4,17 @@ import {
     Route
 } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
+import Welcome from './Components/Welcome';
 import Register from './Components/Register';
 import Loading from './Components/Loading';
 import Login from "./Components/Login";
 import Dashboard from './Components/Dashboard';
-import {Provider, connect} from 'react-redux';
+import { Provider, connect } from 'react-redux';
 import thunk from "redux-thunk";
 import kaiApp from "./reducers";
 
 let store = createStore(kaiApp, applyMiddleware(thunk));
- 
+
 class Main extends Component {
     render() {
         return (
@@ -21,11 +22,11 @@ class Main extends Component {
                 <BrowserRouter>
                     <div>
                         <div className="content">
-                            <Route exact path="/" component={Loading}/>
-                            <Route path="/login" component={Login}/>
-                            <Route path="/register" component={Register}/>
-                            <Route path="/dashboard/" component={Dashboard}/>
-                            <Route exact path="/loading" component={Loading}/>
+                            <Route exact path="/welcome" component={Welcome} />
+                            <Route path="/login" component={Login} />
+                            <Route path="/register" component={Register} />
+                            <Route path="/dashboard/" component={Dashboard} />
+                            <Route exact path="/loading" component={Loading} />
 
                         </div>
                     </div>
@@ -34,5 +35,5 @@ class Main extends Component {
         );
     }
 }
- 
+
 export default Main;

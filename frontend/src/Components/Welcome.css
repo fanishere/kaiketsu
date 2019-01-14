@@ -1,0 +1,19 @@
+.welcome {
+    background-image: url('./media/a.jpg');
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+}
+
+img.welcome-logo {
+    display: block;
+    margin: 0 auto;
+    padding-top: 10%;
+}
+
+.heading {
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+    font-weight: 700;
+    margin-top: -40px;
+}

@@ -3,6 +3,11 @@
     height: 100vh;
     padding: 10px;
 }
+
+.input {
+    width: 200px; height: 390px; border: 1px solid #999999; padding: 5px;
+
+}
 label {
     display: block;
 }

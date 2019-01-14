@@ -1,8 +1,8 @@
-import React, {Component} from "react";
-import {Redirect} from 'react-router-dom';
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
-import {auth} from '../actions';
+import React, { Component } from "react";
+import { Redirect } from 'react-router-dom';
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { auth } from '../actions';
 import "./Login.css";
 import Field from './Field';
 const axios = require('axios');
@@ -34,24 +34,24 @@ class Login extends Component {
     }
 
     handleChange(event) {
-        this.setState({inputField: event.target.value});
+        this.setState({ inputField: event.target.value });
     }
 
     loginUser() {
         if (this.state.responses.length === 2) {
             this.props.login(this.state.responses[0], this.state.responses[1])
-            .then(() => {
-                this.setState((state) => {
-                    return {
-                        toDashboard: true,
-                    }
+                .then(() => {
+                    this.setState((state) => {
+                        return {
+                            toDashboard: true,
+                        }
+                    });
+                }).catch(() => {
+                    console.log(this.props.errors);
+                    this.resetForm();
                 });
-            }).catch(() => {
-                console.log(this.props.errors);
-                this.resetForm();
-            });
         }
-        
+
     }
 
     transformForm(event) {
@@ -69,9 +69,9 @@ class Login extends Component {
                     currentField: state.currentField + 1,
                 }
             });
-            
+
         }
-        
+
     }
 
     resetForm() {
@@ -80,7 +80,7 @@ class Login extends Component {
             responses: []
         })
     }
-    
+
     render() {
         if (this.state.toDashboard === true) {
             return <Redirect to='/dashboard/goals' />
@@ -91,19 +91,19 @@ class Login extends Component {
                 <h1>Login</h1>
                 <form className="simform" onSubmit={this.transformForm}>
                     <div className="form-inner">
-                        <label 
+                        <label
                             htmlFor={this.state.fields[this.state.currentField].field}>
                             {this.state.fields[this.state.currentField].field.toUpperCase()}</label>
-                        <input 
+                        <input
                             field={this.state.fields[this.state.currentField].field}
                             type={this.state.fields[this.state.currentField].type}
                             onChange={this.handleChange}
                             value={this.state.inputField} />
                         <input type="submit" value="Submit" />
                         <p>
-                        {this.props.errors.length > 0
-                            ? this.props.errors[0].message
-                            : ""}
+                            {this.props.errors.length > 0
+                                ? this.props.errors[0].message
+                                : ""}
                         </p>
                     </div>
                 </form>
@@ -116,14 +116,14 @@ const mapStateToProps = state => {
     let errors = [];
     if (state.auth.errors) {
         errors = Object.keys(state.auth.errors).map(field => {
-            return {field, message:state.auth.errors[field]};
+            return { field, message: state.auth.errors[field] };
         });
     }
     return {
         errors,
         isAuthenticated: state.auth.isAuthenticated
     };
-    
+
 }
 
 const mapDispatchToProps = dispatch => {
