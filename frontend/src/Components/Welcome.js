@@ -23,12 +23,27 @@ class Welcome extends Component {
                     </div>
                 </div >
             </div>
-        )
+        );
 
+    }
+
+}
+
+
+class Button extends Component {
+    render() {
+        return (
+            <button
+                className="btn btn-default"
+                style={buttonStyle}
+                onClick={this.props.handleClick}>{this.props.label}</button>
+        );
     }
 }
 
 
 
 
+
+module.exports = Button;
 export default Welcome;
