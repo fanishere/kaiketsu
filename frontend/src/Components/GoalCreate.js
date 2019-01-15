@@ -70,6 +70,13 @@ class GoalCreate extends Component {
                         I want to
                         <input htmlFor="resolution" type="text" name="resolution"></input>
                         everyday for
+                        <input type="text" list="duration" />
+
+                        <datalist id="duration">
+                            <option value="ONE MONTH">ONE MONTH</option>
+                            <option value="THREE MONTHS">THREE MONTHS</option>
+                            <option value="ONE YEAR">ONE YEAR</option>
+                        </datalist>
                         <select htmlFor="duration" name="duration">
                             <input htmlFor="duration"></input>
                             <option value="ONE MONTH">ONE MONTH</option>
