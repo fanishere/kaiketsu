@@ -17,9 +17,7 @@ from goals.models import Goal
 #         crontab(hour=23, minute=45),
 #         make_goal_day_false,
 #     )
-@app.task
-def test():
-    print("this is working")
+
 
 @app.task
 def make_goal_day_false():
@@ -31,12 +29,7 @@ def make_goal_day_false():
 app.conf.beat_schedule = {
     'make-false-checks': {
         'task': 'kaiketsu.tasks.make_goal_day_false',
-        'schedule': crontab(hour=23, minute=45),
-        'args': ()
-    },
-    'testing': {
-        'task': 'kaiketsu.tasks.test',
-        'schedule': 10.0,
+        'schedule': crontab(hour=16, minute=59),
         'args': ()
     },
 }
