@@ -29,7 +29,7 @@ def make_goal_day_false():
 app.conf.beat_schedule = {
     'make-false-checks': {
         'task': 'kaiketsu.tasks.make_goal_day_false',
-        'schedule': crontab(hour=17, minute=02),
+        'schedule': 30.0,
         'args': ()
     },
 }
