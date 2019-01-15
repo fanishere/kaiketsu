@@ -29,7 +29,7 @@ def make_goal_day_false():
 app.conf.beat_schedule = {
     'make-false-checks': {
         'task': 'kaiketsu.tasks.make_goal_day_false',
-        'schedule': 30.0,
+        'schedule': 10.0,
         'args': ()
     },
 }

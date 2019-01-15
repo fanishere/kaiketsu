@@ -10,8 +10,7 @@ app = Celery('kaiketsu',
              include=['kaiketsu.tasks'])
 
 
-# app.conf.update(BROKER_URL=os.environ['CLOUDAMQP_URL'])
-app.conf.update(BROKER_URL='amqp://fvlvtgys:6ZWARtqpCOZYK-NpMKlFhl_ur3hlEcbk@hornet.rmq.cloudamqp.com/fvlvtgys')
+app.conf.update(BROKER_URL=os.environ['CLOUDAMQP_URL'])
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.conf.timezone = 'EST'
 app.autodiscover_tasks()
