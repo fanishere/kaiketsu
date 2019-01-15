@@ -18,7 +18,6 @@ app.autodiscover_tasks()
 app.conf.update(
     result_expires=3600,
 )
-# amqp://fvlvtgys:6ZWARtqpCOZYK-NpMKlFhl_ur3hlEcbk@hornet.rmq.cloudamqp.com/fvlvtgys
 
 if __name__ == '__main__':
     app.start()
