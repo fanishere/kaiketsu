@@ -22,11 +22,11 @@ class Main extends Component {
                 <BrowserRouter>
                     <div>
                         <div className="content">
-                            <Route exact path="/welcome" component={Welcome} />
-                            <Route path="/login" component={Login} />
-                            <Route path="/register" component={Register} />
-                            <Route path="/dashboard/" component={Dashboard} />
-                            <Route exact path="/loading" component={Loading} />
+                            <Route exact path="/" component={Welcome} />
+                            <Route path="/login/" component={Login}/>
+                            <Route path="/register/" component={Register}/>
+                            <Route path="/dashboard/" component={Dashboard}/>
+                            <Route exact path="/loading/" component={Loading}/>
 
                         </div>
                     </div>

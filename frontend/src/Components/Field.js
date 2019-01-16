@@ -11,10 +11,15 @@ class Field extends Component {
 
     render() {
         return (
-            <div>
-                <label>{this.props.field.toUpperCase()}</label>
-                <input type={this.props.type} name={this.props.field}></input>
-            </div>
+            <p>
+                <label>{this.props.label}</label>
+                <input
+                    type={this.props.type}
+                    name={this.props.field}
+                    htmlFor={this.props.field}
+                    placeholder={"Put your username here"}
+                    ></input>
+            </p>
             
         )
     }

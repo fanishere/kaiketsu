@@ -88,3 +88,13 @@ class GoalSerializer(serializers.ModelSerializer):
     def get_days(self, instance):
         days = instance.days.all().order_by('created_at')
         return GoalDaySerializer(days, many=True).data
+
+
+class GoalAccomplishmentByDaySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = GoalDay
+
+        fields = (
+            'created_at',
+        )

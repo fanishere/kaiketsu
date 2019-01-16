@@ -1,13 +1,50 @@
-.registration {
+.Register {
+    padding: 60px 0;
+    text-align: center;
     background-image: url('./media/a.jpg');
-    height: 100vh;
-    padding: 10px;
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: none;
 }
 
 .input {
     width: 200px; height: 390px; border: 1px solid #999999; padding: 5px;
 
 }
-label {
+
+.Register form {
+    margin: 0 auto;
+    max-width: 320px;
+}
+.Register h1 {
+    font-family: "Handlee", sans-serif;
+    text-transform: uppercase;
+}
+.Register label {
     display: block;
+}
+
+.Register input {
+    border: none;
+    line-height: 2;
+    padding: 3px 5px;
+    font-size: .7em;
+    font-family: 'Nunito Sans', sans-serif;
+    border-radius: 4px;
+    box-shadow: 0 0 .25em rgba(63, 63, 63, 0.25);
+    width: 65%;
+    text-transform: uppercase;
+}
+.Register button {
+    width: 40%;
+    font-size: .9em;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 4px;
+    min-width: 115px;
+    text-transform: uppercase;
+}
+
+.Register input:active {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }

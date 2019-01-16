@@ -1,0 +1,8 @@
+.GoalCreate {
+    min-height: 100vh;
+}
+.GoalCreate input {
+    background: transparent;
+    border: none;
+    border-bottom: 3px dotted black;
+}

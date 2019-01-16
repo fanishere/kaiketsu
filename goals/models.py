@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from datetime import timedelta
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
+from datetime import date
 
 
 class User(AbstractUser):
@@ -53,6 +54,15 @@ class Goal(DateStamp):
 
     def get_days(self):
         return self.days.all().order_by('created_at')
+    
+    def log_day_as_false(self):
+        today = date.today()
+        has_day = self.days.filter(created_at=today)
+        if not has_day:
+            GoalDay.objects.create(
+                goal_met=False,
+                goal=self,
+                created_at=today)
 
 
 class GoalDay(DateStamp):

@@ -1,0 +1,28 @@
+.GoalType {
+    min-height: 100vh;
+}
+.goal-type-selection {
+    width: 85%;
+    margin: 20px auto;
+    height: 150px;
+    background-size: cover;
+    transition: all .4s ease;
+}
+.goal-type-selection:hover {
+    width: 90%;
+    margin: 20px auto;
+    height: 150px;
+    background-size: cover;
+}
+.goal-type-selection img {
+    width: 100%;
+}
+.goal-type-selection.health {
+    background-image: url("./media/goal_card_2.png");
+}
+.goal-type-selection.professional {
+    background-image: url("./media/goal_card_1.png");
+}
+.goal-type-selection.personal {
+    background-image: url("./media/goal_card_3.png");
+}

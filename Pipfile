@@ -11,6 +11,9 @@ djangorestframework = "*"
 django-cors-headers = "*"
 gunicorn = "*"
 django-heroku = "*"
+celery = "*"
+flower = "*"
+pika = "*"
 
 [dev-packages]
 "flake8" = "*"

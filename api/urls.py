@@ -21,4 +21,7 @@ urlpatterns = [
         'goals/<pk>/days/',
         views.GoalDayList.as_view(),
         name='goal-day-list'),
+    path('goals/days/',
+         views.GoalDayList.as_view(),
+         name="goal-accomplishment-by-days"),
 ]
