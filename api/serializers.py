@@ -90,11 +90,10 @@ class GoalSerializer(serializers.ModelSerializer):
         return GoalDaySerializer(days, many=True).data
 
 
-class GoalAccomplishmentByDaySerializer(serializers.ModelSerializer):
+class GoalAccomplishmentByDaySerializer(serializers.Serializer):
+    created_at = serializers.DateField()
+    # completion = serializers.SerializerMethodField()
 
-    class Meta:
-        model = GoalDay
-
-        fields = (
-            'created_at',
-        )
+    # def get_completion(self, instance):
+    #     breakpoint()
+    #     return 2/3

@@ -9,6 +9,11 @@ from datetime import date
 class User(AbstractUser):
     USERNAME_FIELD = 'username'
 
+    def get_days(self):
+        grouped_days = [goal.days.all() for goal in self.goals.all()]
+        days = [day for goals in grouped_days for day in goals]
+        return days
+
 
 class Timestamp(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True)
@@ -54,7 +59,7 @@ class Goal(DateStamp):
 
     def get_days(self):
         return self.days.all().order_by('created_at')
-    
+
     def log_day_as_false(self):
         today = date.today()
         has_day = self.days.filter(created_at=today)

@@ -16,12 +16,13 @@ urlpatterns = [
          views.LoginAPIView.as_view(),
          name='user-login'),
     path('goals/', views.GoalListView.as_view(), name='goal-list'),
+    path('goals/days/',
+         views.GetUserGoalAccomplishment.as_view(),
+         name="goal-accomplishment-by-days"),
     path('goals/<pk>/', views.GoalDetailView.as_view(), name='goal-detail'),
     path(
         'goals/<pk>/days/',
         views.GoalDayList.as_view(),
         name='goal-day-list'),
-    path('goals/days/',
-         views.GoalDayList.as_view(),
-         name="goal-accomplishment-by-days"),
+
 ]

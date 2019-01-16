@@ -14,6 +14,9 @@ django-heroku = "*"
 celery = "*"
 flower = "*"
 pika = "*"
+sendgrid-django = "*"
+sendgrid = "*"
+sendgrid-python = "*"
 
 [dev-packages]
 "flake8" = "*"

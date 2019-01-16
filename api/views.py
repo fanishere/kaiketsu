@@ -1,9 +1,10 @@
 from goals.models import User, Goal, GoalDay
+from rest_framework.views import APIView
 from rest_framework import generics
 from api.serializers import (
     UserCreateSerializer, UserSerializer,
     GoalSerializer, LoginUserSerializer,
-    GoalDaySerializer
+    GoalDaySerializer, GoalAccomplishmentByDaySerializer
 )
 from datetime import timedelta
 from rest_framework import status
@@ -12,6 +13,7 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.authtoken.models import Token
+from django.http import JsonResponse
 
 
 @api_view(['GET', ])
@@ -114,3 +116,34 @@ class GoalDayList(generics.ListCreateAPIView):
         goal = Goal.objects.get(pk=self.kwargs['pk'])
         serializer.save(goal=goal)
 
+
+class GetUserGoalAccomplishment(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, format=None):
+        days = request.user.get_days()
+        accomplishments = {}
+
+        for day in days:
+            if day.created_at not in accomplishments:
+                accomplishments[day.created_at] = {
+                        'total': 0,
+                        'true': 0
+                    }
+
+            if day.goal_met is True:
+                accomplishments[day.created_at] = {
+                    'total': accomplishments[day.created_at]['total'] + 1,
+                    'true': accomplishments[day.created_at]['true'] + 1
+                }
+            else:
+                accomplishments[day.created_at] = {
+                    'total': accomplishments[day.created_at]['total'] + 1,
+                    'true': accomplishments[day.created_at]['true']
+                }
+
+        pls = dict(
+            ((key.isoformat()), value)
+            for (key, value) in accomplishments.items())
+
+        return JsonResponse(pls)
