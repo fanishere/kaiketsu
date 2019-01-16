@@ -1,0 +1,76 @@
+.welcome {
+    background-image: url('./media/a.jpg');
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+}
+
+img.welcome-logo {
+    display: block;
+    margin: 0 auto;
+    padding-top: 10%;
+}
+
+.heading {
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+    font-weight: 100;
+    margin-top: -80px;
+    color: rgb(67,49,145)
+}
+
+.quote {
+    font-family: 'Nunito Sans', sans-serif;
+    padding-top: 20%;
+    text-align: center;
+    color: rgb(67,49,145);
+}
+
+button {
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    background: #e37f8b;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background 250ms ease-in-out,
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+ }
+ 
+ button:hover,
+ button:focus {
+    background:#7968c2 ;
+ }
+ 
+ button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+ }
+ 
+ button:active {
+    transform: scale(0.99);
+ }
+
+.welcome-button {
+    text-align: center;
+    margin-top: 20px;
+    line-height: 60px;
+    font-weight: bold;
+    padding: 0 20px; 
+
+}
+
+
+
+       
+
+
