@@ -1,8 +1,8 @@
-import React, {Component} from "react";
-import {Redirect} from 'react-router-dom';
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
-import {auth} from '../actions';
+import React, { Component } from "react";
+import { Redirect } from 'react-router-dom';
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { auth } from '../actions';
 import "./Login.css";
 import Field from './Field';
 const axios = require('axios');
@@ -20,13 +20,12 @@ class Login extends Component {
     }
 
     handleChange(event) {
-        this.setState({inputField: event.target.value});
+        this.setState({ inputField: event.target.value });
     }
 
     loginUser(event) {
         event.preventDefault();
         let data  = new FormData(event.target);
-
         this.props.login(data.get('username'), data.get('password'))
         .then(() => {
             this.setState((state) => {
@@ -68,6 +67,7 @@ class Login extends Component {
                         {this.props.errors[0]
                             ? this.props.errors[0].message
                             : ""}
+
                         </p>
                     </div>
                 </form>
@@ -80,14 +80,14 @@ const mapStateToProps = state => {
     let errors = [];
     if (state.auth.errors) {
         errors = Object.keys(state.auth.errors).map(field => {
-            return {field, message:state.auth.errors[field]};
+            return { field, message: state.auth.errors[field] };
         });
     }
     return {
         errors,
         isAuthenticated: state.auth.isAuthenticated
     };
-    
+
 }
 
 const mapDispatchToProps = dispatch => {
