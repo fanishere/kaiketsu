@@ -6,6 +6,19 @@ import Fade from 'react-reveal/Fade';
 
 // import Button from 'muicss/lib/react/button';
 
+// class Button extends Component {
+//     render() {
+//         return (
+//             <div>
+//                 <button>
+//                     <input type="submit" value="Submit" />
+//                     {/* style={buttonStyle} */}
+//                     onClick={this.props.handleClick}>{this.props.label}</button>
+//             </div>
+//         );
+//     }
+// }
+
 
 class Welcome extends Component {
     render() {
@@ -21,8 +34,14 @@ class Welcome extends Component {
                             <h2>What would you do if you knew you could not fail?</h2>
                         </Fade>
                     </div>
-                </div >
-            </div>
+                    <div className="welcome-button">
+                        <button type="submit" value="submit">Join</button>
+                    </div>
+                    <div className="welcome-button">
+                        <button type="submit" value="submit">Login</button></div>
+                </div>
+            </div >
+
         );
 
     }
@@ -30,20 +49,8 @@ class Welcome extends Component {
 }
 
 
-class Button extends Component {
-    render() {
-        return (
-            <button
-                className="btn btn-default"
-                style={buttonStyle}
-                onClick={this.props.handleClick}>{this.props.label}</button>
-        );
-    }
-}
 
 
 
 
-
-module.exports = Button;
 export default Welcome;
