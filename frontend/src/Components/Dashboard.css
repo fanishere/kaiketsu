@@ -74,6 +74,7 @@
 }
 
 .AddGoalButton {
+    z-index: 1;
     position: fixed;
     bottom: 0;
     right: 0;
@@ -94,4 +95,8 @@
 .Dashboard .header.back div{
     padding-top: 25px;
     padding-bottom: 5px;
+}
+
+.DashBoardProgressDisplay {
+    background-color: #fff;
 }

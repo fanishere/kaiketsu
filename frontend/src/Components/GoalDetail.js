@@ -91,7 +91,8 @@ class GoalDays extends Component {
                             style={{ labels: { fill: "white" } }}
                             labelComponent={<VictoryLabel dx={-50}/>}
                             maxDomain={45}
-                            // labels={`${this.props.days} Days`}
+                            
+                            labels={`${this.props.days} Days`}
                             data= {[
                                 { x: 0, y: this.props.days},
                             ]}
@@ -156,8 +157,7 @@ class GoalDetail extends Component {
     }
 
     constructData() {
-        let newData = [
-        ]
+        let newData = [];
         
         for (let day of this.state.data.days) {
             let dayLine = {
@@ -170,7 +170,7 @@ class GoalDetail extends Component {
         
         this.setState({
             goalCompletion: newData
-        })
+        });
         
     }
 

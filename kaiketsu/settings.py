@@ -126,9 +126,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     )
 }
-CORS_ORIGIN_ALLOW_ALL = True
-
 EMAIL_BACKEND = "sgbackend.SendGridBackend"
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/

@@ -3,7 +3,9 @@ import Reveal from 'react-reveal/Reveal';
 import './Welcome.css';
 import logo from './media/logo.png';
 import Fade from 'react-reveal/Fade';
-
+import {
+    Link
+} from "react-router-dom";
 
 class Welcome extends Component {
     render() {
@@ -20,10 +22,15 @@ class Welcome extends Component {
                         </Fade>
                     </div>
                     <div className="welcome-button">
-                        <button type="submit" value="submit">Join</button>
+                        <Link to="/register/">
+                            <button type="submit" value="submit">Join</button>
+                        </Link>
                     </div>
                     <div className="welcome-button">
-                        <button type="submit" value="submit">Login</button></div>
+                        <Link to="/login/">
+                            <button type="submit" value="submit">Login</button>
+                        </Link>
+                    </div>
                 </div>
             </div >
 
