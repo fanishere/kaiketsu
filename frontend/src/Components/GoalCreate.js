@@ -72,7 +72,6 @@ class GoalCreate extends Component {
                         everyday for
 
                         <select htmlFor="duration" name="duration">
-                            <input htmlFor="duration"></input>
                             <option value="ONE MONTH">ONE MONTH</option>
                             <option value="THREE MONTHS">THREE MONTHS</option>
                             <option value="ONE YEAR">ONE YEAR</option>
