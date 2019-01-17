@@ -9,7 +9,7 @@ import Register from './Components/Register';
 import Loading from './Components/Loading';
 import Login from "./Components/Login";
 import Dashboard from './Components/Dashboard';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 import thunk from "redux-thunk";
 import kaiApp from "./reducers";
 

@@ -7,7 +7,6 @@ import ErrorList from './Errors';
 import './Register.css';
 import {connect} from "react-redux";
 import {auth} from '../actions';
-require('dotenv').config();
 
 
 class Register extends Component {

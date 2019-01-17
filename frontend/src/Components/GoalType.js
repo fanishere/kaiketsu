@@ -3,9 +3,6 @@ import {
     Link
 } from "react-router-dom";
 import './GoalType.css';
-import professional from './media/goal_card_1.png';
-import health from './media/goal_card_2.png';
-import personal from './media/goal_card_3.png';
 
 
 class GoalType extends Component {

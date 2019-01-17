@@ -1,13 +1,8 @@
 import React, {Component} from 'react';
-import { VictoryBar, VictoryChart, VictoryPolarAxis, VictoryLabel, VictoryLegend } from 'victory';
+import { VictoryBar, VictoryChart, VictoryPolarAxis, VictoryLegend } from 'victory';
 import {connect} from "react-redux";
 import HeatMap from './HeatMap';
 import './GoalDetail.css';
-import {
-    Redirect,
-    Link
-} from "react-router-dom";
-
 const axios = require('axios');
 
 class PolarGoalCompletion extends Component {

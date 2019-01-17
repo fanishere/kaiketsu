@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import {
     Route,
     NavLink,
-    Redirect,
     Link
 } from "react-router-dom";
 import GoalDetail from './GoalDetail';

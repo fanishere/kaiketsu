@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { auth } from '../actions';
 import "./Login.css";
 import Field from './Field';
-const axios = require('axios');
 
 
 class Login extends Component {

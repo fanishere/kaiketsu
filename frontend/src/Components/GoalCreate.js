@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './GoalCreate.css';
-import logo from './media/logo.png';
 import {connect} from "react-redux";
 import {
     Redirect
@@ -12,8 +11,9 @@ class GoalCreate extends Component {
         super(props);
         this.state = {
             data: null,
-            toDashboard: false,
+            toGoalDetail: false,
         }
+        this.successMessage = this.successMessage.bind(this);
     }
 
     createGoal(event) {
@@ -24,9 +24,6 @@ class GoalCreate extends Component {
         };
         
         let formData = new FormData(event.target);
-        console.log(formData.get('resolution'));
-        console.log(formData.get('duration'));
-        console.log(formData.get('reason'));
 
         return axios({
             url: `${process.env.REACT_APP_API_URL}/api/goals/`,
@@ -44,6 +41,8 @@ class GoalCreate extends Component {
                     data: res.data
                 });
                 this.successMessage();
+            
+                
     
             }).catch(error => {
                 console.log(error);
@@ -53,15 +52,15 @@ class GoalCreate extends Component {
     successMessage() {
         console.log("successful!");
         this.setState({
-           toDashboard: true 
+           toGoalDetail: true 
         });
         
     }
 
 
     render() {
-        if (this.state.toDashboard === true) {
-            return <Redirect to={`/dashboard/goals/`} />;
+        if (this.state.toGoalDetail === true) {
+            return <Redirect to={`/dashboard/goals/${this.state.data.pk}`} />;
         }
         return (
             <div className="GoalCreate">

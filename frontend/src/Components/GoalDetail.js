@@ -3,7 +3,6 @@ import { VictoryBar, VictoryGroup, VictoryLegend, VictoryLabel, VictoryStack } f
 import {connect} from "react-redux";
 import './GoalDetail.css';
 import {
-    Redirect,
     Link
 } from "react-router-dom";
 const axios = require('axios');

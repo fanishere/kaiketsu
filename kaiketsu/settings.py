@@ -126,7 +126,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     )
 }
-EMAIL_BACKEND = "sgbackend.SendGridBackend"
+# EMAIL_BACKEND = "sgbackend.SendGridBackend"
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Static files (CSS, JavaScript, Images)

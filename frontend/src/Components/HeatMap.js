@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import { Group } from '@vx/group';
 import {connect} from "react-redux";
-import { genBins } from '@vx/mock-data';
 import { scaleLinear } from '@vx/scale';
-import { HeatmapCircle, HeatmapRect } from '@vx/heatmap';
+import { HeatmapCircle } from '@vx/heatmap';
 import './HeatMap.css';
 const axios = require('axios');
 

@@ -1,6 +1,5 @@
 .welcome {
-    background-image: url('./media/a.jpg');
-    height: 100vh;
+    background-image: url('./media/Background/adjusted_one.png');
     width: 100%;
     background-size: cover;
 }
@@ -9,6 +8,7 @@ img.welcome-logo {
     display: block;
     margin: 0 auto;
     padding-top: 10%;
+    width: 100%;
 }
 
 .heading {
@@ -68,9 +68,3 @@ button {
     padding: 0 20px; 
 
 }
-
-
-
-       
-
-

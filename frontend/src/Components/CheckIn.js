@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './Loading.css';
-import logo from './media/logo.png';
+import logo from './media/Logo/logo-1.png';
 import {connect} from "react-redux";
 import {
-    Redirect,
-    Link
+    Redirect
 } from "react-router-dom";
 const axios = require('axios');
 
