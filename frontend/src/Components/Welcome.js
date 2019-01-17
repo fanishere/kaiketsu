@@ -4,21 +4,6 @@ import './Welcome.css';
 import logo from './media/logo.png';
 import Fade from 'react-reveal/Fade';
 
-// import Button from 'muicss/lib/react/button';
-
-// class Button extends Component {
-//     render() {
-//         return (
-//             <div>
-//                 <button>
-//                     <input type="submit" value="Submit" />
-//                     {/* style={buttonStyle} */}
-//                     onClick={this.props.handleClick}>{this.props.label}</button>
-//             </div>
-//         );
-//     }
-// }
-
 
 class Welcome extends Component {
     render() {
