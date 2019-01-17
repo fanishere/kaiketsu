@@ -9,13 +9,14 @@ img.welcome-logo {
     margin: 0 auto;
     padding-top: 10%;
     width: 100%;
+    max-width: 100px;
 }
 
 .heading {
     font-family: 'Nunito Sans', sans-serif;
     text-align: center;
     font-weight: 100;
-    margin-top: -80px;
+    /* margin-top: -80px; */
     color: rgb(67,49,145)
 }
 

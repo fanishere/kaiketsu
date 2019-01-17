@@ -11,9 +11,9 @@ import GoalType from './GoalType';
 import CheckIn from './CheckIn';
 import GoalCreate from './GoalCreate';
 import DashboardProgressDisplay from './Progress';
-import personal_logo from './media/personal_logo.png';
-import health_logo from './media/health_logo.png';
-import prof_logo from './media/prof_logo.png';
+import personal_logo from './media/Monday/Balloon_logo.png';
+import health_logo from './media/Monday/Cactus_logo.png';
+import prof_logo from './media/Monday/Geo_logo.png';
 const axios = require('axios');
 
 class GoalBlock extends Component {
@@ -145,7 +145,8 @@ class DashboardHeader extends Component {
         }
         return (
             <div className="header back">
-                <div onClick={this.props.goBack}> Back </div>
+                <Link to="/dashboard/goals/">to Dashboard</Link>
+                {/* <div onClick={this.props.goBack}> Back </div> */}
             </div>
         );
     }

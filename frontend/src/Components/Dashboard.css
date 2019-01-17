@@ -40,6 +40,7 @@
 }
 .Dashboard {
     background-image: url('./media/Background/adjusted_one.png');
+    min-height: 100vh;
     overflow: hidden;
 }
 
@@ -88,13 +89,15 @@
 }
 .GoalBlock img {
     position: absolute;
-    left: -40px;
-    width: 25%;
+    left: -20px;
+    width: 35%;
+    top: 0px;
 }
 
-.Dashboard .header.back div{
+.Dashboard .header.back a{
     padding-top: 25px;
     padding-bottom: 5px;
+    display: block;
 }
 
 .DashBoardProgressDisplay {

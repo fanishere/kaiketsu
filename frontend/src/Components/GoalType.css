@@ -7,6 +7,7 @@
     height: 150px;
     background-size: cover;
     transition: all .4s ease;
+    position: relative;
 }
 .goal-type-selection:hover {
     width: 90%;
@@ -15,7 +16,10 @@
     background-size: cover;
 }
 .goal-type-selection img {
-    width: 100%;
+    width: 35%;
+    position: relative;
+    top: 65px;
+    left: -11px;
 }
 .goal-type-selection.health {
     background-image: url("./media/goal_card_2.png");
