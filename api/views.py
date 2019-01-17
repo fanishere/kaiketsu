@@ -124,7 +124,7 @@ class GetUserGoalAccomplishment(APIView):
     def get(self, request, format=None):
         days = request.user.get_days()
         accomplishments = {}
-        print("made it here")
+        
         for day in days:
             if day.created_at not in accomplishments:
                 accomplishments[day.created_at] = {
@@ -142,9 +142,9 @@ class GetUserGoalAccomplishment(APIView):
                     'total': accomplishments[day.created_at]['total'] + 1,
                     'true': accomplishments[day.created_at]['true']
                 }
-        print("and here", accomplishments)
+
         pls = dict(
             ((key.isoformat()), value)
             for (key, value) in accomplishments.items())
-        print("and here", pls)
+
         return JsonResponse(pls)
