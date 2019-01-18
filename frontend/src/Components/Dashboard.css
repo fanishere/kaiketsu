@@ -74,16 +74,20 @@
     margin: 0;
 }
 
-.AddGoalButton {
+.plusIcon {
+    width: 120px;
     z-index: 1;
     position: fixed;
     bottom: 0;
     right: 0;
+    margin-bottom: -40px;
 }
-.AddGoalButton button{
-    font-size: 1.3em;
-    margin: 20px;
+
+.plusIcon img {
+    width: 120px;
+    align-content: center;
 }
+
 .GoalBlock .category {
     position: relative;
 }
