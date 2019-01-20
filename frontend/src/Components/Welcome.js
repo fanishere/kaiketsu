@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Reveal from 'react-reveal/Reveal';
+// import Reveal from 'react-reveal/Reveal';
 import './Welcome.css';
 import logo from './media/Logo/logo-cropped-1.png';
 import Fade from 'react-reveal/Fade';
@@ -11,7 +11,7 @@ class Welcome extends Component {
     render() {
         return (
             <div className="welcome">
-                
+
                 <img className="welcome-logo" src={logo} alt="logo"></img>
                 <h1 className="heading">
                     KAIKETSU
@@ -31,7 +31,7 @@ class Welcome extends Component {
                         <button type="submit" value="submit">Login</button>
                     </Link>
                 </div>
-                
+
             </div>
 
         );
