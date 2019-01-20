@@ -1,0 +1,67 @@
+.SlideIn-appear {
+    opacity: .75;
+    transform: translateX(100px);
+}
+
+.SlideIn-appear.SlideIn-appear-active {
+    opacity: 1;
+    transform: translateX(0);;
+    transition: all .04s linear;
+}
+.SlideIn-enter {
+    z-index: 1;
+    transform: translateX(100px);
+}
+.SlideIn-enter.SlideIn-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all .04s linear;
+}
+
+.SlideIn-leave {
+    
+    opacity: .75;
+    transform: translateX(0);
+}
+.SlideIn-leave.SlideIn-leave-active {
+    opacity: .5;
+    position: absolute;
+    width: 100%;
+    top:0;
+    transform: translateX(-100px);
+    transition: all .04s linear;
+}
+
+.SlideOut-appear {
+    opacity: .75;
+    transform: translateX(100px);
+}
+
+.SlideOut-appear.SlideOut-appear-active {
+    opacity: 1;
+    transform: translateX(0);;
+    transition: all .04s linear;
+}
+.SlideOut-enter {
+    z-index: 1;
+    transform: translateX(100px);
+}
+.SlideOut-enter.SlideOut-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all .04s linear;
+}
+
+.SlideOut-leave {
+    
+    opacity: .75;
+    transform: translateX(0);
+}
+.SlideOut-leave.SlideOut-leave-active {
+    opacity: .5;
+    position: absolute;
+    width: 100%;
+    top:0;
+    transform: translateX(-100px);
+    transition: all .04s linear;
+}

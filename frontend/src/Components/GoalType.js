@@ -22,21 +22,25 @@ class GoalType extends Component {
 
         return (
             <div className="GoalType">
+                <h1>Select a Category</h1>
                 <Link to="/dashboard/create-goal/HEALTH/">
                     <div className="goal-type-selection health">
                        <img src={health_logo} alt="health"></img>
+                       <h2>Health + Wellness</h2>
                     </div>
                 </Link>
 
                 <Link to="/dashboard/create-goal/PERSONAL/">
                     <div className="goal-type-selection personal">
                     <img src={personal_logo} alt="personal"></img>
+                    <h2>Personal</h2>
                     </div>
                 </Link>
 
                 <Link to="/dashboard/create-goal/PROFESSIONAL/">
                     <div className="goal-type-selection professional">
                     <img src={prof_logo} alt="professional"></img>
+                    <h2>Professional</h2>
                     </div>
                 </Link>
 

@@ -133,7 +133,7 @@ class GoalButton extends Component {
         return (
             <div className="GoalButton">
                 <Link to={`/dashboard/goals/${this.props.id}/check-in`}>
-                    <button>Check In</button>
+                    <button>Success</button>
                 </Link>
                 
                 

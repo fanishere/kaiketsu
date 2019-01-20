@@ -1,6 +1,9 @@
 .GoalType {
     min-height: 100vh;
 }
+.GoalType a {
+    text-decoration: none;
+}
 .goal-type-selection {
     width: 85%;
     margin: 20px auto;
@@ -8,6 +11,8 @@
     background-size: cover;
     transition: all .4s ease;
     position: relative;
+    border: 5px solid black;
+    border-radius: 3px;
 }
 .goal-type-selection:hover {
     width: 90%;
@@ -16,10 +21,17 @@
     background-size: cover;
 }
 .goal-type-selection img {
-    width: 35%;
+    width: 80px;
     position: relative;
-    top: 65px;
-    left: -11px;
+    top: -22px;
+    left: -12px;
+}
+.goal-type-selection h2 {
+    position: relative;
+    top: -10px;
+    text-decoration: none;
+    text-align: center;
+    color: black;
 }
 .goal-type-selection.health {
     background-image: url("./media/goal_card_2.png");
