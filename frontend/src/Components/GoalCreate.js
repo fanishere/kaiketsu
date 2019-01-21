@@ -4,6 +4,10 @@ import {connect} from "react-redux";
 import {
     Redirect
 } from "react-router-dom";
+import health_logo from './media/Monday/Health_transparent.png';
+import personal_logo from './media/Monday/Personal_transparent.png';
+import professional_logo from './media/Monday/Professional_transparent.png';
+
 const axios = require('axios');
 
 class GoalCreate extends Component {
@@ -62,26 +66,39 @@ class GoalCreate extends Component {
         if (this.state.toGoalDetail === true) {
             return <Redirect to={`/dashboard/goals/${this.state.data.pk}`} />;
         }
+
         return (
             <div className="GoalCreate">
                 <form onSubmit={this.createGoal.bind(this)}>
-                    <span>
-                        I want to &nbsp;
-                        <input htmlFor="resolution" type="text" name="resolution"></input>
-                        every day for &nbsp;
+                    <div className="formBox">
+                        <span>
+                            <p>I want to &nbsp;<input htmlFor="resolution" type="text" name="resolution"></input> </p>
+                            <p>every day for &nbsp;
+                                <select htmlFor="duration" name="duration">
+                                    <option value="ONE MONTH">ONE MONTH</option>
+                                    <option value="THREE MONTHS">THREE MONTHS</option>
+                                    <option value="ONE YEAR">ONE YEAR</option>
+                                </select>
 
-                        <select htmlFor="duration" name="duration">
-                            <option value="ONE MONTH">ONE MONTH</option>
-                            <option value="THREE MONTHS">THREE MONTHS</option>
-                            <option value="ONE YEAR">ONE YEAR</option>
-                        </select>
-                        &nbsp; because
-                        <input htmlFor="reason" type="text" name="reason"></input>
-                        .
-                    </span>
+                            </p>
+                            <p>because &nbsp; 
+                            <input htmlFor="reason" type="text" name="reason"></input>.
+                            </p>
+
+                        </span>
+                    </div>
                     <button>Set Goal</button>
                 </form>
-
+                <div className="categoryImage">
+                    {this.props.match.params.category === 'HEALTH'
+                        ? <img src={health_logo} alt="health"></img>
+                        : this.props.match.params.category === 'PERSONAL' 
+                            ? <div className="personal"><img src={personal_logo} alt="personal"></img>
+                                <img src={personal_logo} alt="personal"></img>
+                                <img src={personal_logo} alt="personal"></img></div>
+                            : <img src={professional_logo} alt="professional"></img>}
+                    
+                </div>
             </div>
         )
     }

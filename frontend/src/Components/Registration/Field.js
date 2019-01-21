@@ -17,7 +17,7 @@ class Field extends Component {
                     type={this.props.type}
                     name={this.props.field}
                     htmlFor={this.props.field}
-                    placeholder={"Put your username here"}
+                    placeholder={this.props.placeholder}
                     ></input>
             </p>
             

@@ -61,16 +61,6 @@ class Register extends Component {
         }
 
         return (
-            // <CSSTransitionGroup
-            //                     // key={location.key}
-            //                     transitionAppear={true}
-            //                     transitionEnter={true}
-            //                     transitionLeave={true}
-            //                     transitionAppearTimeout={5000}
-            //                     transitionEnterTimeout={5000}
-            //                     transitionLeaveTimeout={5000}
-            //                     transitionName={'SlideIn'}
-            //                 >
             <div className="Register">
                 <h1>Sign Up</h1>
                 <form className="registrationForm" onSubmit={this.registerAccount}>
@@ -80,24 +70,28 @@ class Register extends Component {
                             for="username"
                             field="username"
                             label="Username"
+                            placeholder="leajones151"
                         ></Field>
                         <Field
                             type="text"
                             for="first_name"
                             field="first_name"
                             label="First Name"
+                            placeholder="Lea"
                         ></Field>
                         <Field
                             type="email"
                             for="email"
                             field="email"
                             label="Email"
+                            placeholder="Lea.Jones@email.com"
                         ></Field>
                         <Field
                             type="password"
                             for="password"
                             field="password"
                             label="Password"
+                            placeholder="Must have at least 8 characters"
                         ></Field>
                         
                         <button type="submit" value="submit">Sign Up ></button>
@@ -110,7 +104,6 @@ class Register extends Component {
                     </div>
                 </form>
             </div>
-            // </CSSTransitionGroup>
         )
     }
 }

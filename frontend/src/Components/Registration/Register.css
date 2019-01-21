@@ -1,7 +1,7 @@
 .Register {
     padding: 60px 0;
     text-align: center;
-    background-image: url('../media/Background/adjusted_one.png');
+    background-image: url('../media/Background/yellow_background.png');
     min-height: 100vh;
     background-size: cover;
     background-repeat: none;
@@ -14,37 +14,60 @@
 
 .Register form {
     margin: 0 auto;
-    max-width: 320px;
 }
 .Register h1 {
     font-family: "Handlee", sans-serif;
-    text-transform: uppercase;
 }
 .Register label {
     display: block;
+    font-size: 1.1em;
 }
 
 .Register input {
     border: none;
     line-height: 2;
     padding: 3px 5px;
-    font-size: .7em;
+    font-size: 1em;
     font-family: 'Nunito Sans', sans-serif;
     border-radius: 4px;
     box-shadow: 0 0 .25em rgba(63, 63, 63, 0.25);
-    width: 65%;
-    text-transform: uppercase;
-}
-.Register button {
-    width: 40%;
-    font-size: .9em;
-    padding: 5px 5px;
-    border: none;
-    border-radius: 4px;
-    min-width: 115px;
-    text-transform: uppercase;
+    width: 90%;
 }
 
-.Register input:active {
+.Register input:focus {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
+
+.Register button {
+    width: 50%;
+    border: none;
+    padding: 1rem 2rem;
+    margin-top: 20px;
+    text-decoration: none;
+    background: #e37f8b;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background 250ms ease-in-out,
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.Register button:hover,
+.Register button:focus {
+    background:#7968c2 ;
+}
+ 
+.Register button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+ 
+.Register button:active {
+    transform: scale(0.99);
+}
+

@@ -21,15 +21,17 @@ class Welcome extends Component {
                             <h2>What would you do if you knew you could not fail?</h2>
                         </Fade>
                     </div>
-                    <div className="welcome-button">
-                        <Link to="/register/">
-                            <button type="submit" value="submit">Join</button>
-                        </Link>
-                    </div>
-                    <div className="welcome-button">
-                        <Link to="/login/">
-                            <button type="submit" value="submit">Login</button>
-                        </Link>
+                    <div className="welcomeButtons">
+                        <div className="welcome-button">
+                            <Link to="/register/">
+                                <button type="submit" value="submit">Join</button>
+                            </Link>
+                        </div>
+                        <div className="welcome-button">
+                            <Link to="/login/">
+                                <button type="submit" value="submit">Login</button>
+                            </Link>
+                        </div>
                     </div>
 
                 </div>

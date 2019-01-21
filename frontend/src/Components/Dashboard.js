@@ -11,14 +11,15 @@ import GoalDetail from './GoalDetail/GoalDetail';
 import GoalType from './GoalType';
 import CheckIn from './CheckIn';
 import GoalCreate from './GoalCreate';
+import Trophy from './Trophy';
 import GoalCompletion from './GoalDetail/GoalCompletion';
 import personal_logo from './media/Monday/Balloon_logo.png';
 import health_logo from './media/Monday/Cactus_logo.png';
 import prof_logo from './media/Monday/Geo_logo.png';
-import plus_logo from './media/Logo/plus-icon-white.png';
-import trophy_icon from './media/Icons/trophy-icon.png';
-import star_icon from './media/Icons/star-icon.png'
-import dashboard_icon from './media/Icons/dashboard-icon.png'
+import plus_logo from './media/Icons/plus.png';
+import trophy_icon from './media/Icons/trophy.png';
+import star_icon from './media/Icons/star.png'
+import dashboard_icon from './media/Icons/dashboard.png'
 
 const axios = require('axios');
 
@@ -120,7 +121,7 @@ class DashboardGoalDisplay extends Component {
         }
 
         return (
-            <div>
+            <div className="GoalList">
                 {goalBlocks}
             </div>
         )
@@ -183,22 +184,33 @@ function AddGoalButton() {
 class DashboardHeader extends Component {
     render() {
         
-        if ((this.props.url === "/dashboard/goals/") || (this.props.url === "/dashboard/progress/")) {
-            return (
-                <div className="header">
-                    <div className="tabs">
-                        <div><NavLink to="/dashboard/goals/" activeClassName="selected">Goals</NavLink></div>
-                        <div><NavLink to="/dashboard/create-goal/" activeClassName="selected">Cr</NavLink></div>
-
-                    </div>
-                    <AddGoalButton></AddGoalButton>
+        return (
+            <div className="header">
+                <div className="tabs">
+                    <NavLink to="/dashboard/create-goal/" activeClassName="selected">
+                        <div className="plusIcon">
+                            <img src={plus_logo} alt="create goal button"></img>
+                        </div>
+                    </NavLink>
+                    <NavLink to="/dashboard/achievements/" activeClassName="selected">
+                        {/* need to create an acccurate path */}
+                        <div className="trophyIcon">
+                            <img src={trophy_icon} alt="achievements button"></img>
+                        </div>
+                    </NavLink>
+                    <NavLink to="/dashboard/goals/" activeClassName="selected">
+                        {/* need to create an acccurate path */}
+                        <div className="dashboardIcon">
+                            <img src={dashboard_icon} alt="goals dashboard button"></img>
+                        </div>
+                    </NavLink>
+                    {/* <div><NavLink to="/dashboard/goals/" activeClassName="selected">Goals</NavLink></div>
+                    <div><NavLink to="/dashboard/create-goal/" activeClassName="selected">Cr</NavLink></div> */}
                 </div>
-            );
-        } else {
-            return(
-                ''
-            );
-        }
+                {/* <AddGoalButton></AddGoalButton> */}
+            </div>
+        );
+        
     }
 }
 
@@ -212,6 +224,7 @@ class Dashboard extends Component {
                             exact path="/dashboard/goals/"
                             render={(props) => <DashboardGoalDisplay {...props} token={this.props.token}/>}
                             />
+                        <Route exact path="/dashboard/achievements/" component={Trophy} />
                         <Route exact path="/dashboard/create-goal/" component={GoalType} />
                         <Route exact path="/dashboard/create-goal/:category/" component={GoalCreate} />
                         <Route exact path="/dashboard/goals/:id/" component={GoalDetail} />

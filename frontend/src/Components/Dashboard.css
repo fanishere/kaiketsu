@@ -1,5 +1,10 @@
 .header {
-    background-color: #1ebbc7;
+    background-color: #0b7a83;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+    height: 70px;
 }
 .header .tabs {
     display: flex;
@@ -9,28 +14,41 @@
 .tabs div {
     width: 100%;
     text-align: center;
-    padding-top: 25px;
-    padding-bottom: 0px;
+    padding-top: 10px;
     position: relative;
-    margin-bottom: 5px;
 }
-.tabs div a {
+.tabs a {
     text-decoration: none;
     color: #5c5c5c;
+    cursor: pointer;
+    width: 100%;
 }
-.tabs div a.selected {
+.tabs a.selected {
     color: black;
+    background-color: #b3b0b04d;
 }
-.tabs div a.selected:after {
+.tabs a.selected div:after {
     content: '';
     height: 2px;
     background: white;
-    display: table;
-    width: 70%;
+    display: block;
+    width: 100%;
     margin: 0 auto;
+    position: relative;
 
     
 }
+.GoalList {
+    padding: 1px;
+    padding-bottom: 70px;
+}
+
+.formBox {
+    background-color: rgba(255, 255, 255, .75);
+    padding: 10px;
+    border-radius: 15px;
+}
+
 .goal-block-links {
     text-decoration: none;
     color: #242424;
@@ -39,9 +57,8 @@
     text-decoration: none;
 }
 .Dashboard {
-    background-image: url('./media/test_1_adjusted_720.png');
+    background-image: url('./media/Background/yellow_background.png');
     min-height: 100vh;
-    overflow: hidden;
 }
 
 .GoalBlock {
@@ -70,105 +87,21 @@
 
 .GoalBlock div p {
     text-align: center;
-    width: 100%;
+    width: 80%;
     margin: 0;
 }
 
 
 .footer {
-
     background-color: #1ebbc7;
     display: flex;
     justify-content: space-evenly;
 
 }
-
-.buttonContainer {
-
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-}
-   
-.plusIcon {
-    width: 120px;
-    flex: 1;
-}
-
-.plusIcon img {
-    width: 120px;
-    align-content: center;
-}
-
-.trophyIcon {
-
-    width: 120px;
-    flex: 1;
-}
-
-.trophyIcon img {
-    width: 120px;
-    align-content: center;
-}
-
-/* #trophyIcon {
-    width: 120px;
+.header img {
+    width: 50px;
     z-index: 2;
-    flex:1;
-    left: -20px;
-    bottom: 0;
-    right: 0;
-    margin-bottom: -40px;
-} */
-
-
-.starIcon{
-    
-    width: 120px;
-    flex: 1;
 }
-
-.starIcon img {
-    
-    width: 120px;
-    align-content:center;
-}
-
-
-/* #starIcon { */
-    /* width: 120px;
-    z-index: 1; */
-    /* left: 80px;
-    bottom: 0;
-    right: 0;
-    margin-bottom: -40px; */
-
-.dashboardIcon {
-
-    width: 120px;
-    flex: 1;
-
-}
-
-.dashboardIcon img {
-    width: 120px;
-    align-content: center;
-}
-
-
-
-
-/* #dashboardIcon { */
-    /* width: 120px;
-    z-index: 1; */
-   
-    /* left: 150px;
-    bottom: 0;
-    right: 0;
-    margin-bottom: -40px; */
 
 
 .GoalBlock .category {
