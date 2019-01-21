@@ -75,76 +75,100 @@
 }
 
 
+.footer {
+
+    background-color: #1ebbc7;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
 .buttonContainer {
 
-    text-align: center;
     display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#plusIcon {
-    width: 120px;
-    z-index: 1;
-    position: fixed;
+    flex-direction: row;
+    position: absolute;
     bottom: 0;
-    right: 0;
-    margin-bottom: -40px;
+    width: 100%;
+    height: 60px;
+}
+   
+.plusIcon {
+    width: 120px;
+    flex: 1;
 }
 
-#plusIcon img {
+.plusIcon img {
     width: 120px;
     align-content: center;
 }
 
-#trophyIcon {
+.trophyIcon {
+
     width: 120px;
-    z-index: 1;
-    position: fixed;
+    flex: 1;
+}
+
+.trophyIcon img {
+    width: 120px;
+    align-content: center;
+}
+
+/* #trophyIcon {
+    width: 120px;
+    z-index: 2;
+    flex:1;
     left: -20px;
     bottom: 0;
     right: 0;
     margin-bottom: -40px;
+} */
+
+
+.starIcon{
+    
+    width: 120px;
+    flex: 1;
+}
+
+.starIcon img {
+    
+    width: 120px;
+    align-content:center;
 }
 
 
-#trophyIcon img {
-    width: 120px;
-    align-content: center;
-}
-
-
-#starIcon {
-    width: 120px;
-    z-index: 1;
-    position: fixed;
-    left: 80px;
+/* #starIcon { */
+    /* width: 120px;
+    z-index: 1; */
+    /* left: 80px;
     bottom: 0;
     right: 0;
-    margin-bottom: -40px;
+    margin-bottom: -40px; */
+
+.dashboardIcon {
+
+    width: 120px;
+    flex: 1;
+
 }
 
-
-#starIcon img {
+.dashboardIcon img {
     width: 120px;
     align-content: center;
 }
 
-#dashboardIcon {
-    width: 120px;
-    z-index: 1;
-    position: fixed;
-    left: 150px;
+
+
+
+/* #dashboardIcon { */
+    /* width: 120px;
+    z-index: 1; */
+   
+    /* left: 150px;
     bottom: 0;
     right: 0;
-    margin-bottom: -40px;
-}
-
-
-#dashboardIcon img {
-    width: 120px;
-    align-content: center;
-}
+    margin-bottom: -40px; */
 
 
 .GoalBlock .category {
