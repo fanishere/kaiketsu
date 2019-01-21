@@ -56,7 +56,7 @@ class CheckIn extends Component {
         }
         return (
             <div>
-                <h1>Check In</h1>
+                <h1>Success</h1>
                 <button onClick={this.goalComplete.bind(this)}>Check In</button>
 
             </div>

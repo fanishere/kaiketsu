@@ -6,7 +6,7 @@ import Field from './Field';
 import ErrorList from './Errors';
 import './Register.css';
 import {connect} from "react-redux";
-import {auth} from '../actions';
+import {auth} from '../../actions';
 
 
 class Register extends Component {
@@ -54,13 +54,23 @@ class Register extends Component {
     
     render() {
         if (this.state.toGoalPrompt === true) {
-            return <Redirect to="/dashboard/create-goal/" />
+            return <Redirect to="/login/" />
         }
         if (this.props.errors) {
 
         }
 
         return (
+            // <CSSTransitionGroup
+            //                     // key={location.key}
+            //                     transitionAppear={true}
+            //                     transitionEnter={true}
+            //                     transitionLeave={true}
+            //                     transitionAppearTimeout={5000}
+            //                     transitionEnterTimeout={5000}
+            //                     transitionLeaveTimeout={5000}
+            //                     transitionName={'SlideIn'}
+            //                 >
             <div className="Register">
                 <h1>Sign Up</h1>
                 <form className="registrationForm" onSubmit={this.registerAccount}>
@@ -100,6 +110,7 @@ class Register extends Component {
                     </div>
                 </form>
             </div>
+            // </CSSTransitionGroup>
         )
     }
 }

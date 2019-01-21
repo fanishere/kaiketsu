@@ -6,3 +6,18 @@
     border: none;
     border-bottom: 3px dotted black;
 }
+.GoalCreate span {
+    font-size: 30px;
+    margin: 40px 20px;
+    display: block;
+}
+
+.GoalCreate input {
+    width: 170px;
+    font-size: 30px;
+}
+
+.GoalCreate button {
+    display: block;
+    margin: 0 auto;
+}

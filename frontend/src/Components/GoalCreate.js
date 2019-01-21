@@ -66,20 +66,20 @@ class GoalCreate extends Component {
             <div className="GoalCreate">
                 <form onSubmit={this.createGoal.bind(this)}>
                     <span>
-                        I want to
+                        I want to &nbsp;
                         <input htmlFor="resolution" type="text" name="resolution"></input>
-                        everyday for
+                        every day for &nbsp;
 
                         <select htmlFor="duration" name="duration">
                             <option value="ONE MONTH">ONE MONTH</option>
                             <option value="THREE MONTHS">THREE MONTHS</option>
                             <option value="ONE YEAR">ONE YEAR</option>
                         </select>
-                        because
+                        &nbsp; because
                         <input htmlFor="reason" type="text" name="reason"></input>
                         .
                     </span>
-                    <button>Create</button>
+                    <button>Set Goal</button>
                 </form>
 
             </div>

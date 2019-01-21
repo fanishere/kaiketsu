@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { VictoryBar, VictoryChart, VictoryPolarAxis, VictoryLegend } from 'victory';
 import {connect} from "react-redux";
-import HeatMap from './HeatMap';
+import HeatMap from '../HeatMap';
 import './GoalDetail.css';
 const axios = require('axios');
 

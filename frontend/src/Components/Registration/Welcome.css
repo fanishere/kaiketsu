@@ -1,7 +1,8 @@
 .welcome {
-    background-image: url('./media/Background/adjusted_one.png');
+    background-image: url('../media/Background/adjusted_one.png');
     width: 100%;
     background-size: cover;
+    min-height: 100vh;
 }
 
 img.welcome-logo {
@@ -16,8 +17,7 @@ img.welcome-logo {
     font-family: 'Nunito Sans', sans-serif;
     text-align: center;
     font-weight: 100;
-    /* margin-top: -80px; */
-    color: rgb(67,49,145)
+    color: rgb(67,49,145);
 }
 
 .quote {

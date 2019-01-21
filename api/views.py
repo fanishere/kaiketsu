@@ -21,6 +21,7 @@ def api_root(request, format=None):
     return Response({
         'users': reverse('user-list', request=request, format=format),
         'goals': reverse('goal-list', request=request, format=format),
+        'trophy-goals': reverse('trophy-goal-list', request=request, format=format),
     })
 
 
@@ -46,7 +47,7 @@ class GoalListView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return Goal.objects.filter(user=user)
+        return Goal.objects.filter(user=user, active=True)
 
     def perform_create(self, serializer):
         user = self.request.user
@@ -66,6 +67,15 @@ class GoalListView(generics.ListCreateAPIView):
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+
+class ArchivedGoalListView(generics.ListAPIView):
+    serializer_class = GoalSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        user = self.request.user
+        return Goal.objects.filter(user=user, active=False)
 
 
 class GoalDetailView(generics.RetrieveUpdateAPIView):
@@ -124,7 +134,7 @@ class GetUserGoalAccomplishment(APIView):
     def get(self, request, format=None):
         days = request.user.get_days()
         accomplishments = {}
-        
+
         for day in days:
             if day.created_at not in accomplishments:
                 accomplishments[day.created_at] = {
@@ -143,8 +153,8 @@ class GetUserGoalAccomplishment(APIView):
                     'true': accomplishments[day.created_at]['true']
                 }
 
-        pls = dict(
+        day_data = dict(
             ((key.isoformat()), value)
             for (key, value) in accomplishments.items())
 
-        return JsonResponse(pls)
+        return JsonResponse(day_data)
