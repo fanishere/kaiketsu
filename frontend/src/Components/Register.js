@@ -7,8 +7,6 @@ import ErrorList from './Errors';
 import './Register.css';
 import {connect} from "react-redux";
 import {auth} from '../actions';
-import './Transitions.css';
-import { CSSTransitionGroup } from "react-transition-group";
 
 
 class Register extends Component {

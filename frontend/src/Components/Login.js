@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import { auth } from '../actions';
 import "./Login.css";
 import Field from './Field';
-import './Transitions.css';
-import { CSSTransitionGroup } from "react-transition-group";
 
 
 class Login extends Component {

@@ -23,7 +23,7 @@ let store = createStore(kaiApp, applyMiddleware(thunk));
 class Main extends Component {
     transitionNamePicker(location) {
         if (location.includes('/dashboard/')) {
-            return 'SlaAAAAAAAAAA';
+            return 'DashBoard';
         }
         return 'SlideIn';
     }

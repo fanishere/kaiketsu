@@ -12,6 +12,7 @@ import GoalType from './GoalType';
 import CheckIn from './CheckIn';
 import GoalCreate from './GoalCreate';
 import DashboardProgressDisplay from './Progress';
+import GoalCompletion from './GoalCompletion';
 import personal_logo from './media/Monday/Balloon_logo.png';
 import health_logo from './media/Monday/Cactus_logo.png';
 import prof_logo from './media/Monday/Geo_logo.png';
@@ -138,7 +139,6 @@ class DashboardHeader extends Component {
                 <div className="header">
                     <div className="tabs">
                         <div><NavLink to="/dashboard/goals/" activeClassName="selected">Goals</NavLink></div>
-                        <div><NavLink to="/dashboard/progress/" activeClassName="selected">Progress</NavLink></div>
                         <div><NavLink to="/dashboard/create-goal/" activeClassName="selected">Cr</NavLink></div>
 
                     </div>
@@ -159,10 +159,10 @@ class Dashboard extends Component {
                             exact path="/dashboard/goals/"
                             render={(props) => <DashboardGoalDisplay {...props} token={this.props.token}/>}
                             />
-                        <Route exact path="/dashboard/progress/" component={DashboardProgressDisplay}/>
                         <Route exact path="/dashboard/create-goal/" component={GoalType} />
                         <Route exact path="/dashboard/create-goal/:category/" component={GoalCreate} />
                         <Route exact path="/dashboard/goals/:id/" component={GoalDetail} />
+                        <Route exact path="/dashboard/goal-accomplished/:id/" component={GoalCompletion} />
                         <Route path="/dashboard/goals/:id/check-in/" component={CheckIn} />
                 </div>
         );
