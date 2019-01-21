@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
-import { auth } from '../actions';
+import { auth } from '../../actions';
 import "./Login.css";
 import Field from './Field';
 

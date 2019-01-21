@@ -7,12 +7,11 @@ import {
     NavLink,
     Link
 } from "react-router-dom";
-import GoalDetail from './GoalDetail';
+import GoalDetail from './GoalDetail/GoalDetail';
 import GoalType from './GoalType';
 import CheckIn from './CheckIn';
 import GoalCreate from './GoalCreate';
-import DashboardProgressDisplay from './Progress';
-import GoalCompletion from './GoalCompletion';
+import GoalCompletion from './GoalDetail/GoalCompletion';
 import personal_logo from './media/Monday/Balloon_logo.png';
 import health_logo from './media/Monday/Cactus_logo.png';
 import prof_logo from './media/Monday/Geo_logo.png';

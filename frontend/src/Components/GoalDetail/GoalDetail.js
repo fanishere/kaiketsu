@@ -148,10 +148,10 @@ class GoalButton extends Component {
     render() {
         return (
             <div className="GoalButton">
-                <Link to={`/dashboard/goals/${this.props.id}/check-in`}>
-                    <button>Success</button>
-                </Link>
-                
+                {this.props.completedToday
+                    ? <h1>Great Job On Completing Your Goal Today!</h1>
+                    : <button onClick={this.props.showGame}>Success</button>
+                }
                 
             </div>
         );
@@ -167,12 +167,17 @@ class GoalDetail extends Component {
             goalCompletion: null,
             days: null,
             data: null,
+            gameShowing:  false,
+            interaction: Math.random(),
+            today: new Date().toISOString().slice(0,10),
+            completedToday: false
         }
 
     }
 
     constructData() {
         let newData = [];
+        let completedToday = false;
         
         for (let day of this.state.data.days) {
             let dayLine = {
@@ -183,19 +188,25 @@ class GoalDetail extends Component {
             }
             newData.push(dayLine);
         }
+
+        if (this.state.today === this.state.data.days[this.state.data.days.length - 1].created_at) {
+            completedToday = true;
+        }
         
         this.setState({
-            goalCompletion: newData
+            goalCompletion: newData,
+            completedToday: completedToday
         });
         
     }
 
     componentDidMount() {
-        this.loadGoalData()
+        this.loadGoalData();
+        
     }
 
     loadGoalData() {
-        console.log('sdfsdf');
+
         let headers = {
             "Content-Type": "application/json",
             "Authorization": `Token ${this.props.token}`
@@ -206,10 +217,11 @@ class GoalDetail extends Component {
                 headers: headers
             }).then(res => {
             if (res.status === 200) {
+
                 console.log(res);
                 this.setState({
                     data: res.data
-                })
+                });
                 this.constructData();
                 return res.data;
     
@@ -220,42 +232,51 @@ class GoalDetail extends Component {
             });
     }
 
+    showGame() {
+        this.setState({
+            gameShowing: true
+        });
+    }
+
 
     render() {
-        let interaction = Math.random();
-        let completedToday = false;
-        if (this.state.data) {
-            if (this.state.data.days[this.state.data.days.length -1]['created_at']) {
-                completedToday = true;
-            }
-        }
-        if (this.state.data && this.state.data.days.length > secondsToDays(this.state.data.duration)) {
-            return <Redirect to={`/dashboard/goal-accomplished/${this.props.match.params.id}/`} />
-        }
+  
+        // if (this.state.data && this.state.data.days.length > secondsToDays(this.state.data.duration)) {
+        //     return <Redirect to={`/dashboard/goal-accomplished/${this.props.match.params.id}/`} />
+        // }
+
         return (
             <div>
                 <GoalAccomplishment
                     goalCompletion={this.state.goalCompletion}>
                 </GoalAccomplishment>
-                {this.state.data
+                {/* {this.state.data
                     ? <GoalStats
                         days={this.state.data.days.length}
                         duration={this.state.data.duration}
                         ></GoalStats>
-                    : ""}
-                    
-                <GoalButton id={this.props.match.params.id}></GoalButton>
-                {interaction > .50 
-                    ? <ButtonInteraction
-                        goal={this.props.match.params.id}
-                        disabled={completedToday}
-                        reload={this.loadGoalData}
-                        ></ButtonInteraction>
-                    : <CircleDrag
-                        goal={this.props.match.params.id}
-                        disabled={completedToday}
-                        reload={this.loadGoalData}
-                        ></CircleDrag>}
+                    : ""} */}
+
+
+                {this.state.gameShowing
+                    ? this.state.interaction > .50 
+                        ?   <ButtonInteraction
+                                goal={this.props.match.params.id}
+                                disabled={this.state.completedToday}
+                                reload={this.loadGoalData.bind(this)}
+                            ></ButtonInteraction>
+                    :       <CircleDrag
+                                goal={this.props.match.params.id}
+                                disabled={this.state.completedToday}
+                                reload={this.loadGoalData.bind(this)}
+                            ></CircleDrag>
+                    :   <GoalButton
+                            id={this.props.match.params.id}
+                            completedToday={this.state.completedToday}
+                            showGame={this.showGame.bind(this)}>
+                        </GoalButton>
+                }
+                
                 
             </div>
         );
@@ -277,6 +298,8 @@ const mapStateToProps = state => {
     };
     
 }
+
+
 
 
 export default connect(mapStateToProps)(GoalDetail);

@@ -1,5 +1,5 @@
 .welcome {
-    background-image: url('./media/Background/adjusted_one.png');
+    background-image: url('../media/Background/adjusted_one.png');
     width: 100%;
     background-size: cover;
     min-height: 100vh;

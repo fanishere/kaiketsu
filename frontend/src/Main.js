@@ -7,10 +7,10 @@ import {
     Link
 } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
-import Welcome from './Components/Welcome';
-import Register from './Components/Register';
+import Welcome from './Components/Registration/Welcome';
+import Register from './Components/Registration/Register';
 import Loading from './Components/Loading';
-import Login from "./Components/Login";
+import Login from "./Components/Registration/Login";
 import Dashboard from './Components/Dashboard';
 import { Provider } from 'react-redux';
 import thunk from "redux-thunk";
@@ -22,9 +22,9 @@ let store = createStore(kaiApp, applyMiddleware(thunk));
 
 class Main extends Component {
     transitionNamePicker(location) {
-        if (location.includes('/dashboard/')) {
-            return 'DashBoard';
-        }
+        // if (location.includes('/dashboard/')) {
+        //     return 'DashBoard';
+        // }
         return 'SlideIn';
     }
     render() {

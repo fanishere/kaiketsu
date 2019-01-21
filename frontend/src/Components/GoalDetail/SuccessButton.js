@@ -1,41 +1,28 @@
 import React, { Component } from 'react';
+import { tween } from 'popmotion';
+import ReactDOM from 'react-dom';
 import {connect} from "react-redux";
 import './Interactions.css';
 import posed from 'react-pose';
-import { tween, easing } from 'popmotion'; 
 const axios = require('axios');
 
-const DraggableCircle = posed.div({
+
+const SuccessButton = posed.div({
+    pressable: true,
     hoverable: true,
-    draggable: 'x',
-    init: { left: 0 },
-    dragBounds: { left: 0, right: window.innerWidth - 85 },
-    dragEnd: {
-        transition: ({ position, goalComplete }) =>
-            tween({
-                from: position,
-                to: window.innerWidth - 85,
-                duration: 1000,
-                ease: easing.circIn,
-            })
-                
-    }
+    init: { scale: 1 },
+    press: { scale: 0.8 },
+    hover: { scale: 1.2 }
 });
 
-const CircleSlot = posed.div({
-    init: { right: 0 },
-});
-
-class CircleDrag extends Component {
+class ButtonInteraction extends Component {
     constructor(props) {
         super(props);
         this.state = {
             buttonText: 'Tap Me',
-            disabled: false,
-            isVisible: true,
-            ballPosition: 0
+            disabled: false
         }
-        this.goalComplete = this.goalComplete.bind(this);
+        this.goalSuccess = this.goalSuccess.bind(this);
     }
 
     goalComplete() {
@@ -69,34 +56,17 @@ class CircleDrag extends Component {
         this.props.reload();
     }
 
-    updateBallPosition(x) {
-        this.setState({
-            ballPosition: x
-        });
-        if (x === window.innerWidth - 85) {
-            this.goalComplete();
-        }
-        
-    }
-
     render() {
-        
         return (
-            <div className="dragInteraction">
-                <h1>Drag Me</h1>
-                
-                <DraggableCircle
-                    position={this.state.ballPosition}
-                    className="ball"
-                    onValueChange={{ x: x => this.updateBallPosition(x) }}
-                    goalComplete={this.goalComplete}
-                    />
-                <CircleSlot className="ballSlot" />
-            </div>
-            
+            <SuccessButton
+                className="SuccessButton"
+                onClick={this.goalComplete.bind(this)}>
+                    {this.state.buttonText}
+            </SuccessButton>
         );
     }
 }
+
 
 const mapStateToProps = state => {
     let errors = [];
@@ -114,4 +84,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps)(CircleDrag);
+export default connect(mapStateToProps)(ButtonInteraction);

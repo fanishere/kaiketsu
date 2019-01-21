@@ -6,7 +6,7 @@ import Field from './Field';
 import ErrorList from './Errors';
 import './Register.css';
 import {connect} from "react-redux";
-import {auth} from '../actions';
+import {auth} from '../../actions';
 
 
 class Register extends Component {
