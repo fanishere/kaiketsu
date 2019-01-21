@@ -15,6 +15,10 @@ import personal_logo from './media/Monday/Balloon_logo.png';
 import health_logo from './media/Monday/Cactus_logo.png';
 import prof_logo from './media/Monday/Geo_logo.png';
 import plus_logo from './media/Logo/plus-icon-white.png';
+import trophy_icon from './media/Icons/trophy-icon.png';
+import star_icon from './media/Icons/star-icon.png'
+import dashboard_icon from './media/Icons/dashboard-icon.png'
+
 const axios = require('axios');
 
 class GoalBlock extends Component {
@@ -123,17 +127,54 @@ class DashboardGoalDisplay extends Component {
 }
 function AddGoalButton() {
     return (
-        <div className="AddGoalButton">
-            <Link to="/dashboard/create-goal/">
-                <div className="plusIcon">
-                    <img src={plus_logo}></img>
-                </div>
+        <div className="buttonContainer">
+            <div className="AddGoalButton">
+                <Link to="/dashboard/create-goal/">
+                    <div id="plusIcon">
+                        <img src={plus_logo}></img>
+                    </div>
+                </Link>
+                <Link to="/dashboard/create-goal/">
+                    {/* need to create an acccurate path */}
+                    <div id="trophyIcon">
+                        <img src={trophy_icon}></img>
+                    </div>
+                </Link>
+                <Link to="/dashboard/create-goal/">
+                    {/* need to create an acccurate path */}
+                    <div id="starIcon">
+                        <img src={star_icon}></img>
+                    </div>
+                </Link>
+                <Link to="/dashboard/create-goal/">
+                    {/* need to create an acccurate path */}
+                    <div id="dashboardIcon">
+                        <img src={dashboard_icon}></img>
+                    </div>
+                </Link>
 
-            </Link>
+            </div >
+        </div>
 
-        </div >
     );
 }
+
+// function AddGoalButton() {
+//     return (
+//         <div className="AddTrophyButton">
+//             <Link to="/dashboard/create-goal/">
+//                 {/* need to create an acccurate path */}
+//                 <div className="trophyIcon">
+//                     <img src={trophy_icon}></img>
+//                 </div>
+//             </Link>
+//         </div>
+//     )
+// }
+
+
+
+
 
 
 class DashboardHeader extends Component {
