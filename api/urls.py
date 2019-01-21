@@ -15,6 +15,7 @@ urlpatterns = [
     path('login/',
          views.LoginAPIView.as_view(),
          name='user-login'),
+    path('trophy-goals/', views.ArchivedGoalListView.as_view(), name='trophy-goal-list'),
     path('goals/', views.GoalListView.as_view(), name='goal-list'),
     path('goals/days/',
          views.GetUserGoalAccomplishment.as_view(),
