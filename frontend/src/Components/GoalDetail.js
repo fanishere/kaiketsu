@@ -117,10 +117,6 @@ class GoalDays extends Component {
                             ]}
                         />
                             
-                    
-
-          
-                    
                 </div>
             </div>
         );

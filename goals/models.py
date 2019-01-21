@@ -81,6 +81,12 @@ class GoalDay(DateStamp):
     class Meta:
         unique_together = ('created_at', 'goal')
 
+    def save(self, *args, **kwargs):
+        super(GoalDay, self).save(*args, **kwargs)
+        if self.goal.duration.days == len(self.goal.days.all()):
+            self.goal.active = False
+            self.goal.save()
+
 
 class TimePie(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
