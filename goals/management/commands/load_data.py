@@ -25,7 +25,7 @@ def user1():
         created_at=goal_date
     )
 
-    for i in range(29):
+    for i in range(28):
         goal_met = True
         if date.day in [2, 5, 10, 20, 1, 12, 7]:
             goal_met = False
