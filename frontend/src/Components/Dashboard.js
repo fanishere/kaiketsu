@@ -195,7 +195,7 @@ class DashboardHeader extends Component {
                     <NavLink to="/dashboard/achievements/" activeClassName="selected">
                         {/* need to create an acccurate path */}
                         <div className="trophyIcon">
-                            <img src={trophy_icon} alt="achievements button"></img>
+                            <img src={star_icon} alt="achievements button"></img>
                         </div>
                     </NavLink>
                     <NavLink to="/dashboard/goals/" activeClassName="selected">

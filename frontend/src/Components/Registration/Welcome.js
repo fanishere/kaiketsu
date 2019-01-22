@@ -8,6 +8,13 @@ import {
 } from "react-router-dom";
 
 class Welcome extends Component {
+
+    getRandomPhrase() {
+        let phraseNumber = Math.floor(Math.random() * (this.state.phrases.length));
+        return this.state.phrases[phraseNumber];
+    }
+
+
     render() {
         return (
                 <div className="welcome">

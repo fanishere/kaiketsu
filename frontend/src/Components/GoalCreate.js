@@ -90,7 +90,7 @@ class GoalCreate extends Component {
                     </div>
                     <button>Set Goal</button>
                 </form>
-                <CategoryImage category={this.props.match.category} ></CategoryImage>
+                <CategoryImage category={this.props.match.params.category} ></CategoryImage>
             </div>
         )
     }
