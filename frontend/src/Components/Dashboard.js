@@ -13,13 +13,13 @@ import CheckIn from './CheckIn';
 import GoalCreate from './GoalCreate';
 import Trophy from './Trophy';
 import GoalCompletion from './GoalDetail/GoalCompletion';
-import personal_logo from './media/Monday/Balloon_logo.png';
-import health_logo from './media/Monday/Cactus_logo.png';
-import prof_logo from './media/Monday/Geo_logo.png';
-import plus_logo from './media/Icons/plus.png';
-import trophy_icon from './media/Icons/trophy-icon-final-1.png';
-import star_icon from './media/Icons/star.png'
-import dashboard_icon from './media/Icons/dashboard-icon-final-1.png'
+import personal_logo from './media/Final/balloon-final-100.png';
+import health_logo from './media/Final/caktus-final-100.png';
+import prof_logo from './media/Final/mountain-final-100.png';
+import plus_logo from './media/Final/plus-icon-final-100.png';
+import trophy_icon from './media/Final/trophy-final-100.png';
+import dashboard_icon from './media/Final/dashboard-final-100.png';
+
 
 const axios = require('axios');
 
@@ -147,9 +147,9 @@ function AddGoalButton() {
                 </Link>
                 <Link to="/dashboard/create-goal/">
                     {/* need to create an acccurate path */}
-                    <div className="starIcon">
+                    {/* <div className="starIcon">
                         <img src={star_icon}></img>
-                    </div>
+                    </div> */}
                 </Link>
                 <Link to="/dashboard/create-goal/">
                     {/* need to create an acccurate path */}
