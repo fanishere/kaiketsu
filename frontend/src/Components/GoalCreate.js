@@ -5,9 +5,6 @@ import {
     Redirect
 } from "react-router-dom";
 import CategoryImage from './CategoryImage';
-import health_logo from './media/Monday/Health_transparent.png';
-import personal_logo from './media/Monday/Personal_transparent.png';
-import professional_logo from './media/Monday/Professional_transparent.png';
 
 const axios = require('axios');
 
@@ -17,6 +14,8 @@ class GoalCreate extends Component {
         this.state = {
             data: null,
             toGoalDetail: false,
+            resolution: null,
+            reason: null
         }
         this.successMessage = this.successMessage.bind(this);
     }
@@ -34,9 +33,9 @@ class GoalCreate extends Component {
             url: `${process.env.REACT_APP_API_URL}/api/goals/`,
                 method: 'POST',
                 data: {
-                    "resolution": formData.get('resolution'),
-                    "reason": formData.get('reason'),
-                    "duration": 'ONE MONTH',
+                    "resolution": this.state.resolution,
+                    "reason": this.state.reason,
+                    "duration": formData.get('duration'),
                     "category": this.props.match.params.category
                 },
                 headers: headers
@@ -62,6 +61,21 @@ class GoalCreate extends Component {
         
     }
 
+    handleFormChange(event) {
+        if (event.target.attributes['data-field'].value === 'resolution') {
+            this.setState({
+                resolution: event.target.innerText
+            })
+        }
+        if (event.target.attributes['data-field'].value === 'reason') {
+            this.setState({
+                reason: event.target.innerText
+            })
+        }
+        
+        
+    }
+
 
     render() {
         if (this.state.toGoalDetail === true) {
@@ -73,18 +87,30 @@ class GoalCreate extends Component {
                 <form onSubmit={this.createGoal.bind(this)}>
                     <div className="formBox">
                         <span>
-                            <p>I want to &nbsp;<input htmlFor="resolution" type="text" name="resolution"></input> </p>
+                            <p>I want to &nbsp;</p>
+                            <div
+                                onInput={this.handleFormChange.bind(this)}
+                                className="resolution editableDiv"
+                                contentEditable="true"
+                                data-field="resolution"
+                            ></div>
                             <p>every day for &nbsp;
                                 <select htmlFor="duration" name="duration">
-                                    <option value="ONE MONTH">ONE MONTH</option>
-                                    <option value="THREE MONTHS">THREE MONTHS</option>
-                                    <option value="ONE YEAR">ONE YEAR</option>
+                                    <option value="10 Days">10 Days</option>
+                                    <option value="30 Days">30 Days</option>
+                                    <option value="60 Days">60 Days</option>
+                                    <option value="90 Days">90 Days</option>
                                 </select>
 
                             </p>
-                            <p>because &nbsp; 
-                            <input htmlFor="reason" type="text" name="reason"></input>.
-                            </p>
+                            <p>because &nbsp;</p>
+                            <div
+                                onInput={this.handleFormChange.bind(this)}
+                                className="resolution editableDiv"
+                                contentEditable="true"
+                                data-field="reason"
+                            ></div>
+                            
 
                         </span>
                     </div>

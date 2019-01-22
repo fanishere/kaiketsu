@@ -133,6 +133,9 @@ class GoalStats extends Component {
 
     getPercentCompleted() {
         let completed = 0;
+        if (this.props.days.length === 0) {
+            return '0 %';
+        }
         for (let day of this.props.days) {
             if (day.goal_met) {
                 completed ++
@@ -151,7 +154,7 @@ class GoalStats extends Component {
                 </div>
 
                 <div className="percent">
-                    <h2>Completed</h2>
+                    <h2>Percent Completed</h2>
                     <h2>{this.getPercentCompleted()}</h2>
                 </div>
                 
