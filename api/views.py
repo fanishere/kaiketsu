@@ -65,7 +65,6 @@ class GoalListView(generics.ListCreateAPIView):
 
         serializer = self.get_serializer(data=request.data)
         duration_response = serializer.initial_data['duration']
-
         serializer.initial_data['duration'] = durations[duration_response]
 
         serializer.is_valid(raise_exception=True)

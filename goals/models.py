@@ -16,18 +16,8 @@ class User(AbstractUser):
         return days
 
 
-class Timestamp(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True, null=True)
-    updated_at = models.DateTimeField(auto_now=True, null=True)
-
-    class Meta:
-        abstract = True
-
-
 class DateStamp(models.Model):
-    # add back auto_now_add after testing unique constraints
-    created_at = models.DateField(auto_now_add=False, null=True)
-    created_time = models.DateTimeField(auto_now_add=True, null=True)
+    created_at = models.DateField(auto_now_add=True, null=True)
 
     class Meta:
         abstract = True
