@@ -20,6 +20,7 @@ import plus_logo from './media/Final/plus-icon-final-100.png';
 import trophy_icon from './media/Final/trophy-final-100.png';
 import dashboard_icon from './media/Final/dashboard-final-100.png';
 
+
 const axios = require('axios');
 
 class GoalBlock extends Component {
@@ -194,7 +195,7 @@ class DashboardHeader extends Component {
                     <NavLink to="/dashboard/achievements/" activeClassName="selected">
                         {/* need to create an acccurate path */}
                         <div className="trophyIcon">
-                            <img src={trophy_icon} alt="achievements button"></img>
+                            <img src={star_icon} alt="achievements button"></img>
                         </div>
                     </NavLink>
                     <NavLink to="/dashboard/goals/" activeClassName="selected">

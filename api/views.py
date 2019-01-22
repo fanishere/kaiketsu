@@ -21,7 +21,10 @@ def api_root(request, format=None):
     return Response({
         'users': reverse('user-list', request=request, format=format),
         'goals': reverse('goal-list', request=request, format=format),
-        'trophy-goals': reverse('trophy-goal-list', request=request, format=format),
+        'trophy-goals': reverse(
+            'trophy-goal-list',
+            request=request,
+            format=format),
     })
 
 
@@ -55,18 +58,22 @@ class GoalListView(generics.ListCreateAPIView):
 
     def create(self, request, *args, **kwargs):
         durations = {}
-        durations['ONE MONTH'] = timedelta(days=30)
-        durations['THREE MONTHS'] = timedelta(days=60)
+        durations['10 Days'] = timedelta(days=10)
+        durations['30 Days'] = timedelta(days=30)
+        durations['60 Days'] = timedelta(days=60)
+        durations['90 Days'] = timedelta(days=90)
 
         serializer = self.get_serializer(data=request.data)
         duration_response = serializer.initial_data['duration']
-
         serializer.initial_data['duration'] = durations[duration_response]
 
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        return Response(
+            serializer.data,
+            status=status.HTTP_201_CREATED,
+            headers=headers)
 
 
 class ArchivedGoalListView(generics.ListAPIView):

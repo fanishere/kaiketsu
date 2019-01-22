@@ -7,6 +7,7 @@ from datetime import date
 
 
 class User(AbstractUser):
+    first_name = models.CharField(max_length=50, null=True)
     USERNAME_FIELD = 'username'
 
     def get_days(self):
@@ -15,18 +16,8 @@ class User(AbstractUser):
         return days
 
 
-class Timestamp(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True, null=True)
-    updated_at = models.DateTimeField(auto_now=True, null=True)
-
-    class Meta:
-        abstract = True
-
-
 class DateStamp(models.Model):
-    # add back auto_now_add after testing unique constraints
-    created_at = models.DateField(auto_now_add=False, null=True)
-    created_time = models.DateTimeField(auto_now_add=True, null=True)
+    created_at = models.DateField(auto_now_add=True, null=True)
 
     class Meta:
         abstract = True
@@ -37,8 +28,10 @@ class Goal(DateStamp):
     reason = models.TextField(null=True)
 
     DURATION_CHOICES = (
-        (timedelta(days=30), 'ONE MONTH'),
-        (timedelta(days=90), 'THREE MONTHS'),
+        (timedelta(days=10), '10 Days'),
+        (timedelta(days=30), '30 Days'),
+        (timedelta(days=60), '60 Days'),
+        (timedelta(days=90), '90 Days'),
     )
     duration = models.DurationField(choices=DURATION_CHOICES, null=True)
 

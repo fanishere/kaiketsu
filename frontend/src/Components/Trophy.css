@@ -22,3 +22,14 @@
 .trophyData {
     width: 70%;
 }
+.trophyPhrase {
+    text-align: center;
+}
+.Trophy {
+    padding: 1px;
+}
+.Trophy h1 {
+    text-align: center;
+    width: 90%;
+    margin: 40px auto;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Loading.css';
 import logo from './media/Logo/logo-cropped-1.png';
-import { connect } from "react-redux";
+
 import {
     Redirect
 } from "react-router-dom";

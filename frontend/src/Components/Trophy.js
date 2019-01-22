@@ -12,9 +12,15 @@ class TrophyItem extends Component {
         super(props);
         this.state = {
             phrases: [
-                'sdfsdf',
-                'mpopojrgpoejr',
-                'sdfsdf'
+                'Your ambition and dedication are very impressive.',
+                'Your perseverance will allow you to accomplish so many things.',
+                'Nothing is impossible for the willing.',
+                'Success lies in the hands of those who work for it.',
+                'Your diligence is what will set you apart.',
+                'There is endless potential within you.',
+                'Your ability to conquer your challenges is limitless.',
+                'You are unstoppable.'
+
             ]
         }
     }
@@ -33,7 +39,7 @@ class TrophyItem extends Component {
                 <div className="trophyData">
                     <p>Congratulations! In your journey to &nbsp;
                     {this.props.resolution.toLowerCase()} for {secondsToDays(this.props.duration)} days.</p>
-                    <p>{this.getRandomPhrase()}</p>
+                    <p className="trophyPhrase">{this.getRandomPhrase()}</p>
                 </div>
             </div>
         );
@@ -92,7 +98,9 @@ class Trophy extends Component {
         }
         return (
             <div className="Trophy">
-                {trophyItems}
+                {trophyItems.length > 0
+                    ? trophyItems
+                    : <h1>You're almost there! Just keep at it!</h1>}
             </div>
         );
     }

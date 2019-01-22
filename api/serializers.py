@@ -70,8 +70,10 @@ class GoalSerializer(serializers.ModelSerializer):
     goal_detail_link = serializers.HyperlinkedIdentityField(
         view_name='goal-detail')
     DURATION_CHOICES = (
-        (timedelta(days=30), 'ONE MONTH'),
-        (timedelta(days=90), 'THREE MONTHS'),
+        (timedelta(days=10), '10 Days'),
+        (timedelta(days=30), '30 Days'),
+        (timedelta(days=60), '60 Days'),
+        (timedelta(days=90), '90 Days'),
     )
     duration = serializers.ChoiceField(choices=DURATION_CHOICES)
     days = serializers.SerializerMethodField()
