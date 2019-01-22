@@ -3,9 +3,9 @@ import {
     Link
 } from "react-router-dom";
 import './GoalType.css';
-import personal_logo from './media/icon-white-3_720.png';
-import health_logo from './media/icon-white-1_720.png';
-import prof_logo from './media/icon-white-2.png';
+import personal_logo from './media/Final/white-balloon-final.png';
+import health_logo from './media/Final/white-cacktus-final.png';
+import prof_logo from './media/Final/white-mountain-final.png';
 
 let height = window.innerHeight-70;
 
@@ -23,13 +23,14 @@ class GoalType extends Component {
 
         return (
             <div className="GoalType">
-                
+
                 <Link to="/dashboard/create-goal/HEALTH/">
                     <div
                         className="goal-type-selection health"
                         style={{ height: (height/3) - 20}}>
                        <img src={health_logo} alt="health"></img>
                        <h2>Health + Wellness</h2>
+
                     </div>
                 </Link>
 
@@ -43,11 +44,13 @@ class GoalType extends Component {
                 </Link>
 
                 <Link to="/dashboard/create-goal/PROFESSIONAL/">
+
                     <div
                         className="goal-type-selection professional"
                         style={{ height: (height/3) - 20}}>
                     <img src={prof_logo} alt="professional"></img>
                     <h2>Professional</h2>
+
                     </div>
                 </Link>
 

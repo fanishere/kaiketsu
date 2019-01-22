@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import './Trophy.css';
-import personal_logo from './media/Monday/Balloon_logo.png';
-import health_logo from './media/Monday/Cactus_logo.png';
-import prof_logo from './media/Monday/Geo_logo.png';
+import personal_logo from './media/Final/balloon-final-100.png';
+import health_logo from './media/Final/caktus-final-100.png';
+import prof_logo from './media/Final/mountain-final-100.png';
 const axios = require('axios');
 
 

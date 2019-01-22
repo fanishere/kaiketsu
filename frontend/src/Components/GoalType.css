@@ -59,11 +59,11 @@
     top: -16px;
 }
 .goal-type-selection.health {
-    background-image: url("./media/goal_card_2.png");
+    background-image: url("./media/Final/goal-health-final.png");
 }
 .goal-type-selection.professional {
-    background-image: url("./media/goal_card_1.png");
+    background-image: url("./media/Final/goal-prof-final.png");
 }
 .goal-type-selection.personal {
-    background-image: url("./media/goal_card_3.png");
+    background-image: url("./media/Final/goal-personal-final.png");
 }

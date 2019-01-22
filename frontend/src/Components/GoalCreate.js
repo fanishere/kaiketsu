@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import './GoalCreate.css';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import {
     Redirect
 } from "react-router-dom";
+import health_logo from './media/Final/health-sketch-final.png';
+import personal_logo from './media/Final/balloon-sketch-final.png';
+import professional_logo from './media/Final/mountain-sketch-final.png';
 import CategoryImage from './CategoryImage';
+
 
 const axios = require('axios');
 
@@ -26,7 +30,7 @@ class GoalCreate extends Component {
             "Content-Type": "application/json",
             "Authorization": `Token ${this.props.token}`
         };
-        
+
         let formData = new FormData(event.target);
 
         return axios({
@@ -51,14 +55,21 @@ class GoalCreate extends Component {
             }).catch(error => {
                 console.log(error);
             });
+            this.successMessage();
+
+
+
+        }).catch(error => {
+            console.log(error);
+        });
     }
 
     successMessage() {
         console.log("successful!");
         this.setState({
-           toGoalDetail: true 
+            toGoalDetail: true
         });
-        
+
     }
 
     handleFormChange(event) {
@@ -111,12 +122,12 @@ class GoalCreate extends Component {
                                 data-field="reason"
                             ><span></span></div>
                             
-
                         </span>
                     </div>
                     <button>Set Goal</button>
                 </form>
                 <CategoryImage category={this.props.match.params.category} ></CategoryImage>
+
             </div>
         )
     }
@@ -126,7 +137,7 @@ const mapStateToProps = state => {
     let errors = [];
     if (state.auth.errors) {
         errors = Object.keys(state.auth.errors).map(field => {
-            return {field, message:state.auth.errors[field]};
+            return { field, message: state.auth.errors[field] };
         });
     }
     return {
@@ -134,7 +145,7 @@ const mapStateToProps = state => {
         isAuthenticated: state.auth.isAuthenticated,
         token: localStorage.getItem("token"),
     };
-    
+
 }
 
 export default connect(mapStateToProps)(GoalCreate);

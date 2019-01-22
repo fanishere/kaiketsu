@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Loading.css';
-import {connect} from "react-redux";
+import logo from './media/Logo/logo-cropped-1.png';
+
 import {
     Redirect
 } from "react-router-dom";
@@ -22,21 +23,21 @@ class CheckIn extends Component {
         };
         return axios({
             url: `${process.env.REACT_APP_API_URL}/api/goals/${this.props.match.params.id}/days/`,
-                method: 'POST',
-                data: {
-                    "goal_met": true,
-                },
-                headers: headers
-            }).then(res => {
-                console.log(res);
-                this.setState({
-                    data: res.data
-                });
-                this.successMessage();
-    
-            }).catch(error => {
-                console.log(error);
+            method: 'POST',
+            data: {
+                "goal_met": true,
+            },
+            headers: headers
+        }).then(res => {
+            console.log(res);
+            this.setState({
+                data: res.data
             });
+            this.successMessage();
+
+        }).catch(error => {
+            console.log(error);
+        });
     }
 
     successMessage() {
@@ -45,7 +46,7 @@ class CheckIn extends Component {
             toDashboard: true
         });
 
-        
+
     }
 
 
@@ -67,7 +68,7 @@ const mapStateToProps = state => {
     let errors = [];
     if (state.auth.errors) {
         errors = Object.keys(state.auth.errors).map(field => {
-            return {field, message:state.auth.errors[field]};
+            return { field, message: state.auth.errors[field] };
         });
     }
     return {
@@ -75,7 +76,7 @@ const mapStateToProps = state => {
         isAuthenticated: state.auth.isAuthenticated,
         token: localStorage.getItem("token"),
     };
-    
+
 }
 
 export default connect(mapStateToProps)(CheckIn);
