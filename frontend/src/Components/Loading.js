@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Loading.css';
-import logo from './media/Logo/logo-1.png';
+import logo from './media/Final/logo-final-100.png';
 
 class Loading extends Component {
     render() {

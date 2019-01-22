@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './GoalCreate.css';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import {
     Redirect
 } from "react-router-dom";
-import health_logo from './media/Monday/Health_transparent.png';
-import personal_logo from './media/Monday/Personal_transparent.png';
-import professional_logo from './media/Monday/Professional_transparent.png';
+import health_logo from './media/Final/health-sketch-final.png';
+import personal_logo from './media/Final/balloon-sketch-final.png';
+import professional_logo from './media/Final/mountain-sketch-final.png';
 
 const axios = require('axios');
 
@@ -26,39 +26,39 @@ class GoalCreate extends Component {
             "Content-Type": "application/json",
             "Authorization": `Token ${this.props.token}`
         };
-        
+
         let formData = new FormData(event.target);
 
         return axios({
             url: `${process.env.REACT_APP_API_URL}/api/goals/`,
-                method: 'POST',
-                data: {
-                    "resolution": formData.get('resolution'),
-                    "reason": formData.get('reason'),
-                    "duration": 'ONE MONTH',
-                    "category": this.props.match.params.category
-                },
-                headers: headers
-            }).then(res => {
-                console.log(res);
-                this.setState({
-                    data: res.data
-                });
-                this.successMessage();
-            
-                
-    
-            }).catch(error => {
-                console.log(error);
+            method: 'POST',
+            data: {
+                "resolution": formData.get('resolution'),
+                "reason": formData.get('reason'),
+                "duration": 'ONE MONTH',
+                "category": this.props.match.params.category
+            },
+            headers: headers
+        }).then(res => {
+            console.log(res);
+            this.setState({
+                data: res.data
             });
+            this.successMessage();
+
+
+
+        }).catch(error => {
+            console.log(error);
+        });
     }
 
     successMessage() {
         console.log("successful!");
         this.setState({
-           toGoalDetail: true 
+            toGoalDetail: true
         });
-        
+
     }
 
 
@@ -81,7 +81,7 @@ class GoalCreate extends Component {
                                 </select>
 
                             </p>
-                            <p>because &nbsp; 
+                            <p>because &nbsp;
                             <input htmlFor="reason" type="text" name="reason"></input>.
                             </p>
 
@@ -92,12 +92,12 @@ class GoalCreate extends Component {
                 <div className="categoryImage">
                     {this.props.match.params.category === 'HEALTH'
                         ? <img src={health_logo} alt="health"></img>
-                        : this.props.match.params.category === 'PERSONAL' 
+                        : this.props.match.params.category === 'PERSONAL'
                             ? <div className="personal"><img src={personal_logo} alt="personal"></img>
                                 <img src={personal_logo} alt="personal"></img>
                                 <img src={personal_logo} alt="personal"></img></div>
                             : <img src={professional_logo} alt="professional"></img>}
-                    
+
                 </div>
             </div>
         )
@@ -108,7 +108,7 @@ const mapStateToProps = state => {
     let errors = [];
     if (state.auth.errors) {
         errors = Object.keys(state.auth.errors).map(field => {
-            return {field, message:state.auth.errors[field]};
+            return { field, message: state.auth.errors[field] };
         });
     }
     return {
@@ -116,7 +116,7 @@ const mapStateToProps = state => {
         isAuthenticated: state.auth.isAuthenticated,
         token: localStorage.getItem("token"),
     };
-    
+
 }
 
 export default connect(mapStateToProps)(GoalCreate);
