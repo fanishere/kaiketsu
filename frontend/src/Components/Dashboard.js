@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Dashboard.css';
 import './Transitions.css';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import {
     Route,
     NavLink,
@@ -17,9 +17,9 @@ import personal_logo from './media/Monday/Balloon_logo.png';
 import health_logo from './media/Monday/Cactus_logo.png';
 import prof_logo from './media/Monday/Geo_logo.png';
 import plus_logo from './media/Icons/plus.png';
-import trophy_icon from './media/Icons/trophy.png';
+import trophy_icon from './media/Icons/trophy-icon-final-1.png';
 import star_icon from './media/Icons/star.png'
-import dashboard_icon from './media/Icons/dashboard.png'
+import dashboard_icon from './media/Icons/dashboard-icon-final-1.png'
 
 const axios = require('axios');
 
@@ -183,7 +183,7 @@ function AddGoalButton() {
 
 class DashboardHeader extends Component {
     render() {
-        
+
         return (
             <div className="header">
                 <div className="tabs">
@@ -210,27 +210,27 @@ class DashboardHeader extends Component {
                 {/* <AddGoalButton></AddGoalButton> */}
             </div>
         );
-        
+
     }
 }
 
 class Dashboard extends Component {
     render() {
         return (
-                <div className="Dashboard">
+            <div className="Dashboard">
 
-                    <DashboardHeader goBack={this.props.history.goBack} url={this.props.location.pathname} token={this.props.token}></DashboardHeader>
-                        <Route
-                            exact path="/dashboard/goals/"
-                            render={(props) => <DashboardGoalDisplay {...props} token={this.props.token}/>}
-                            />
-                        <Route exact path="/dashboard/achievements/" component={Trophy} />
-                        <Route exact path="/dashboard/create-goal/" component={GoalType} />
-                        <Route exact path="/dashboard/create-goal/:category/" component={GoalCreate} />
-                        <Route exact path="/dashboard/goals/:id/" component={GoalDetail} />
-                        <Route exact path="/dashboard/goal-accomplished/:id/" component={GoalCompletion} />
-                        <Route path="/dashboard/goals/:id/check-in/" component={CheckIn} />
-                </div>
+                <DashboardHeader goBack={this.props.history.goBack} url={this.props.location.pathname} token={this.props.token}></DashboardHeader>
+                <Route
+                    exact path="/dashboard/goals/"
+                    render={(props) => <DashboardGoalDisplay {...props} token={this.props.token} />}
+                />
+                <Route exact path="/dashboard/achievements/" component={Trophy} />
+                <Route exact path="/dashboard/create-goal/" component={GoalType} />
+                <Route exact path="/dashboard/create-goal/:category/" component={GoalCreate} />
+                <Route exact path="/dashboard/goals/:id/" component={GoalDetail} />
+                <Route exact path="/dashboard/goal-accomplished/:id/" component={GoalCompletion} />
+                <Route path="/dashboard/goals/:id/check-in/" component={CheckIn} />
+            </div>
         );
     }
 }

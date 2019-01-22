@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import './Trophy.css';
 import personal_logo from './media/Monday/Balloon_logo.png';
 import health_logo from './media/Monday/Cactus_logo.png';
@@ -12,9 +12,15 @@ class TrophyItem extends Component {
         super(props);
         this.state = {
             phrases: [
-                'sdfsdf',
-                'mpopojrgpoejr',
-                'sdfsdf'
+                'Your ambition and dedication are very impressive.',
+                'Your perseverance will allow you to accomplish so many things.',
+                'Nothing is impossible for the willing.',
+                'Success lies in the hands of those who work for it.',
+                'Your diligence is what will set you apart.',
+                'There is endless potential within you.',
+                'Your ability to conquer your challenges is limitless.',
+                'You are unstoppable.'
+
             ]
         }
     }
