@@ -1,0 +1,24 @@
+.TrophyItem {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+}
+.TrophyItem:after {
+    content: '';
+    position: relative;
+    width: 75%;
+    height: 2px;
+    background-color: #ff7e00;
+    bottom: 0;
+    margin: 0 auto;
+}
+.trophyImage {
+    width: 30%;
+}
+.TrophyItem img {
+    width: 100%;
+}
+.trophyData {
+    width: 70%;
+}
