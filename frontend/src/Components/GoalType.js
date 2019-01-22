@@ -7,6 +7,7 @@ import personal_logo from './media/icon-white-3_720.png';
 import health_logo from './media/icon-white-1_720.png';
 import prof_logo from './media/icon-white-2.png';
 
+let height = window.innerHeight-70;
 
 class GoalType extends Component {
     constructor(props) {
@@ -24,21 +25,27 @@ class GoalType extends Component {
             <div className="GoalType">
                 
                 <Link to="/dashboard/create-goal/HEALTH/">
-                    <div className="goal-type-selection health">
+                    <div
+                        className="goal-type-selection health"
+                        style={{ height: (height/3) - 20}}>
                        <img src={health_logo} alt="health"></img>
                        <h2>Health + Wellness</h2>
                     </div>
                 </Link>
 
                 <Link to="/dashboard/create-goal/PERSONAL/">
-                    <div className="goal-type-selection personal">
+                    <div
+                        className="goal-type-selection personal"
+                        style={{ height: (height/3) - 20}}>
                     <img src={personal_logo} alt="personal"></img>
                     <h2>Personal</h2>
                     </div>
                 </Link>
 
                 <Link to="/dashboard/create-goal/PROFESSIONAL/">
-                    <div className="goal-type-selection professional">
+                    <div
+                        className="goal-type-selection professional"
+                        style={{ height: (height/3) - 20}}>
                     <img src={prof_logo} alt="professional"></img>
                     <h2>Professional</h2>
                     </div>

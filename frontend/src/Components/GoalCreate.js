@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {
     Redirect
 } from "react-router-dom";
+import CategoryImage from './CategoryImage';
 import health_logo from './media/Monday/Health_transparent.png';
 import personal_logo from './media/Monday/Personal_transparent.png';
 import professional_logo from './media/Monday/Professional_transparent.png';
@@ -89,16 +90,7 @@ class GoalCreate extends Component {
                     </div>
                     <button>Set Goal</button>
                 </form>
-                <div className="categoryImage">
-                    {this.props.match.params.category === 'HEALTH'
-                        ? <img src={health_logo} alt="health"></img>
-                        : this.props.match.params.category === 'PERSONAL' 
-                            ? <div className="personal"><img src={personal_logo} alt="personal"></img>
-                                <img src={personal_logo} alt="personal"></img>
-                                <img src={personal_logo} alt="personal"></img></div>
-                            : <img src={professional_logo} alt="professional"></img>}
-                    
-                </div>
+                <CategoryImage category={this.props.match.category} ></CategoryImage>
             </div>
         )
     }

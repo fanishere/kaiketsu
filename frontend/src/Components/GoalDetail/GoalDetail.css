@@ -1,18 +1,73 @@
-.goalCompletion {
-    margin: 20px auto;
+.GoalDetail {
+    padding: 1px;
 }
-.goalCompletion .VictoryContainer{
-    margin-bottom: 10px;
+.GoalDetail h1{
+    text-align: center;
+}
+.goalCompletion {
+    position: relative;
+    z-index: 2;
+    margin: 20px auto;
+    background: #fff;
 }
 .goalCompletionGraph {
-
     margin-left: -2px;
 }
 .goalDays h2{
     text-align: center;
     font-size: 5vw;
 }
+
+.GoalStats {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    position: relative;
+    z-index: 2;
+}
+
+.GoalStats div {
+    width: 50%;
+    text-align: center
+}
+.GoalButton {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
 .GoalButton button {
-    margin: 0 auto;
-    display: block;
+    width: 50%;
+    border: none;
+    padding: 1rem 2rem;
+    margin-top: 20px;
+    text-decoration: none;
+    background: #e37f8b;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 250ms ease-in-out,
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.GoalButton button:hover,
+.GoalButton button:focus {
+    background:#7968c2 ;
+}
+ 
+.GoalButton button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+ 
+.GoalButton button:active {
+    transform: scale(0.99);
+}
+
+.GoalButton h2 {
+    width: 80%;
+    margin: 30px auto 0 auto;
+    text-align: center;
 }

@@ -60,7 +60,7 @@ class Login extends Component {
                             field="password"
                             label="Password"
                         ></Field>
-                        <button type="submit" value="submit">Login ></button>
+                        <button type="submit" value="submit">Login</button>
                         <p>
                         {this.props.errors[0]
                             ? this.props.errors[0].message

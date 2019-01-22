@@ -86,7 +86,7 @@ class CircleDrag extends Component {
         
         return (
             <div className="dragInteraction">
-                <h1>Drag Me</h1>
+                <h2>Drag Me</h2>
                 
                 <DraggableCircle
                     position={this.state.ballPosition}

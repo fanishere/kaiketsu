@@ -33,7 +33,7 @@ class TrophyItem extends Component {
                 <div className="trophyData">
                     <p>Congratulations! In your journey to &nbsp;
                     {this.props.resolution.toLowerCase()} for {secondsToDays(this.props.duration)} days.</p>
-                    <p>{this.getRandomPhrase()}</p>
+                    <p className="trophyPhrase">{this.getRandomPhrase()}</p>
                 </div>
             </div>
         );
@@ -92,7 +92,9 @@ class Trophy extends Component {
         }
         return (
             <div className="Trophy">
-                {trophyItems}
+                {trophyItems.length > 0
+                    ? trophyItems
+                    : <h1>You're almost there! Just keep at it!</h1>}
             </div>
         );
     }

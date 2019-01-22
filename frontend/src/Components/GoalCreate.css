@@ -62,7 +62,7 @@
     transform: scale(0.99);
 }
 
-.GoalCreate .categoryImage img{
+.CategoryImage img{
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -70,17 +70,17 @@
     z-index: 1;
 }
 
-.GoalCreate .categoryImage .personal img:first-child{
+.CategoryImage .personal img:first-child{
     width: 300px;
     margin-bottom: 62px;
 }
-.GoalCreate .categoryImage .personal img:nth-child(2){
+.CategoryImage .personal img:nth-child(2){
     width: 200px;
     margin-left: 250px;
     margin-bottom: 62px;
 }
 
-.GoalCreate .categoryImage .personal img:last-child{
+.CategoryImage .personal img:last-child{
     width: 450px;
     margin-bottom: 200px;
     margin-left: 160px;

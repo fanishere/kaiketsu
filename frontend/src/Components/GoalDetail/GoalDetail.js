@@ -9,6 +9,7 @@ import { Redirect } from 'react-router-dom';
 import ButtonInteraction from './SuccessButton';
 import CircleDrag from './CircleDrag';
 import GoalCompletion from './GoalCompletion';
+import CategoryImage from '../CategoryImage';
 const axios = require('axios');
 
 
@@ -25,8 +26,6 @@ class GoalAccomplishment extends Component {
                 <div className="goalCompletionLegend">
                     <VictoryLegend
                         x={75} y={0}
-                        title="Goal Accomplishment"
-                        centerTitle
                         gutter={30}
                         orientation="horizontal"
                         height={80}
@@ -35,8 +34,8 @@ class GoalAccomplishment extends Component {
                             labels: {fontSize: 20}
                             }}
                         data={[
-                            { name: "Accomplished", symbol: { fill: "orange" }},
-                            { name: "Missed", symbol: { fill: "black" }}
+                            { name: "Accomplished", symbol: { fill: "#814fe7" }},
+                            { name: "Missed", symbol: { fill: "#b5e74f" }}
                         ]}
                         />
                 </div>
@@ -46,7 +45,7 @@ class GoalAccomplishment extends Component {
                         ?   <VictoryGroup 
                                 minDomain={{x: 0, y: 0}}
                                 maxDomain={{x: 30, y: 5}}
-                                height={40}
+                                height={55}
                                 >
                             <VictoryBar
                                 labelComponent={<VictoryTooltip
@@ -58,7 +57,7 @@ class GoalAccomplishment extends Component {
                                 />}
                                 style={{
                                     data: {
-                                        fill: (d) => d.a === true ? "black" : "orange",
+                                        fill: (d) => d.a === true ? "#814fe7" : "#b5e74f",
                                     },
                                     
                                 }}
@@ -127,10 +126,35 @@ function secondsToDays(num) {
 }
 
 class GoalStats extends Component {
+
+    getDaysToCompletion() {
+        return secondsToDays(this.props.duration) - this.props.days.length
+    }
+
+    getPercentCompleted() {
+        let completed = 0;
+        for (let day of this.props.days) {
+            if (day.goal_met) {
+                completed ++
+            }
+        }
+        return `${(completed/this.props.days.length * 100).toString().slice(0,4)} %`
+
+    }
+
     render() {
         return (
-            <div>
-                <h1>stats</h1>
+            <div className="GoalStats">
+                <div className="days">
+                    <h2>Days to Completion</h2>
+                    <h2>{this.getDaysToCompletion()}</h2>
+                </div>
+
+                <div className="percent">
+                    <h2>Completed</h2>
+                    <h2>{this.getPercentCompleted()}</h2>
+                </div>
+                
             </div>
         );
     }
@@ -149,7 +173,7 @@ class GoalButton extends Component {
         return (
             <div className="GoalButton">
                 {this.props.completedToday
-                    ? <h1>Great Job On Completing Your Goal Today!</h1>
+                    ? <h2>Great Job On Completing Your Goal Today!</h2>
                     : <button onClick={this.props.showGame}>Success</button>
                 }
                 
@@ -157,6 +181,7 @@ class GoalButton extends Component {
         );
     }
 }
+
 
 class GoalDetail extends Component {
     // needs back arrow to dashboard
@@ -246,7 +271,14 @@ class GoalDetail extends Component {
         // }
 
         return (
-            <div>
+            <div className="GoalDetail">
+                <h1>Goal Accomplishment</h1>
+                {this.state.data
+                    ? <GoalStats
+                        days={this.state.data.days}
+                        duration={this.state.data.duration}></GoalStats>
+                    : ''}
+                
                 <GoalAccomplishment
                     goalCompletion={this.state.goalCompletion}>
                 </GoalAccomplishment>
@@ -257,7 +289,7 @@ class GoalDetail extends Component {
                         ></GoalStats>
                     : ""} */}
 
-
+                
                 {this.state.gameShowing
                     ? this.state.interaction > .50 
                         ?   <ButtonInteraction
@@ -276,6 +308,10 @@ class GoalDetail extends Component {
                             showGame={this.showGame.bind(this)}>
                         </GoalButton>
                 }
+
+                {this.state.data
+                    ? <CategoryImage category={this.state.data.category}></CategoryImage>
+                    : ''}
                 
                 
             </div>
@@ -298,8 +334,6 @@ const mapStateToProps = state => {
     };
     
 }
-
-
 
 
 export default connect(mapStateToProps)(GoalDetail);

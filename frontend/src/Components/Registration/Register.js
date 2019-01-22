@@ -94,7 +94,7 @@ class Register extends Component {
                             placeholder="Must have at least 8 characters"
                         ></Field>
                         
-                        <button type="submit" value="submit">Sign Up ></button>
+                        <button type="submit" value="submit">Sign Up</button>
 
                     
                         {this.props.errors[0]
