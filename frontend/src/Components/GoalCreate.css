@@ -63,21 +63,27 @@
 }
 .GoalCreate .formBox p {
     position: relative;
-    line-height: 50px;
+    line-height: 40px;
+    display: inline-block;
+    margin: 5px 0;
+}
+.GoalCreate .inputBackground {
+    background-color: #b2e6ea;
+    min-width: 120px;
     display: inline-block;
 }
 
 .GoalCreate .editableDiv {
     min-width: 120px;
     word-wrap: anywhere;
-    border-bottom: 3px dotted black;
+    text-decoration: underline dotted black;
     display: inline-block;
     outline: none;
     line-height: 40px;
-    height: 20px;
-    position: relative;
-    padding-bottom: 10px;
-    top: 5px;
+    height: 30px;
+    margin: 0;
+    background-color: #b2e6ea;
+    cursor: pointer;
 }
 
 .GoalCreate .editableDiv span{
@@ -115,3 +121,35 @@
     margin-bottom: 200px;
     margin-left: 160px;
 }
+
+.GoalCreate .formBox .selectField {
+    display: block;
+    text-align: center;
+}
+
+.GoalCreate .styledSelect {
+    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+    background-color: rgba(0, 0, 0, 0);
+    height: 29px;
+    overflow: hidden;
+    width: 240px;
+    margin: 20px auto;
+    background-color: #b2e6ea;
+    position: relative;
+}
+
+.GoalCreate .styledSelect select{
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    height: 30px;
+    padding: 5px;
+    width: 268px;
+    text-transform: none;
+    line-height: 30px;
+    color: #000000;
+    position: relative;
+    top: -10px;
+}
+
+

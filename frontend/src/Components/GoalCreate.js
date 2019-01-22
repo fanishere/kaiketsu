@@ -75,6 +75,10 @@ class GoalCreate extends Component {
         
         
     }
+    
+    clearField(event) {
+        console.log(event);
+    }
 
 
     render() {
@@ -88,28 +92,34 @@ class GoalCreate extends Component {
                     <div className="formBox">
                         <span>
                             <p>I want to &nbsp;</p>
-                            <div
-                                onInput={this.handleFormChange.bind(this)}
-                                className="resolution editableDiv"
-                                contentEditable="true"
-                                data-field="resolution"
-                            ><span></span></div>
-                            <p>every day for &nbsp;
+                            {/* <div className="jankyInput"> */}
+                            <div className="inputBackground">
+                                <span
+                                    onInput={this.handleFormChange.bind(this)}
+                                    // onClick={}
+                                    className="resolution editableDiv"
+                                    data-field="resolution"
+                                    contentEditable="true"
+                                ></span></div>
+                            <p className="selectField">every day for &nbsp;
+                                <div className="styledSelect styled-select blue semi-square">
                                 <select htmlFor="duration" name="duration">
                                     <option value="10 Days">10 Days</option>
-                                    <option value="30 Days">30 Days</option>
+                                    <option value="30 Days" selected="selected">30 Days</option>
                                     <option value="60 Days">60 Days</option>
                                     <option value="90 Days">90 Days</option>
                                 </select>
+                                </div>
 
                             </p>
                             <p>because &nbsp;</p>
-                            <div
-                                onInput={this.handleFormChange.bind(this)}
-                                className="resolution editableDiv"
-                                contentEditable="true"
-                                data-field="reason"
-                            ><span></span></div>
+                            <div className="inputBackground">
+                                <span
+                                    onInput={this.handleFormChange.bind(this)}
+                                    className="resolution editableDiv"
+                                    data-field="reason"
+                                    contentEditable="true"
+                                ></span></div>
                             
 
                         </span>

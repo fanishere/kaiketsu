@@ -3,7 +3,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    z-index: 2;
+    z-index: 5;
     height: 70px;
 }
 .header .tabs {
@@ -63,10 +63,23 @@
 
 .GoalBlock {
     background-color: #fff;
-    margin: 25px;
+    margin: 30px 25px;
     border-radius: 25px;
     padding: 20px 10px;
-
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    transition: all .4s ease;
+}
+.GoalBlock:hover {
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(32, 32, 32, 0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(32, 32, 32, 0.75);
+    box-shadow: 0px 0px 10px 0px rgba(32, 32, 32, 0.75);
+}
+.GoalBlock:active {
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(32, 32, 32, 0.75);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(32, 32, 32, 0.75);
+    box-shadow: 0px 0px 15px 0px rgba(32, 32, 32, 0.75);
 }
 .GoalBlock div {
     display: flex;
@@ -76,18 +89,20 @@
 .GoalBlock .resolution {
     margin-bottom: 15px;
 }
+
 .GoalBlock div h2 {
     text-align: center;
     font-size: 1.2em;
     margin: 0;
-    background-color: #1ebbc7;
+    color: #1ebbc7;
     padding: 0 10px;
     border-radius: 4px;
+    font-weight: 800;
 }
 
 .GoalBlock div p {
     text-align: center;
-    width: 70%;
+    width: 100%;
     margin: 0;
 }
 
@@ -106,12 +121,10 @@
 
 .GoalBlock .category {
     position: relative;
+    width: 30%;
 }
 .GoalBlock img {
-    position: absolute;
-    left: -20px;
-    width: 35%;
-    top: 0px;
+    height: 100%;
 }
 
 

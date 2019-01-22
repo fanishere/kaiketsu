@@ -42,22 +42,24 @@ class GoalBlock extends Component {
                         <img src={categoryIcon} alt="health_logo"></img>
 
                     </div>
+                    <div className="description">
+                        <div className="resolution">
+                            <div className="goalblock-title">
+                                <h2>ASPIRATION</h2>
+                            </div>
 
-                    <div className="resolution">
-                        <div className="goalblock-title">
-                            <h2>ASPIRATION</h2>
+                            <p>{this.props.resolution}</p>
                         </div>
 
-                        <p>{this.props.resolution}</p>
-                    </div>
 
+                        <div className="reason">
+                            <div className="goalblock-title">
+                                <h2>PURPOSE</h2>
+                            </div>
 
-                    <div className="reason">
-                        <div className="goalblock-title">
-                            <h2>PURPOSE</h2>
+                            <p>{this.props.reason}</p>
+
                         </div>
-
-                        <p>{this.props.reason}</p>
 
                     </div>
 
