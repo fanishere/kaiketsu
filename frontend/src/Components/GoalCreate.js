@@ -93,7 +93,7 @@ class GoalCreate extends Component {
                                 className="resolution editableDiv"
                                 contentEditable="true"
                                 data-field="resolution"
-                            ></div>
+                            ><span></span></div>
                             <p>every day for &nbsp;
                                 <select htmlFor="duration" name="duration">
                                     <option value="10 Days">10 Days</option>
@@ -109,7 +109,7 @@ class GoalCreate extends Component {
                                 className="resolution editableDiv"
                                 contentEditable="true"
                                 data-field="reason"
-                            ></div>
+                            ><span></span></div>
                             
 
                         </span>

@@ -64,7 +64,7 @@
 .GoalCreate .formBox p {
     position: relative;
     line-height: 50px;
-    display: inline;
+    display: inline-block;
 }
 
 .GoalCreate .editableDiv {
@@ -78,6 +78,15 @@
     position: relative;
     padding-bottom: 10px;
     top: 5px;
+}
+
+.GoalCreate .editableDiv span{
+    font-size: 30px;
+    margin: 0;
+    display: inline-block;
+    position: relative;
+    top: -10px;
+    margin-bottom: 30px;
 }
 .GoalCreate .editableDiv div {
     border-bottom: 3px dotted black;

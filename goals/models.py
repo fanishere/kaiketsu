@@ -7,6 +7,7 @@ from datetime import date
 
 
 class User(AbstractUser):
+    first_name = models.CharField(max_length=50, null=True)
     USERNAME_FIELD = 'username'
 
     def get_days(self):
@@ -37,8 +38,10 @@ class Goal(DateStamp):
     reason = models.TextField(null=True)
 
     DURATION_CHOICES = (
-        (timedelta(days=30), 'ONE MONTH'),
-        (timedelta(days=90), 'THREE MONTHS'),
+        (timedelta(days=10), '10 Days'),
+        (timedelta(days=30), '30 Days'),
+        (timedelta(days=60), '60 Days'),
+        (timedelta(days=90), '90 Days'),
     )
     duration = models.DurationField(choices=DURATION_CHOICES, null=True)
 
