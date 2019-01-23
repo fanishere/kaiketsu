@@ -32,11 +32,12 @@ class ButtonModal extends Component {
                     ? <div className="modal">
                         <h1>Welcome to Kaiketsu!</h1>
                         <p>
-                            This app was created to allow users
-                            like you to set daily goals, and keep track of their
-                            progress over time. We categorize goals based on 3 types - 
-                            Heath & Wellness, Personal, and Professional, and have
-                            created an engaging UI built to motivate you along your journey.</p>
+                        We created KAIKETSU to allow users like you
+                        to set daily goals, and keep track of their
+                        progress over time. Goals are categorized into
+                        3 types - Health & Wellness, Personal, and Professional.
+                        We hope the experience of KAIKETSU motivates you along
+                        your journey!</p>
                         <Link to="/dashboard/create-goal/">
                         <button>
                             Create My First Goal
