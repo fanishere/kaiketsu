@@ -33,7 +33,7 @@
     font-size: 30px;
     width: 250px;
     margin: 50px auto 0 auto;
-    background: #ff7e00;
+    background: rgba(255,126,0, .75);
     position: relative;
     z-index: 2;
     color: #fff;
