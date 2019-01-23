@@ -107,7 +107,6 @@ class GoalCreate extends Component {
                             <p className="selectField">every day for &nbsp;</p>
                                 <div className="styledSelect styled-select blue semi-square">
                                 <select htmlFor="duration" name="duration" defaultValue={'30 Days'}>
-                                    <option value="10 Days">10 Days</option>
                                     <option value="30 Days">30 Days</option>
                                     <option value="60 Days">60 Days</option>
                                     <option value="90 Days">90 Days</option>

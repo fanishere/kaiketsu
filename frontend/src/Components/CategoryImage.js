@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import health_logo from './media/Monday/Health_transparent.png';
-import personal_logo from './media/Monday/Personal_transparent.png';
-import professional_logo from './media/Monday/Professional_transparent.png';
+import health_logo from './media/Final/health-sketch-final.png';
+import personal_logo from './media/Final/balloon-sketch-final.png';
+import professional_logo from './media/Final/mountain-sketch-final.png';
 
 class CategoryImage extends Component {
     render() {

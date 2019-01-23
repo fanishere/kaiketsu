@@ -30,8 +30,13 @@ class ButtonModal extends Component {
                     : ''}>
                 {this.props.expanded
                     ? <div className="modal">
-                        <h1>Thanks for using our app!</h1>
-                        <p>We hope you enjoy it!</p>
+                        <h1>Welcome to Kaiketsu!</h1>
+                        <p>
+                            This app was created to allow users
+                            like you to set daily goals, and keep track of their
+                            progress over time. We categorize goals based on 3 types - 
+                            Heath & Wellness, Personal, and Professional, and have
+                            created an engaging UI built to motivate you along your journey.</p>
                         <Link to="/dashboard/create-goal/">
                         <button>
                             Create My First Goal
