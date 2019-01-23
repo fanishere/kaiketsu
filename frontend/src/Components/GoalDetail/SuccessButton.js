@@ -50,7 +50,7 @@ class ButtonInteraction extends Component {
 
     goalSuccess() {
         this.setState({
-            buttonText: "Congratulations!",
+            buttonText: 'Congratulations on Finishing Your Goal Today',
             disabled: true
         });
         this.props.reload();
@@ -61,7 +61,9 @@ class ButtonInteraction extends Component {
             <SuccessButton
                 className="SuccessButton"
                 onClick={this.goalComplete.bind(this)}>
-                    {this.state.buttonText}
+                    {this.props.accomplished
+                        ? 'Congratulations on Finishing Your Goal Today!'
+                        : 'Tap Me!'}
             </SuccessButton>
         );
     }

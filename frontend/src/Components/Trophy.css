@@ -75,3 +75,18 @@
     width: 90%;
     margin: 40px auto;
 }
+
+.noTrophiesYet {
+    position: relative;
+}
+
+.noTrophiesYet img:nth-child(2){
+    width: 450px;
+    position: fixed;
+}
+
+.noTrophiesYet img:last-child{
+    width: 200px;
+    position: fixed; 
+    margin-left: 200px;
+}

@@ -4,6 +4,7 @@ import './Trophy.css';
 import personal_logo from './media/Final/balloon-final-100.png';
 import health_logo from './media/Final/caktus-final-100.png';
 import prof_logo from './media/Final/mountain-final-100.png';
+import balloon from './media/Final/balloon-sketch-final.png';
 const axios = require('axios');
 
 
@@ -96,13 +97,25 @@ class Trophy extends Component {
             }
 
         }
-        return (
-            <div className="Trophy">
-                {trophyItems.length > 0
-                    ? trophyItems
-                    : <h1>You're almost there! Just keep at it!</h1>}
-            </div>
-        );
+        if (this.state.data) {
+            return (
+                <div className="Trophy">
+                    {trophyItems.length > 0
+                        ? trophyItems
+                        : <div className="noTrophiesYet">
+                            <h1>You're almost there! Just keep at it!</h1>
+                            <img src={balloon} alt="balloon"></img>
+                            <img src={balloon} alt="balloon"></img>
+                        </div>}
+                </div>
+            );
+        } else {
+            return (
+                <div className="Trophy">
+                </div>
+            );
+        }
+        
     }
 }
 function secondsToDays(num) {

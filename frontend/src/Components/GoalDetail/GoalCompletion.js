@@ -3,6 +3,9 @@ import './Interactions.css';
 import SplitText from 'react-pose-text';
 import {connect} from "react-redux";
 import posed from 'react-pose';
+import health_logo from '../media/Final/health-sketch-final.png';
+import personal_logo from '../media/Final/balloon-sketch-final.png';
+import professional_logo from '../media/Final/mountain-sketch-final.png';
 const axios = require('axios');
 
 const charPoses = {
@@ -18,7 +21,8 @@ const SuccessCircle = posed.div({
       transition: {
         type: 'spring',
         stiffness: 120,
-        damping: 0
+        damping: 0,
+        duration: 2000
       }
     }
 })
@@ -28,7 +32,8 @@ class GoalCompletion extends Component {
         super(props);
         this.state = {
             data: null,
-            currentPhrase: 0
+            currentPhrase: 0,
+            visible: true
         }
     }
 
@@ -58,11 +63,18 @@ class GoalCompletion extends Component {
 
     setPhrases() {
         
-        setInterval(() => {
+        let intervalID = setInterval(() => {
             this.setState({
                 currentPhrase: this.state.currentPhrase + 1
-            })
+            });
+            if (this.state.currentPhrase > 5) {
+                this.setState({
+                    visible: false
+                });
+                clearInterval(intervalID);
+            }
         }, 2000);
+       
       }
 
     render() {
@@ -72,13 +84,17 @@ class GoalCompletion extends Component {
                 'Success!',
                 "Your resolve is impressive.",
                 "You've achieved your goal!",
-                `${this.state.data.days.length} Days!`
+                `${this.state.data.days.length} Days!`,
+                "Your goal has been moved to your trophies!"
             ]
         }
 
         return (
             <div className="goalSuccess">
-                <SuccessCircle className="SuccessCircle" onClick={this.setPhrases.bind(this)}>
+                <SuccessCircle
+                    className={`SuccessCircle ${this.state.visible
+                                                    ? ''
+                                                    : 'invisible'}`} onClick={this.setPhrases.bind(this)}>
                     <h1 >
                         {phrases 
                             ? phrases[this.state.currentPhrase]
@@ -86,6 +102,12 @@ class GoalCompletion extends Component {
                         
                     </h1>
                 </SuccessCircle>
+
+                <div className="landscape">
+                    <img src={health_logo} alt="health"></img>
+                    <img src={personal_logo} alt="personal"></img>
+                    <img src={professional_logo} alt="professional"></img>
+                </div>
             </div>
 
         );

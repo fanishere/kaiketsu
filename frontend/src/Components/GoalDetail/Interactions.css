@@ -24,14 +24,14 @@
     border-radius: 100%;
     border: 3px solid #6c3500;
     box-shadow: inset 0px 0px 30px 0px rgb(54, 54, 54);
+    -webkit-box-shadow: inset 0px 0px 30px 0px rgb(54, 54, 54);
+    -moz-box-shadow: inset 0px 0px 30px 0px rgb(54, 54, 54);
 }
 
 .SuccessButton {
     text-align: center;
     font-size: 30px;
     width: 250px;
-    height: 75px;
-    line-height: 75px;
     margin: 50px auto 0 auto;
     background: #ff7e00;
     position: relative;
@@ -39,10 +39,19 @@
     color: #fff;
     cursor: pointer;
     box-shadow: 0px 0px 5px 0px rgba(54,54,54,1);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(54,54,54,1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(54,54,54,1);
+    border: 1px solid black;
+    border-radius: 15px;
+    line-height: 1.4;
+    
 }
+
 
 .SuccessButton:hover {
     box-shadow: 0px 0px 10px 0px rgba(54,54,54,1);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(54,54,54,1);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(54,54,54,1);
 }
 
 .SuccessCircle {
@@ -62,6 +71,10 @@
     -webkit-box-shadow: 0px 0px 25px 10px rgba(255,255,255,1);
     -moz-box-shadow: 0px 0px 25px 10px rgba(255,255,255,1);
     box-shadow: 0px 0px 25px 10px rgba(255,255,255,1);
+    transition: opacity .6s ease;
+}
+.SuccessCircle.invisible {
+    opacity: 0;
 }
 
 
@@ -80,4 +93,33 @@
 
 .goalSuccess {
     padding: 1px;
+}
+
+.landscape {
+    position: relative;
+}
+
+.landscape img {
+    width: 100%;
+    position: fixed;
+    margin-bottom: 70px;
+    bottom: 0;
+}
+
+.landscape img:first-child {
+    width: 400px;
+    margin-left: 25%;
+}
+
+.landscape img:nth-child(2) {
+    margin-bottom: 200px;
+    margin-left: 200px;
+    width: 275px;
+}
+
+.landscape img:last-child {
+    margin-bottom: 70px;
+    width: 400px;
+    margin-right: 100%;
+    left: -70px;
 }

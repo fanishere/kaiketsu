@@ -140,9 +140,10 @@ class GoalStats extends Component {
         }
         for (let day of this.props.days) {
             if (day.goal_met) {
-                completed ++
+                completed ++;
             }
         }
+
         return `${(completed/this.props.days.length * 100).toString().slice(0,4)}%`
 
     }
@@ -177,10 +178,14 @@ class GoalButton extends Component {
     render() {
         return (
             <div className="GoalButton">
-                {this.props.completedToday
-                    ? <h2>Great Job On Completing Your Goal Today!</h2>
-                    : <button onClick={this.props.showGame}>Success</button>
-                }
+
+                <ButtonInteraction
+                    goal={this.props.goal}
+                    disabled={this.props.disabled}
+                    reload={this.props.reload}
+                    accomplished={this.props.completedToday}
+                ></ButtonInteraction>
+                
                 
             </div>
         );
@@ -208,7 +213,11 @@ class GoalDetail extends Component {
     constructData() {
         let newData = [];
         let completedToday = false;
-        let days = this.state.data.days.slice(Math.max(this.state.data.days.length - 30, 1))
+        let days = this.state.data.days;
+        if (this.state.data.days.length > 30) {
+            days = this.state.data.days.slice(Math.max(this.state.data.days.length - 30, 1));
+        }
+        
         for (let day of days) {
             let dayLine = {
                 x: day.created_at,
@@ -219,7 +228,7 @@ class GoalDetail extends Component {
             newData.push(dayLine);
         }
 
-        if (this.state.today === this.state.data.days[this.state.data.days.length - 1].created_at) {
+        if (this.state.data.days.length > 0 && this.state.today === this.state.data.days[this.state.data.days.length - 1].created_at) {
             completedToday = true;
         }
         
@@ -271,59 +280,56 @@ class GoalDetail extends Component {
 
     render() {
   
-        // if (this.state.data && this.state.data.days.length > secondsToDays(this.state.data.duration)) {
-        //     return <Redirect to={`/dashboard/goal-accomplished/${this.props.match.params.id}/`} />
-        // }
+        if (this.state.data && this.state.data.days.length === secondsToDays(this.state.data.duration)) {
+            return <Redirect to={`/dashboard/goal-accomplished/${this.props.match.params.id}/`} />
+        }
+        if (this.state.data) {
 
-        return (
-            <div className="GoalDetail">
-                <div className="title">
-                    <h1>Your Progress</h1>
+            return (
+                <div className="GoalDetail">
+                    <div className="title">
+                        <h1>Your Progress</h1>
+                    </div>
+    
+                    {this.state.data
+                        ? <GoalStats
+                            days={this.state.data.days}
+                            duration={this.state.data.duration}></GoalStats>
+                        : ''}
+                    
+                    <GoalAccomplishment
+                        goalCompletion={this.state.goalCompletion}>
+                    </GoalAccomplishment>
+                    {/* {this.state.data
+                        ? <GoalStats
+                            days={this.state.data.days.length}
+                            duration={this.state.data.duration}
+                            ></GoalStats>
+                        : ""} */}
+    
+                    <GoalButton
+                        id={this.props.match.params.id}
+                        completedToday={this.state.completedToday}
+                        showGame={this.showGame.bind(this)}
+                        goal={this.props.match.params.id}
+                        disabled={this.state.completedToday}
+                        reload={this.loadGoalData.bind(this)}>
+                    </GoalButton>
+                    
+    
+                    {this.state.data
+                        ? <CategoryImage category={this.state.data.category}></CategoryImage>
+                        : ''}
+                    
+                    
                 </div>
+            );
+            
+        } else {
+            return <div className="GoalDetail"></div>
+        }
 
-                {this.state.data
-                    ? <GoalStats
-                        days={this.state.data.days}
-                        duration={this.state.data.duration}></GoalStats>
-                    : ''}
-                
-                <GoalAccomplishment
-                    goalCompletion={this.state.goalCompletion}>
-                </GoalAccomplishment>
-                {/* {this.state.data
-                    ? <GoalStats
-                        days={this.state.data.days.length}
-                        duration={this.state.data.duration}
-                        ></GoalStats>
-                    : ""} */}
 
-                
-                {this.state.gameShowing
-                    ? this.state.interaction > .50 
-                        ?   <ButtonInteraction
-                                goal={this.props.match.params.id}
-                                disabled={this.state.completedToday}
-                                reload={this.loadGoalData.bind(this)}
-                            ></ButtonInteraction>
-                    :       <CircleDrag
-                                goal={this.props.match.params.id}
-                                disabled={this.state.completedToday}
-                                reload={this.loadGoalData.bind(this)}
-                            ></CircleDrag>
-                    :   <GoalButton
-                            id={this.props.match.params.id}
-                            completedToday={this.state.completedToday}
-                            showGame={this.showGame.bind(this)}>
-                        </GoalButton>
-                }
-
-                {this.state.data
-                    ? <CategoryImage category={this.state.data.category}></CategoryImage>
-                    : ''}
-                
-                
-            </div>
-        );
     }
 }
 

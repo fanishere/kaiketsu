@@ -10,7 +10,7 @@ img.welcome-logo {
     margin: 0 auto;
     padding-top: 10%;
     width: 100%;
-    max-width: 100px;
+    max-width: 150px;
 }
 
 .heading {
@@ -26,10 +26,16 @@ img.welcome-logo {
     text-align: center;
     color: rgb(67,49,145);
 }
+.quote h2 {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+}
 
 .welcome button {
-    width: 100%;
-    border: none;
+    width: 200px;
+    border-radius: 15px;
+    border: 1px solid black;
     padding: 1rem 2rem;
     margin: 0;
     text-decoration: none;

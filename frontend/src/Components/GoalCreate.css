@@ -31,8 +31,9 @@
 }
 
 .GoalCreate button {
-    width: 60%;
-    border: none;
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 15px;
     padding: 1rem 2rem;
     text-decoration: none;
     background: #e37f8b;

@@ -33,8 +33,9 @@
 }
 
 .Login button {
-    width: 50%;
-    border: none;
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 15px;
     padding: 1rem 2rem;
     margin-top: 20px;
     text-decoration: none;

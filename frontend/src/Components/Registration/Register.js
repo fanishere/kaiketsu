@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
-    Redirect
+    Redirect,
+    Link
 } from 'react-router-dom';
 import Field from './Field';
 import ErrorList from './Errors';
@@ -9,11 +10,52 @@ import {connect} from "react-redux";
 import {auth} from '../../actions';
 
 
+class ButtonModal extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            expanded: false
+        }
+    }
+    expandDiv(event) {
+        console.log(this);
+        
+    }
+
+
+    render() {
+        return (
+            <div className={this.props.expanded
+                    ? 'expanded'
+                    : ''}>
+                {this.props.expanded
+                    ? <div className="modal">
+                        <h1>Thanks for using our app!</h1>
+                        <p>We hope you enjoy it!</p>
+                        <Link to="/dashboard/create-goal/">
+                        <button>
+                            Create My First Goal
+                        </button>
+                        
+                        </Link>
+                    </div>
+                    : ''}
+                <button className="submit"
+                    type="submit"
+                    value="submit"
+                    onClick={this.expandDiv.bind(this)}
+                >Sign Up</button>
+            </div>
+        );
+    }
+}
+
 class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            toGoalPrompt: false
+            toGoalPrompt: false,
+            showWelcome: false
         }
         this.registerAccount = this.registerAccount.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -33,7 +75,7 @@ class Register extends Component {
     registerAccount(event) {
         event.preventDefault();
         let data  = new FormData(event.target);
-
+        console.log(data.get('username'));
         this.props.register(
             data.get('username'),
             data.get('first_name'),
@@ -42,7 +84,8 @@ class Register extends Component {
         .then(() => {
             this.setState((state) => {
                 return {
-                    toGoalPrompt: true,
+                    showWelcome: true,
+                    toGoalPrompt: true
                 }
             });
         }).catch((error) => {
@@ -53,12 +96,10 @@ class Register extends Component {
     }
     
     render() {
-        if (this.state.toGoalPrompt === true) {
-            return <Redirect to="/login/" />
-        }
-        if (this.props.errors) {
+        // if (this.state.toGoalPrompt === true) {
+        //     return <Redirect to="/login/" />
+        // }
 
-        }
 
         return (
             <div className="Register">
@@ -94,7 +135,12 @@ class Register extends Component {
                             placeholder="Must have at least 8 characters"
                         ></Field>
                         
-                        <button type="submit" value="submit">Sign Up</button>
+                        
+                        <ButtonModal
+                            type="submit"
+                            value="submit"
+                            expanded={this.state.showWelcome}
+                        ></ButtonModal>
 
                     
                         {this.props.errors[0]
