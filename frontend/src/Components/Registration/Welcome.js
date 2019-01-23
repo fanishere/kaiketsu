@@ -29,16 +29,16 @@ class Welcome extends Component {
                         </Fade>
                     </div>
                     <div className="welcomeButtons">
-                        <div className="welcome-button">
+                        
                             <Link to="/register/">
                                 <button type="submit" value="submit">Join</button>
                             </Link>
-                        </div>
-                        <div className="welcome-button">
+                        
+                        
                             <Link to="/login/">
                                 <button type="submit" value="submit">Login</button>
                             </Link>
-                        </div>
+                        
                     </div>
 
                 </div>

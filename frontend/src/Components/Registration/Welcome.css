@@ -37,7 +37,7 @@ img.welcome-logo {
     border-radius: 15px;
     border: 1px solid black;
     padding: 1rem 2rem;
-    margin: 0;
+    margin: 10px;
     text-decoration: none;
     background: #e37f8b;
     color: #ffffff;
@@ -72,6 +72,7 @@ img.welcome-logo {
     bottom: 0;
     width: 100%;
     margin-bottom: 20px;
+    text-align: center;
  }
 
 .welcome-button {
