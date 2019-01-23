@@ -12,7 +12,8 @@
     max-width: 320px;
 }
 .Login h1 {
-    font-family: "Handlee", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
+    text-transform: uppercase;
 }  
 .Login label {
     display: block;

@@ -189,6 +189,12 @@ class DashboardHeader extends Component {
         return (
             <div className="header">
                 <div className="tabs">
+                    <NavLink to="/dashboard/goals/" activeClassName="selected">
+                        {/* need to create an acccurate path */}
+                        <div className="dashboardIcon">
+                            <img src={dashboard_icon} alt="goals dashboard button"></img>
+                        </div>
+                    </NavLink>
                     <NavLink to="/dashboard/create-goal/" activeClassName="selected">
                         <div className="plusIcon">
                             <img src={plus_logo} alt="create goal button"></img>
@@ -197,15 +203,10 @@ class DashboardHeader extends Component {
                     <NavLink to="/dashboard/achievements/" activeClassName="selected">
                         {/* need to create an acccurate path */}
                         <div className="trophyIcon">
-                            <img src={star_icon} alt="achievements button"></img>
+                            <img src={trophy_icon} alt="achievements button"></img>
                         </div>
                     </NavLink>
-                    <NavLink to="/dashboard/goals/" activeClassName="selected">
-                        {/* need to create an acccurate path */}
-                        <div className="dashboardIcon">
-                            <img src={dashboard_icon} alt="goals dashboard button"></img>
-                        </div>
-                    </NavLink>
+                    
                     {/* <div><NavLink to="/dashboard/goals/" activeClassName="selected">Goals</NavLink></div>
                     <div><NavLink to="/dashboard/create-goal/" activeClassName="selected">Cr</NavLink></div> */}
                 </div>

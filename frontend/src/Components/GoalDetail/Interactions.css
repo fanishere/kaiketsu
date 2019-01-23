@@ -48,7 +48,7 @@
 .SuccessCircle {
     width: 200px;
     height: 200px;
-    background: #916af9;
+    background: #f9b16a;
     transform-origin: 50% 50%;
     border-radius: 100%;
     z-index: 2;
@@ -58,6 +58,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 25px 10px rgba(255,255,255,1);
+    -moz-box-shadow: 0px 0px 25px 10px rgba(255,255,255,1);
+    box-shadow: 0px 0px 25px 10px rgba(255,255,255,1);
 }
 
 
@@ -72,4 +76,8 @@
     position: relative;
     text-align: center;
     top: 40px;
+}
+
+.goalSuccess {
+    padding: 1px;
 }

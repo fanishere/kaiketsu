@@ -7,8 +7,14 @@
 .goalCompletion {
     position: relative;
     z-index: 2;
-    margin: 20px auto;
     background: #fff;
+    text-align: center;
+    margin: 0 20px;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+.goalCompletion h2 {
+    margin-bottom: 10px;
 }
 .goalCompletionGraph {
     margin-left: -2px;
@@ -29,6 +35,31 @@
 .GoalStats div {
     width: 50%;
     text-align: center
+}
+.GoalDetail .title {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.GoalDetail .title h1 {
+    display: inline-block;
+    background-color: #1ebbc7;
+    color: #fff;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 1.7em;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+.GoalStats h2 {
+    font-size: 1.15em;
+}
+.GoalStats h3 {
+    font-size: 2.5em;
+    font-family: 'Major Mono Display', sans-serif;
+    font-weight: 800;
+    margin-top: 10px;
+    color: #814fe7;
 }
 .GoalButton {
     text-align: center;

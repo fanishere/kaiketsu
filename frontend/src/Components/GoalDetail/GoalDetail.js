@@ -23,12 +23,14 @@ class GoalAccomplishment extends Component {
      render() {
          return (
             <div className="goalCompletion">
+                <h2>30 Day Status</h2>
                 <div className="goalCompletionLegend">
                     <VictoryLegend
                         x={75} y={0}
                         gutter={30}
                         orientation="horizontal"
-                        height={80}
+                        height={40}
+                        responsive={false}
                         style={{ 
                             title: {fontSize: 30 },
                             labels: {fontSize: 20}
@@ -141,7 +143,7 @@ class GoalStats extends Component {
                 completed ++
             }
         }
-        return `${(completed/this.props.days.length * 100).toString().slice(0,4)} %`
+        return `${(completed/this.props.days.length * 100).toString().slice(0,4)}%`
 
     }
 
@@ -150,12 +152,12 @@ class GoalStats extends Component {
             <div className="GoalStats">
                 <div className="days">
                     <h2>Days to Completion</h2>
-                    <h2>{this.getDaysToCompletion()}</h2>
+                    <h3>{this.getDaysToCompletion()}</h3>
                 </div>
 
                 <div className="percent">
-                    <h2>Percent Completed</h2>
-                    <h2>{this.getPercentCompleted()}</h2>
+                    <h2>Engagement</h2>
+                    <h3>{this.getPercentCompleted()}</h3>
                 </div>
                 
             </div>
@@ -206,8 +208,8 @@ class GoalDetail extends Component {
     constructData() {
         let newData = [];
         let completedToday = false;
-        
-        for (let day of this.state.data.days) {
+        let days = this.state.data.days.slice(Math.max(this.state.data.days.length - 30, 1))
+        for (let day of days) {
             let dayLine = {
                 x: day.created_at,
                 y: 5,
@@ -275,7 +277,10 @@ class GoalDetail extends Component {
 
         return (
             <div className="GoalDetail">
-                <h1>Goal Accomplishment</h1>
+                <div className="title">
+                    <h1>Your Progress</h1>
+                </div>
+
                 {this.state.data
                     ? <GoalStats
                         days={this.state.data.days}

@@ -37,7 +37,7 @@ class TrophyItem extends Component {
                     <img src={personal_logo} alt="personal logo"></img>
                 </div>
                 <div className="trophyData">
-                    <p>Congratulations! In your journey to &nbsp;
+                    <p>Congratulations! You have achieved your goal to &nbsp;
                     {this.props.resolution.toLowerCase()} for {secondsToDays(this.props.duration)} days.</p>
                     <p className="trophyPhrase">{this.getRandomPhrase()}</p>
                 </div>

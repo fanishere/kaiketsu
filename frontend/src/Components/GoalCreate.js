@@ -49,19 +49,11 @@ class GoalCreate extends Component {
                     data: res.data
                 });
                 this.successMessage();
-            
-                
     
             }).catch(error => {
                 console.log(error);
             });
-            this.successMessage();
 
-
-
-        }).catch(error => {
-            console.log(error);
-        });
     }
 
     successMessage() {

@@ -62,29 +62,31 @@ class GoalCompletion extends Component {
             this.setState({
                 currentPhrase: this.state.currentPhrase + 1
             })
-        }, 5000);
+        }, 2000);
       }
 
     render() {
         let phrases;
         if (this.state.data) {
             phrases = [
-                'Congratulations!',
-                "You've Completed Your Goal!",
+                'Success!',
+                "Your resolve is impressive.",
+                "You've achieved your goal!",
                 `${this.state.data.days.length} Days!`
             ]
         }
 
         return (
-
-            <SuccessCircle className="SuccessCircle" onClick={this.setPhrases.bind(this)}>
-                <h1 >
-                    {phrases 
-                        ? phrases[this.state.currentPhrase]
-                        : ''}
-                    
-                </h1>
-            </SuccessCircle>
+            <div className="goalSuccess">
+                <SuccessCircle className="SuccessCircle" onClick={this.setPhrases.bind(this)}>
+                    <h1 >
+                        {phrases 
+                            ? phrases[this.state.currentPhrase]
+                            : ''}
+                        
+                    </h1>
+                </SuccessCircle>
+            </div>
 
         );
     }
