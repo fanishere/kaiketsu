@@ -30,13 +30,11 @@ class Welcome extends Component {
                     </div>
                     <div className="welcomeButtons">
                         
-                            <Link to="/register/">
-                                <button type="submit" value="submit">Join</button>
+                            <Link to="/register/">Join
                             </Link>
                         
                         
-                            <Link to="/login/">
-                                <button type="submit" value="submit">Login</button>
+                            <Link to="/login/">Login
                             </Link>
                         
                     </div>

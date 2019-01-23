@@ -32,12 +32,12 @@ img.welcome-logo {
     margin: 0 auto;
 }
 
-.welcome button {
+.welcome a {
     width: 200px;
     border-radius: 15px;
     border: 1px solid black;
     padding: 1rem 2rem;
-    margin: 10px;
+    margin: 10px auto;
     text-decoration: none;
     background: #e37f8b;
     color: #ffffff;
@@ -53,17 +53,17 @@ img.welcome-logo {
     -moz-appearance: none;
  }
  
-.welcome button:hover,
-.welcome button:focus {
+.welcome a:hover,
+.welcome a:focus {
     background:#7968c2 ;
  }
  
-.welcome button:focus {
+.welcome a:focus {
     outline: 1px solid #fff;
     outline-offset: -4px;
  }
  
-.welcome button:active {
+.welcome a:active {
     transform: scale(0.99);
  }
 
