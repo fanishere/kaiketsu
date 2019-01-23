@@ -73,8 +73,10 @@ img.welcome-logo {
     width: 100%;
     margin-bottom: 20px;
     text-align: center;
- }
-
+}
+.welcomeButtons a {
+    display: block;
+}
 .welcome-button {
     text-align: center;
     margin-top: 10px;
