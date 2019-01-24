@@ -24,7 +24,7 @@
     transform: translateX(0);
 }
 .SlideIn-leave.SlideIn-leave-active {
-    opacity: .5;
+    opacity: 0;
     position: absolute;
     width: 100%;
     top:0;
@@ -58,7 +58,7 @@
     transform: translateX(0);
 }
 .SlideOut-leave.SlideOut-leave-active {
-    opacity: .5;
+    opacity: 0;
     position: absolute;
     width: 100%;
     top:0;
