@@ -1,21 +1,21 @@
 .SlideIn-appear {
     opacity: .75;
-    transform: translateX(100px);
+    transform: translateX(70px);
 }
 
 .SlideIn-appear.SlideIn-appear-active {
     opacity: 1;
     transform: translateX(0);;
-    transition: all .04s linear;
+    transition: all .03s linear;
 }
 .SlideIn-enter {
     z-index: 1;
-    transform: translateX(100px);
+    transform: translateX(70px);
 }
 .SlideIn-enter.SlideIn-enter-active {
     opacity: 1;
     transform: translateX(0);
-    transition: all .04s linear;
+    transition: all .03s linear;
 }
 
 .SlideIn-leave {
@@ -28,8 +28,8 @@
     position: absolute;
     width: 100%;
     top:0;
-    transform: translateX(-100px);
-    transition: all .04s linear;
+    transform: translateX(-70px);
+    transition: all .03s linear;
 }
 
 .SlideOut-appear {
@@ -40,16 +40,16 @@
 .SlideOut-appear.SlideOut-appear-active {
     opacity: 1;
     transform: translateX(0);;
-    transition: all .04s linear;
+    transition: all .03s linear;
 }
 .SlideOut-enter {
     z-index: 1;
-    transform: translateX(100px);
+    transform: translateX(70px);
 }
 .SlideOut-enter.SlideOut-enter-active {
     opacity: 1;
     transform: translateX(0);
-    transition: all .04s linear;
+    transition: all .03s linear;
 }
 
 .SlideOut-leave {
@@ -62,6 +62,6 @@
     position: absolute;
     width: 100%;
     top:0;
-    transform: translateX(-100px);
-    transition: all .04s linear;
+    transform: translateX(-70px);
+    transition: all .03s linear;
 }
