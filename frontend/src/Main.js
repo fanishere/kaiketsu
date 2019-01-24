@@ -21,12 +21,7 @@ import { CSSTransitionGroup } from "react-transition-group";
 let store = createStore(kaiApp, applyMiddleware(thunk));
 
 class Main extends Component {
-    transitionNamePicker(location) {
-        // if (location.includes('/dashboard/')) {
-        //     return 'DashBoard';
-        // }
-        return 'SlideIn';
-    }
+
     render() {
 
         return (
@@ -38,10 +33,10 @@ class Main extends Component {
                                 transitionAppear={true}
                                 transitionEnter={true}
                                 transitionLeave={true}
-                                transitionAppearTimeout={400}
-                                transitionEnterTimeout={400}
-                                transitionLeaveTimeout={400}
-                                transitionName={this.transitionNamePicker(location.pathname)}
+                                transitionAppearTimeout={40}
+                                transitionEnterTimeout={40}
+                                transitionLeaveTimeout={40}
+                                transitionName={'SlideIn'}
                             >
                                 <Switch location={ location } key={ location.key }>
                                     <Route exact path="/" component={Welcome} />
