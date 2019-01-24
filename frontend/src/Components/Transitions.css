@@ -6,7 +6,7 @@
 .SlideIn-appear.SlideIn-appear-active {
     opacity: 1;
     transform: translateX(0);;
-    transition: all .03s linear;
+    transition: all .04s linear;
 }
 .SlideIn-enter {
     z-index: 1;
@@ -15,7 +15,7 @@
 .SlideIn-enter.SlideIn-enter-active {
     opacity: 1;
     transform: translateX(0);
-    transition: all .03s linear;
+    transition: all .04s linear;
 }
 
 .SlideIn-leave {
@@ -29,18 +29,18 @@
     width: 100%;
     top:0;
     transform: translateX(-70px);
-    transition: all .03s linear;
+    transition: all .04s linear;
 }
 
 .SlideOut-appear {
     opacity: .75;
-    transform: translateX(100px);
+    transform: translateX(70px);
 }
 
 .SlideOut-appear.SlideOut-appear-active {
     opacity: 1;
     transform: translateX(0);;
-    transition: all .03s linear;
+    transition: all .04s linear;
 }
 .SlideOut-enter {
     z-index: 1;
@@ -49,7 +49,7 @@
 .SlideOut-enter.SlideOut-enter-active {
     opacity: 1;
     transform: translateX(0);
-    transition: all .03s linear;
+    transition: all .04s linear;
 }
 
 .SlideOut-leave {
@@ -63,5 +63,5 @@
     width: 100%;
     top:0;
     transform: translateX(-70px);
-    transition: all .03s linear;
+    transition: all .04s linear;
 }

@@ -38,9 +38,9 @@ class Main extends Component {
                                 transitionAppear={true}
                                 transitionEnter={true}
                                 transitionLeave={true}
-                                transitionAppearTimeout={300}
-                                transitionEnterTimeout={300}
-                                transitionLeaveTimeout={300}
+                                transitionAppearTimeout={400}
+                                transitionEnterTimeout={400}
+                                transitionLeaveTimeout={400}
                                 transitionName={this.transitionNamePicker(location.pathname)}
                             >
                                 <Switch location={ location } key={ location.key }>
