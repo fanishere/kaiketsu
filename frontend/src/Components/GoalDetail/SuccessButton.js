@@ -13,6 +13,11 @@ const SuccessButton = posed.div({
     hover: { scale: 1.2 }
 });
 
+
+/*
+    ButtonInteraction is a button that sends a post request to complete the goal for the 
+    day when clicked.
+*/
 class ButtonInteraction extends Component {
     constructor(props) {
         super(props);
@@ -61,7 +66,7 @@ class ButtonInteraction extends Component {
                 onClick={this.goalComplete.bind(this)}>
                     {this.props.accomplished
                         ? 'Congratulations on Finishing Your Goal Today!'
-                        : 'Tap Me!'}
+                        : 'Success!'}
             </SuccessButton>
         );
     }

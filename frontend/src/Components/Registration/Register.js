@@ -9,6 +9,10 @@ import {connect} from "react-redux";
 import {auth} from '../../actions';
 
 
+/*
+    ButtonModal shows a submit button, but after submission,
+    it expands into an informational modal.
+*/
 class ButtonModal extends Component {
     constructor(props) {
         super(props);
@@ -54,6 +58,8 @@ class ButtonModal extends Component {
         );
     }
 }
+
+
 
 class Register extends Component {
     constructor(props) {
@@ -101,10 +107,6 @@ class Register extends Component {
     }
     
     render() {
-        // if (this.state.toGoalPrompt === true) {
-        //     return <Redirect to="/login/" />
-        // }
-
 
         return (
             <div className="Register">

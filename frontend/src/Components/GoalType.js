@@ -9,6 +9,11 @@ import prof_logo from './media/Final/white-mountain-final.png';
 
 let height = window.innerHeight-70;
 
+
+/*
+    GoalType shows the three categories of goals, and links to their respective
+    create-goal links
+*/
 class GoalType extends Component {
     constructor(props) {
         super(props);
@@ -17,7 +22,6 @@ class GoalType extends Component {
             toDashboard: false,
         }
     }
-
 
     render() {
 

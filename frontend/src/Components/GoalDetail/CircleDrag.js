@@ -5,6 +5,7 @@ import posed from 'react-pose';
 import { tween, easing } from 'popmotion'; 
 const axios = require('axios');
 
+
 const DraggableCircle = posed.div({
     hoverable: true,
     draggable: 'x',
@@ -26,6 +27,11 @@ const CircleSlot = posed.div({
     init: { right: 0 },
 });
 
+/*
+    CircleDrag is a component that allows a user to drag a circle to a position.
+    When the circle falls into place, the application will send a POST request to complete
+    the goal for that day.
+*/
 class CircleDrag extends Component {
     constructor(props) {
         super(props);

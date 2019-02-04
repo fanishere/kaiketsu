@@ -8,7 +8,6 @@ import {
 import { createStore, applyMiddleware } from "redux";
 import Welcome from './Components/Registration/Welcome';
 import Register from './Components/Registration/Register';
-import Loading from './Components/Loading';
 import Login from "./Components/Registration/Login";
 import Dashboard from './Components/Dashboard';
 import { Provider } from 'react-redux';
@@ -42,7 +41,6 @@ class Main extends Component {
                                     <Route path="/login/" component={Login}/>
                                     <Route path="/register/" component={Register}/>
                                     <Route path="/dashboard/" component={Dashboard}/>
-                                    <Route exact path="/loading/" component={Loading}/>
                                 </Switch>
                             </CSSTransitionGroup>
                             

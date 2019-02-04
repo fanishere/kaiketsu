@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import {secondsToDays} from './utility';
 import './Trophy.css';
 import personal_logo from './media/Final/balloon-final-100.png';
 import health_logo from './media/Final/caktus-final-100.png';
@@ -8,6 +9,10 @@ import balloon from './media/Final/balloon-sketch-final.png';
 const axios = require('axios');
 
 
+/*
+    TrophyItem is the display for a trophied goal.
+    On render, it selects a random phrase from it's state.
+*/
 class TrophyItem extends Component {
     constructor(props) {
         super(props);
@@ -53,6 +58,11 @@ class TrophyItem extends Component {
     }
 }
 
+
+/*
+    Trophy sends a get request to the API to get all trophied goals
+    and their data. It sends this data as props to TrophyItem components.
+*/
 class Trophy extends Component {
     constructor(props) {
         super(props);
@@ -123,9 +133,6 @@ class Trophy extends Component {
         }
         
     }
-}
-function secondsToDays(num) {
-    return num / 86400;
 }
 
 

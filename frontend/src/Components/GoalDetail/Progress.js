@@ -5,6 +5,8 @@ import HeatMap from '../HeatMap';
 import './GoalDetail.css';
 const axios = require('axios');
 
+
+
 class PolarGoalCompletion extends Component {
     constructor(props) {
         super(props);
@@ -128,9 +130,6 @@ class PolarGoalCompletion extends Component {
 
         );
     }
-}
-function secondsToDays(num) {
-    return num / 86400;
 }
 
 class DashboardProgressDisplay extends Component {

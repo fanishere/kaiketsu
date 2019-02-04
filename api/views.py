@@ -4,7 +4,7 @@ from rest_framework import generics
 from api.serializers import (
     UserCreateSerializer, UserSerializer,
     GoalSerializer, LoginUserSerializer,
-    GoalDaySerializer, GoalAccomplishmentByDaySerializer
+    GoalDaySerializer
 )
 from datetime import timedelta
 from rest_framework import status
@@ -38,12 +38,6 @@ class UserDetailView(generics.RetrieveAPIView):
     serializer_class = UserSerializer
 
 
-class UserRegisterView(generics.CreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserCreateSerializer
-    permission_classes = (AllowAny,)
-
-
 class GoalListView(generics.ListCreateAPIView):
     serializer_class = GoalSerializer
     permission_classes = (IsAuthenticated,)
@@ -56,6 +50,7 @@ class GoalListView(generics.ListCreateAPIView):
         user = self.request.user
         serializer.save(user=user)
 
+    # matches timedeltas with client side form responses
     def create(self, request, *args, **kwargs):
         durations = {}
         durations['10 Days'] = timedelta(days=10)
@@ -77,6 +72,10 @@ class GoalListView(generics.ListCreateAPIView):
 
 
 class ArchivedGoalListView(generics.ListAPIView):
+    """
+    Shows non-active trophied goals.
+    """
+
     serializer_class = GoalSerializer
     permission_classes = (IsAuthenticated,)
 
@@ -95,6 +94,10 @@ class GoalDetailView(generics.RetrieveUpdateAPIView):
 
 
 class RegistrationAPIView(generics.GenericAPIView):
+    """
+    Creates a user and creates a token, which is returned in the post response
+    """
+
     serializer_class = UserCreateSerializer
     permission_classes = (AllowAny,)
 
@@ -109,6 +112,10 @@ class RegistrationAPIView(generics.GenericAPIView):
 
 
 class LoginAPIView(generics.GenericAPIView):
+    """
+    Validates login information and sends the user's token when
+    authenticated.
+    """
     serializer_class = LoginUserSerializer
     permission_classes = (AllowAny,)
 
@@ -123,6 +130,10 @@ class LoginAPIView(generics.GenericAPIView):
 
 
 class GoalDayList(generics.ListCreateAPIView):
+    """
+    Shows a user's days on a specific goal.
+    """
+
     serializer_class = GoalDaySerializer
     permission_classes = (IsAuthenticated,)
 
@@ -136,6 +147,11 @@ class GoalDayList(generics.ListCreateAPIView):
 
 
 class GetUserGoalAccomplishment(APIView):
+    """
+    Shows a users goal engagement by day as a ratio of total active goals
+    and the goals that they checked in for that day.
+    """
+
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, format=None):

@@ -23,6 +23,10 @@ import dashboard_icon from './media/Final/dashboard-final-100.png';
 
 const axios = require('axios');
 
+/*
+    GoalBlock is a component that receives props about a goal's information
+    and displays it.
+*/
 class GoalBlock extends Component {
 
     render() {
@@ -69,6 +73,11 @@ class GoalBlock extends Component {
     }
 }
 
+
+/*
+    DashboardGoalDisplay sends a get request for all the goals and their data.
+    It sends them as props to individual GoalBlocks
+*/
 class DashboardGoalDisplay extends Component {
     constructor(props) {
         super(props);
@@ -131,8 +140,10 @@ class DashboardGoalDisplay extends Component {
 }
 
 
-
-class DashboardHeader extends Component {
+/*
+    DashboardFooter shows the three navigational tabs for the Dashboard
+*/
+class DashboardFooter extends Component {
     render() {
 
         return (
@@ -156,22 +167,26 @@ class DashboardHeader extends Component {
                         </div>
                     </NavLink>
                     
-                    {/* <div><NavLink to="/dashboard/goals/" activeClassName="selected">Goals</NavLink></div>
-                    <div><NavLink to="/dashboard/create-goal/" activeClassName="selected">Cr</NavLink></div> */}
+                   
                 </div>
-                {/* <AddGoalButton></AddGoalButton> */}
+                
             </div>
         );
 
     }
 }
 
+
+/*
+    Dashboard is composed of DashboardFooter and DashboardGoalDisplay.
+    It declares routes for the dashboard as well.
+*/
 class Dashboard extends Component {
     render() {
         return (
             <div className="Dashboard">
 
-                <DashboardHeader goBack={this.props.history.goBack} url={this.props.location.pathname} token={this.props.token}></DashboardHeader>
+                <DashboardFooter goBack={this.props.history.goBack} url={this.props.location.pathname} token={this.props.token}></DashboardFooter>
                 <Route
                     exact path="/dashboard/goals/"
                     render={(props) => <DashboardGoalDisplay {...props} token={this.props.token} />}

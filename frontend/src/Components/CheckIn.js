@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Loading.css';
 import { connect } from "react-redux";
 
 import {

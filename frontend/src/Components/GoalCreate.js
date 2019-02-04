@@ -5,10 +5,13 @@ import {
     Redirect
 } from "react-router-dom";
 import CategoryImage from './CategoryImage';
-
-
 const axios = require('axios');
 
+
+/*
+    GoalCreate is a form that allows a user to enter their
+    resolution, reason, and duration.
+*/
 class GoalCreate extends Component {
     constructor(props) {
         super(props);
@@ -92,11 +95,10 @@ class GoalCreate extends Component {
                     <div className="formBox">
                         <span>
                             <p>I want to &nbsp;</p>
-                            {/* <div className="jankyInput"> */}
                             <div className="inputBackground">
                                 <span
                                     onInput={this.handleFormChange.bind(this)}
-                                    // onClick={}
+                                    
                                     className="resolution editableDiv"
                                     data-field="resolution"
                                     contentEditable="true"

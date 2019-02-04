@@ -19,8 +19,13 @@ const SuccessCircle = posed.div({
         duration: 2000
       }
     }
-})
+});
 
+
+/*
+    GoalCompletion is a circle that starts animating on hover,
+    and cycles through messages to the user on click.
+*/
 class GoalCompletion extends Component {
     constructor(props) {
         super(props);

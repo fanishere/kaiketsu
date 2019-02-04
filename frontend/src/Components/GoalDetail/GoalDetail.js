@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {secondsToDays} from '../utility';
 import { VictoryBar, VictoryGroup, VictoryLegend, VictoryTooltip } from 'victory';
 import {connect} from "react-redux";
 import './GoalDetail.css';
@@ -7,7 +8,10 @@ import ButtonInteraction from './SuccessButton';
 import CategoryImage from '../CategoryImage';
 const axios = require('axios');
 
-
+/*
+    GoalAccomplishment is Bar Graph that shows daily goal
+    achievement(whether a user accomplished a goal or not)
+*/
 class GoalAccomplishment extends Component {
     constructor(props) {
         super(props);
@@ -15,6 +19,7 @@ class GoalAccomplishment extends Component {
             data: [],
         }
     }
+
      render() {
          return (
             <div className="goalCompletion">
@@ -120,10 +125,10 @@ class GoalAccomplishment extends Component {
 // }
 
 
-function secondsToDays(num) {
-    return num / 86400;
-}
 
+/*
+    GoalStats shows a users Days to Completion and Engagement Level
+*/
 class GoalStats extends Component {
 
     getDaysToCompletion() {

@@ -29,6 +29,11 @@ const bins = d => d.bins;
 const count = d => d.count;
 
 
+/*
+    HeatMap shows a heatmap of goal engagement per day. Every day is
+    represented as a circle, and the opacity of the circle represents
+    how many of their goals the user has accomplished for that date.
+*/
 class HeatMap extends Component {
     constructor(props) {
         super(props);
