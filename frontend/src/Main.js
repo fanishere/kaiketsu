@@ -3,8 +3,7 @@ import './Components/Transitions.css';
 import {
     BrowserRouter,
     Switch,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import Welcome from './Components/Registration/Welcome';

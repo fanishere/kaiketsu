@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import './Interactions.css';
-import SplitText from 'react-pose-text';
 import {connect} from "react-redux";
 import posed from 'react-pose';
 import health_logo from '../media/Final/health-sketch-final.png';
 import personal_logo from '../media/Final/balloon-sketch-final.png';
 import professional_logo from '../media/Final/mountain-no-lines-final.png';
 const axios = require('axios');
-
-const charPoses = {
-    exit: { opacity: 0 },
-    enter: { opacity: 1 }
-};
 
 
 const SuccessCircle = posed.div({

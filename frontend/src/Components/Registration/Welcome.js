@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Reveal from 'react-reveal/Reveal';
 import './Welcome.css';
 import logo from '../media/Logo/logo-cropped-1.png';
 import Fade from 'react-reveal/Fade';

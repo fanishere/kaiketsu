@@ -4,9 +4,6 @@ import { connect } from "react-redux";
 import {
     Redirect
 } from "react-router-dom";
-import health_logo from './media/Final/health-sketch-final.png';
-import personal_logo from './media/Final/balloon-sketch-final.png';
-import professional_logo from './media/Final/mountain-sketch-final.png';
 import CategoryImage from './CategoryImage';
 
 

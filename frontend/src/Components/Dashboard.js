@@ -129,57 +129,6 @@ class DashboardGoalDisplay extends Component {
         )
     }
 }
-function AddGoalButton() {
-    return (
-        <div className="footer">
-            <div className="buttonContainer">
-
-                <Link to="/dashboard/create-goal/">
-                    <div className="plusIcon">
-                        <img src={plus_logo}></img>
-                    </div>
-                </Link>
-                <Link to="/dashboard/create-goal/">
-                    {/* need to create an acccurate path */}
-                    <div className="trophyIcon">
-                        <img src={trophy_icon}></img>
-                    </div>
-                </Link>
-                <Link to="/dashboard/create-goal/">
-                    {/* need to create an acccurate path */}
-                    {/* <div className="starIcon">
-                        <img src={star_icon}></img>
-                    </div> */}
-                </Link>
-                <Link to="/dashboard/create-goal/">
-                    {/* need to create an acccurate path */}
-                    <div className="dashboardIcon">
-                        <img src={dashboard_icon}></img>
-                    </div>
-                </Link>
-
-
-            </div>
-        </div>
-
-    );
-}
-
-// function AddGoalButton() {
-//     return (
-//         <div className="AddTrophyButton">
-//             <Link to="/dashboard/create-goal/">
-//                 {/* need to create an acccurate path */}
-//                 <div className="trophyIcon">
-//                     <img src={trophy_icon}></img>
-//                 </div>
-//             </Link>
-//         </div>
-//     )
-// }
-
-
-
 
 
 

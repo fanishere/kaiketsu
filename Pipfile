@@ -12,10 +12,10 @@ django-cors-headers = "*"
 gunicorn = "*"
 django-heroku = "*"
 celery = "*"
-flower = "*"
 
 [dev-packages]
 "flake8" = "*"
+flower = "*"
 
 [requires]
 python_version = "3.7"

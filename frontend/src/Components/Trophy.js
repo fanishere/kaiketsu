@@ -35,7 +35,13 @@ class TrophyItem extends Component {
         return (
             <div className="TrophyItem">
                 <div className="trophyImage">
-                    <img src={personal_logo} alt="personal logo"></img>
+                    {this.props.category === 'HEALTH'
+                        ? <img src={health_logo} alt="health logo"></img>
+                        : this.props.category === 'PERSONAL'
+                            ? <img src={personal_logo} alt="personal logo"></img>
+                            : <img src={prof_logo} alt="professional logo"></img>
+                    }
+                   
                 </div>
                 <div className="trophyData">
                     <p>Congratulations! You have achieved your goal to &nbsp;

@@ -1,14 +1,9 @@
 import React, {Component} from 'react';
-import { VictoryBar, VictoryGroup, VictoryLegend, VictoryLabel, VictoryTooltip } from 'victory';
+import { VictoryBar, VictoryGroup, VictoryLegend, VictoryTooltip } from 'victory';
 import {connect} from "react-redux";
 import './GoalDetail.css';
-import {
-    Link
-} from "react-router-dom";
 import { Redirect } from 'react-router-dom';
 import ButtonInteraction from './SuccessButton';
-import CircleDrag from './CircleDrag';
-import GoalCompletion from './GoalCompletion';
 import CategoryImage from '../CategoryImage';
 const axios = require('axios');
 
@@ -76,53 +71,55 @@ class GoalAccomplishment extends Component {
      }
 }
 
-class GoalDays extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+// class GoalDays extends Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
 
-        }
-    }
+//         }
+//     }
 
 
-    render() {
+//     render() {
         
-        return (
-            <div className="goalDays">
-                <h2>Days Completed</h2>
-                <div className="goalDaysGraph">
+//         return (
+//             <div className="goalDays">
+//                 <h2>Days Completed</h2>
+//                 <div className="goalDaysGraph">
                    
                    
-                        <VictoryBar
-                            horizontal
-                            minDomain={{x: 0, y: 0}}
-                            barWidth={40}
-                            style={{ labels: { fill: "white" } }}
-                            labelComponent={<VictoryLabel dx={-50}/>}
-                            maxDomain={45}
+//                         <VictoryBar
+//                             horizontal
+//                             minDomain={{x: 0, y: 0}}
+//                             barWidth={40}
+//                             style={{ labels: { fill: "white" } }}
+//                             labelComponent={<VictoryLabel dx={-50}/>}
+//                             maxDomain={45}
                             
-                            labels={`${this.props.days} Days`}
-                            data= {[
-                                { x: 0, y: this.props.days},
-                            ]}
-                        />
+//                             labels={`${this.props.days} Days`}
+//                             data= {[
+//                                 { x: 0, y: this.props.days},
+//                             ]}
+//                         />
 
-                        <VictoryBar
-                            horizontal
-                            barWidth={40}
-                            labelComponent={<VictoryLabel dx={-60}/>}
-                            maxDomain={45}
-                            labels={(d) => `${d.y} Days`}
-                            data= {[
-                                { x: 0, y: secondsToDays(this.props.duration)},
-                            ]}
-                        />
+//                         <VictoryBar
+//                             horizontal
+//                             barWidth={40}
+//                             labelComponent={<VictoryLabel dx={-60}/>}
+//                             maxDomain={45}
+//                             labels={(d) => `${d.y} Days`}
+//                             data= {[
+//                                 { x: 0, y: secondsToDays(this.props.duration)},
+//                             ]}
+//                         />
                             
-                </div>
-            </div>
-        );
-    }
-}
+//                 </div>
+//             </div>
+//         );
+//     }
+// }
+
+
 function secondsToDays(num) {
     return num / 86400;
 }

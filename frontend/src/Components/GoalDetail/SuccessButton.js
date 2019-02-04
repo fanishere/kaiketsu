@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { tween } from 'popmotion';
-import ReactDOM from 'react-dom';
 import {connect} from "react-redux";
 import './Interactions.css';
 import posed from 'react-pose';
