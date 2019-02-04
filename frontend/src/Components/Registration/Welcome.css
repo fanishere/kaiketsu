@@ -3,6 +3,8 @@
     width: 100%;
     background-size: cover;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 img.welcome-logo {
@@ -68,10 +70,9 @@ img.welcome-logo {
  }
 
  .welcomeButtons {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     margin-bottom: 20px;
+    margin-top: 60px;
     text-align: center;
 }
 .welcomeButtons a {

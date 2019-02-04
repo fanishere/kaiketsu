@@ -59,6 +59,7 @@
 .Dashboard {
     background-image: url('./media/Background/yellow_background.png');
     min-height: 100vh;
+    background-size: cover;
 }
 
 .GoalBlock {
