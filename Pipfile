@@ -12,6 +12,7 @@ django-cors-headers = "*"
 gunicorn = "*"
 django-heroku = "*"
 celery = "*"
+kombu = "*"
 
 [dev-packages]
 "flake8" = "*"
