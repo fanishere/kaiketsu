@@ -9,7 +9,7 @@ app = Celery('kaiketsu',
              backend='amqp://',
              include=['kaiketsu.tasks'])
 
-
+print(os.environ['CLOUDAMQP_URL'])
 app.conf.update(BROKER_URL=os.environ['CLOUDAMQP_URL'])
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.conf.timezone = 'EST'
